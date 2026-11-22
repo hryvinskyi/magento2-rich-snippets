@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "group": "shop",
+    "name": "Organization",
+    "icon": "apartment",
+    "description": "The shop itself: name, logo, contact details and social profiles. Carries the return policy.",
+    "summary": "Name, logo, contact, return policy",
+    "where": "Home page",
+    "google": {
+        "results": ["organization", "return_policy"],
+        "short": "Google: organization details, return policy",
+        "long": "Google can use it for the logo and details it shows about the shop, and for the return policy of every product. There are no required properties."
+    },
+    "properties": ["name", "url", "logo", "email", "telephone", "address", "sameAs", "hasMerchantReturnPolicy"],
+    "uses": ["return-policy", "postal-address"],
+    "placement": {"pageKinds": ["home"]},
+    "questions": [
+        {"code": "social_profiles", "label": "Social profiles", "suggester": "social_profiles"}
+    ],
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "OnlineStore",
+        "name": "{{store.name}}",
+        "url": "{{store.url}}",
+        "logo": "{{store.logo}}",
+        "email": "{{store.email}}",
+        "telephone": "{{store.phone}}",
+        "address": {"@include": "postal-address"},
+        "sameAs": "{{? social_profiles }}",
+        "hasMerchantReturnPolicy": {"@include": "return-policy"}
+    }
+}

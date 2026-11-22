@@ -1,0 +1,37 @@
+{
+    "version": 1,
+    "group": "content",
+    "name": "FAQ",
+    "icon": "quiz",
+    "description": "Questions and answers, typed into the snippet for the pages that show them.",
+    "where": "CMS pages you choose",
+    "google": {
+        "results": ["faq"],
+        "short": "Google: no result since 2026",
+        "long": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read the markup. The questions have to be visible on the page."
+    },
+    "properties": ["mainEntity", "name", "acceptedAnswer", "text"],
+    "placement": {"pageKinds": ["cms"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ""
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ""
+                }
+            }
+        ]
+    }
+}

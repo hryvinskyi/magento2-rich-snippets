@@ -1,0 +1,211 @@
+{
+    "idle": {
+        "state": "idle",
+        "tone": "invalid",
+        "title": "2 products are invalid",
+        "note": "Last run today at 03:00, in 41 seconds.",
+        "facts": [
+            {
+                "label": "Products",
+                "value": 184
+            },
+            {
+                "label": "Categories",
+                "value": 14
+            },
+            {
+                "label": "CMS pages",
+                "value": 9
+            },
+            {
+                "label": "Store views",
+                "value": 3
+            }
+        ],
+        "progress": null,
+        "last": {
+            "id": 7,
+            "trigger": "schedule",
+            "startedAt": "2026-11-21T03:00:00+00:00",
+            "finishedAt": "2026-11-21T03:00:41+00:00",
+            "durationSeconds": 41,
+            "pagesChecked": 207,
+            "storeViews": 3,
+            "invalid": 2,
+            "withGap": 26,
+            "toast": "The catalog was checked: 207 pages in 3 store views."
+        },
+        "failed": null
+    },
+    "running": {
+        "state": "running",
+        "tone": "busy",
+        "title": "Checking…",
+        "note": "Started at 13:58.",
+        "facts": [
+            {
+                "label": "Products",
+                "value": 184
+            },
+            {
+                "label": "Categories",
+                "value": 14
+            },
+            {
+                "label": "CMS pages",
+                "value": 9
+            },
+            {
+                "label": "Store views",
+                "value": 3
+            }
+        ],
+        "progress": {
+            "checked": 112,
+            "total": 207,
+            "percent": 54,
+            "text": "112 of 207 pages checked",
+            "left": "About 17 seconds left"
+        },
+        "last": {
+            "id": 7,
+            "trigger": "schedule",
+            "startedAt": "2026-11-21T03:00:00+00:00",
+            "finishedAt": "2026-11-21T03:00:41+00:00",
+            "durationSeconds": 41,
+            "pagesChecked": 207,
+            "storeViews": 3,
+            "invalid": 2,
+            "withGap": 26,
+            "toast": "The catalog was checked: 207 pages in 3 store views."
+        },
+        "failed": null
+    },
+    "waiting": {
+        "state": "requested",
+        "tone": "busy",
+        "title": "Checking…",
+        "note": "Waiting for the next cron run. It starts within a minute when cron is running.",
+        "facts": [
+            {
+                "label": "Products",
+                "value": 184
+            },
+            {
+                "label": "Categories",
+                "value": 14
+            },
+            {
+                "label": "CMS pages",
+                "value": 9
+            },
+            {
+                "label": "Store views",
+                "value": 3
+            }
+        ],
+        "progress": null,
+        "last": {
+            "id": 7,
+            "trigger": "schedule",
+            "startedAt": "2026-11-21T03:00:00+00:00",
+            "finishedAt": "2026-11-21T03:00:41+00:00",
+            "durationSeconds": 41,
+            "pagesChecked": 207,
+            "storeViews": 3,
+            "invalid": 2,
+            "withGap": 26,
+            "toast": "The catalog was checked: 207 pages in 3 store views."
+        },
+        "failed": null
+    },
+    "clean": {
+        "state": "idle",
+        "tone": "ok",
+        "title": "Nothing found",
+        "note": "Last run today at 03:00, in 41 seconds.",
+        "facts": [
+            {
+                "label": "Products",
+                "value": 184
+            },
+            {
+                "label": "Categories",
+                "value": 14
+            },
+            {
+                "label": "CMS pages",
+                "value": 9
+            },
+            {
+                "label": "Store views",
+                "value": 3
+            }
+        ],
+        "progress": null,
+        "last": {
+            "id": 7,
+            "trigger": "schedule",
+            "startedAt": "2026-11-21T03:00:00+00:00",
+            "finishedAt": "2026-11-21T03:00:41+00:00",
+            "durationSeconds": 41,
+            "pagesChecked": 207,
+            "storeViews": 3,
+            "invalid": 0,
+            "withGap": 0,
+            "toast": "The catalog was checked: 207 pages in 3 store views."
+        },
+        "failed": null
+    },
+    "failed": {
+        "state": "idle",
+        "tone": "invalid",
+        "title": "2 products are invalid",
+        "note": "Last run today at 03:00, in 41 seconds.",
+        "facts": [
+            {
+                "label": "Products",
+                "value": 184
+            },
+            {
+                "label": "Categories",
+                "value": 14
+            },
+            {
+                "label": "CMS pages",
+                "value": 9
+            },
+            {
+                "label": "Store views",
+                "value": 3
+            }
+        ],
+        "progress": null,
+        "last": {
+            "id": 7,
+            "trigger": "schedule",
+            "startedAt": "2026-11-21T03:00:00+00:00",
+            "finishedAt": "2026-11-21T03:00:41+00:00",
+            "durationSeconds": 41,
+            "pagesChecked": 207,
+            "storeViews": 3,
+            "invalid": 2,
+            "withGap": 26,
+            "toast": "The catalog was checked: 207 pages in 3 store views."
+        },
+        "failed": {
+            "at": "2026-11-21T13:41:40+00:00",
+            "text": "The last check stopped before it was finished."
+        }
+    },
+    "none": {
+        "state": "idle",
+        "tone": "none",
+        "title": "No check has run yet",
+        "note": "The check runs every night and after an import of products, or now with Check now.",
+        "facts": [],
+        "progress": null,
+        "last": null,
+        "failed": null
+    }
+}

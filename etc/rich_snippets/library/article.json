@@ -1,0 +1,28 @@
+{
+    "version": 1,
+    "group": "content",
+    "name": "Article",
+    "icon": "article",
+    "description": "A journal or blog post kept as a CMS page: headline, image, author, dates.",
+    "where": "CMS pages you choose",
+    "google": {
+        "status": "ok",
+        "short": "Google: article",
+        "long": "Google can show the headline, image and date of an article. There are no required properties."
+    },
+    "properties": ["headline", "image", "datePublished", "dateModified", "author"],
+    "placement": {"pageKinds": ["cms"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{page.heading | default:page.title}}",
+        "image": "",
+        "datePublished": "{{page.created_at}}",
+        "dateModified": "{{page.updated_at}}",
+        "author": {
+            "@type": "Organization",
+            "name": "{{store.name}}",
+            "url": "{{store.url}}"
+        }
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "data": {
+        "snippet": {
+            "id": 3,
+            "code": "product",
+            "name": "Product",
+            "type": "Product",
+            "template": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"{{product.name}}\",\n    \"offers\": {\"@type\": \"Offer\", \"hasMerchantReturnPolicy\": {\"@include\": \"return-policy\"}}\n}",
+            "isBlock": false,
+            "active": true,
+            "pageKinds": [
+                "product"
+            ],
+            "conditions": "{\"type\":\"rich_snippets/combine\",\"attribute\":null,\"operator\":null,\"value\":\"1\",\"is_value_processed\":null,\"aggregator\":\"all\",\"conditions\":[{\"type\":\"product_type\",\"attribute\":null,\"operator\":\"!=\",\"value\":\"configurable\",\"is_value_processed\":null}]}",
+            "storeIds": [
+                0
+            ],
+            "origin": {
+                "code": "product",
+                "version": 3
+            },
+            "updatedAt": "2026-11-12 09:30:00",
+            "updatedBy": "admin"
+        },
+        "usedIn": [],
+        "vocabulary": {
+            "conditions": {
+                "home": [],
+                "product": [
+                    {
+                        "code": "product_attribute",
+                        "label": "Product attribute"
+                    },
+                    {
+                        "code": "attribute_set",
+                        "label": "Attribute set"
+                    },
+                    {
+                        "code": "product_category",
+                        "label": "Category"
+                    },
+                    {
+                        "code": "product_type",
+                        "label": "Product type"
+                    }
+                ],
+                "category": [
+                    {
+                        "code": "category_page",
+                        "label": "Category page"
+                    }
+                ],
+                "cms": [
+                    {
+                        "code": "cms_page",
+                        "label": "CMS page"
+                    }
+                ],
+                "other": []
+            }
+        }
+    },
+    "block": {
+        "usedIn": [
+            {
+                "id": 5,
+                "code": "organization",
+                "name": "Organization",
+                "paths": [
+                    "hasMerchantReturnPolicy"
+                ]
+            },
+            {
+                "id": 3,
+                "code": "product",
+                "name": "Product",
+                "paths": [
+                    "offers.hasMerchantReturnPolicy"
+                ]
+            },
+            {
+                "id": 4,
+                "code": "product-variants",
+                "name": "Product with variants",
+                "paths": [
+                    "hasVariant.offers.hasMerchantReturnPolicy"
+                ]
+            }
+        ]
+    }
+}

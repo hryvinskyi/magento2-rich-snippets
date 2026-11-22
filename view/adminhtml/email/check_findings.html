@@ -1,0 +1,18 @@
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<!--@subject {{trans "Rich Snippets: %invalid pages Google would report as invalid" invalid=$invalid}} @-->
+<!--@vars {
+"var invalid":"Pages Google would report as invalid",
+"var gaps":"Valid pages that miss a recommended value",
+"var pages":"Pages checked",
+"var findings_url":"Address of the findings in the admin"
+} @-->
+
+<p>{{trans "The catalog check found %invalid pages that Google would report as invalid: a value Google requires is missing on them." invalid=$invalid}}</p>
+<p>{{trans "Pages checked: %pages. Valid pages that miss a recommended value: %gaps." pages=$pages gaps=$gaps}}</p>
+<p>{{trans "The findings say what is missing and on which pages."}} <a href="{{var findings_url}}">{{trans "Open the findings"}}</a></p>

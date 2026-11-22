@@ -1,0 +1,1155 @@
+{
+    "healthy": {
+        "store": null,
+        "state": "live",
+        "badge": {
+            "on": true,
+            "text": "7 snippets on"
+        },
+        "status": {
+            "tone": "ok",
+            "word": "Live",
+            "note": "7 snippets on 4 kinds of page, in 3 store views.",
+            "action": {
+                "label": "Test a page",
+                "route": "hryvinskyi_richsnippets/test/index",
+                "params": {}
+            }
+        },
+        "facts": [
+            {
+                "key": "pages",
+                "label": "Pages with snippets",
+                "value": "208",
+                "tone": null
+            },
+            {
+                "key": "check",
+                "label": "Catalog check",
+                "value": "Today, 03:00",
+                "tone": null
+            },
+            {
+                "key": "format",
+                "label": "Written as",
+                "value": "Compact, in the head",
+                "tone": null
+            },
+            {
+                "key": "theme",
+                "label": "Theme’s own markup",
+                "value": "Removed",
+                "tone": null
+            }
+        ],
+        "kinds": {
+            "subtitle": "Each name is one snippet, written as one script block.",
+            "rows": [
+                {
+                    "kind": "home",
+                    "label": "Home page",
+                    "icon": "home",
+                    "pages": "1 page",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "home"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 1,
+                            "code": "organization",
+                            "name": "Organization",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 2,
+                            "code": "website",
+                            "name": "Website name",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "product",
+                    "label": "Product pages",
+                    "icon": "inventory_2",
+                    "pages": "184 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "product:12"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 3,
+                            "code": "product",
+                            "name": "Product",
+                            "on": true,
+                            "sub": "146 pages"
+                        },
+                        {
+                            "id": 4,
+                            "code": "product-variants",
+                            "name": "Product with variants",
+                            "on": true,
+                            "sub": "38 Configurable"
+                        },
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "label": "Category pages",
+                    "icon": "category",
+                    "pages": "21 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "category:3"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 6,
+                            "code": "product-list",
+                            "name": "Product list",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "cms",
+                    "label": "CMS pages",
+                    "icon": "article",
+                    "pages": "9 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "cms:4"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 7,
+                            "code": "shop-in-berlin",
+                            "name": "Shop in Berlin",
+                            "on": true,
+                            "sub": "Contact"
+                        },
+                        {
+                            "id": 8,
+                            "code": "faq",
+                            "name": "FAQ",
+                            "on": true,
+                            "sub": "2 pages, English only"
+                        }
+                    ]
+                },
+                {
+                    "kind": "other",
+                    "label": "Every other page",
+                    "icon": "public",
+                    "pages": "Cart, checkout, account, search",
+                    "see": null,
+                    "empty": "Nothing. No snippet is set for these pages.",
+                    "snippets": []
+                }
+            ]
+        },
+        "features": {
+            "subtitle": "How much of the shop has what each kind of result needs.",
+            "rows": [
+                {
+                    "rule": "merchant_listing",
+                    "label": "Merchant listing",
+                    "on": "Product pages",
+                    "met": 184,
+                    "total": 184,
+                    "bar": true,
+                    "text": "184 of 184 products have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "review_stars",
+                    "label": "Review stars",
+                    "on": "Product pages",
+                    "met": 113,
+                    "total": 184,
+                    "bar": true,
+                    "text": "113 of 184 products carry review stars; the others leave it out",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "product_variants",
+                    "label": "Product variants",
+                    "on": "Product pages",
+                    "met": 38,
+                    "total": 38,
+                    "bar": true,
+                    "text": "38 of 38 products have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "breadcrumb",
+                    "label": "Breadcrumb",
+                    "on": "Product pages, category pages and CMS pages",
+                    "met": 207,
+                    "total": 207,
+                    "bar": true,
+                    "text": "207 of 207 pages have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "organization",
+                    "label": "Organization",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "Google requires nothing here and recommends as much as applies.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "site_name",
+                    "label": "Site name",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "A name and the address of the home page.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "faq",
+                    "label": "FAQ",
+                    "on": "CMS pages",
+                    "met": 2,
+                    "total": 2,
+                    "bar": false,
+                    "text": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read it.",
+                    "status": "no_result",
+                    "statusLabel": "No result"
+                }
+            ],
+            "footer": "From the catalog check of today at 03:00, compared with what Google publishes for each result type. Google decides whether a result is shown.",
+            "empty": null
+        },
+        "attention": {
+            "count": 0,
+            "items": [],
+            "none": "Nothing. Every page meets what Google requires, no recommended value is missing, and the theme writes no markup of its own."
+        }
+    },
+    "attention": {
+        "store": null,
+        "state": "live",
+        "badge": {
+            "on": true,
+            "text": "7 snippets on"
+        },
+        "status": {
+            "tone": "invalid",
+            "word": "2 products are invalid",
+            "note": "7 snippets on 4 kinds of page, in 3 store views.",
+            "action": {
+                "label": "Test a page",
+                "route": "hryvinskyi_richsnippets/test/index",
+                "params": {}
+            }
+        },
+        "facts": [
+            {
+                "key": "pages",
+                "label": "Pages with snippets",
+                "value": "208",
+                "tone": null
+            },
+            {
+                "key": "check",
+                "label": "Catalog check",
+                "value": "Today, 03:00",
+                "tone": null
+            },
+            {
+                "key": "format",
+                "label": "Written as",
+                "value": "Compact, in the head",
+                "tone": null
+            },
+            {
+                "key": "theme",
+                "label": "Theme’s own markup",
+                "value": "Still there",
+                "tone": "warn"
+            }
+        ],
+        "kinds": {
+            "subtitle": "Each name is one snippet, written as one script block.",
+            "rows": [
+                {
+                    "kind": "home",
+                    "label": "Home page",
+                    "icon": "home",
+                    "pages": "1 page",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "home"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 1,
+                            "code": "organization",
+                            "name": "Organization",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 2,
+                            "code": "website",
+                            "name": "Website name",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "product",
+                    "label": "Product pages",
+                    "icon": "inventory_2",
+                    "pages": "184 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "product:12"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 3,
+                            "code": "product",
+                            "name": "Product",
+                            "on": true,
+                            "sub": "146 pages"
+                        },
+                        {
+                            "id": 4,
+                            "code": "product-variants",
+                            "name": "Product with variants",
+                            "on": true,
+                            "sub": "38 Configurable"
+                        },
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "label": "Category pages",
+                    "icon": "category",
+                    "pages": "21 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "category:3"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 6,
+                            "code": "product-list",
+                            "name": "Product list",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "cms",
+                    "label": "CMS pages",
+                    "icon": "article",
+                    "pages": "9 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "cms:4"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 7,
+                            "code": "shop-in-berlin",
+                            "name": "Shop in Berlin",
+                            "on": true,
+                            "sub": "Contact"
+                        },
+                        {
+                            "id": 8,
+                            "code": "faq",
+                            "name": "FAQ",
+                            "on": true,
+                            "sub": "2 pages, English only"
+                        }
+                    ]
+                },
+                {
+                    "kind": "other",
+                    "label": "Every other page",
+                    "icon": "public",
+                    "pages": "Cart, checkout, account, search",
+                    "see": null,
+                    "empty": "Nothing. No snippet is set for these pages.",
+                    "snippets": []
+                }
+            ]
+        },
+        "features": {
+            "subtitle": "How much of the shop has what each kind of result needs.",
+            "rows": [
+                {
+                    "rule": "merchant_listing",
+                    "label": "Merchant listing",
+                    "on": "Product pages",
+                    "met": 182,
+                    "total": 184,
+                    "bar": true,
+                    "text": "182 of 184 products have what Google requires",
+                    "status": "partly",
+                    "statusLabel": "Partly"
+                },
+                {
+                    "rule": "review_stars",
+                    "label": "Review stars",
+                    "on": "Product pages",
+                    "met": 113,
+                    "total": 184,
+                    "bar": true,
+                    "text": "113 of 184 products carry review stars; the others leave it out",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "product_variants",
+                    "label": "Product variants",
+                    "on": "Product pages",
+                    "met": 38,
+                    "total": 38,
+                    "bar": true,
+                    "text": "38 of 38 products have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "breadcrumb",
+                    "label": "Breadcrumb",
+                    "on": "Product pages, category pages and CMS pages",
+                    "met": 207,
+                    "total": 207,
+                    "bar": true,
+                    "text": "207 of 207 pages have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "organization",
+                    "label": "Organization",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "Google requires nothing here and recommends as much as applies.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "site_name",
+                    "label": "Site name",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "A name and the address of the home page.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "faq",
+                    "label": "FAQ",
+                    "on": "CMS pages",
+                    "met": 2,
+                    "total": 2,
+                    "bar": false,
+                    "text": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read it.",
+                    "status": "no_result",
+                    "statusLabel": "No result"
+                }
+            ],
+            "footer": "From the catalog check of today at 03:00, compared with what Google publishes for each result type. Google decides whether a result is shown.",
+            "empty": null
+        },
+        "attention": {
+            "count": 4,
+            "items": [
+                {
+                    "key": "finding-merchant-listing-image",
+                    "tone": "bad",
+                    "title": "No image on 2 products",
+                    "description": "Google needs image for a merchant listing. These pages are output without it and are reported as invalid.",
+                    "action": "See them",
+                    "target": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "mode": "catalog",
+                            "finding": "merchant-listing-image"
+                        }
+                    }
+                },
+                {
+                    "key": "theme-markup",
+                    "tone": "warn",
+                    "title": "The theme still writes its own Product markup",
+                    "description": "Product pages carry two descriptions of the same product, which can disagree.",
+                    "action": "Open Settings",
+                    "target": {
+                        "route": "adminhtml/system_config/edit",
+                        "params": {
+                            "section": "hryvinskyi_rich_snippets"
+                        }
+                    }
+                },
+                {
+                    "key": "finding-merchant-listing-gtin13-product-ean",
+                    "tone": "warn",
+                    "title": "EAN is empty on 23 products",
+                    "description": "gtin13 is left out. Google recommends it for a merchant listing.",
+                    "action": "See them",
+                    "target": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "mode": "catalog",
+                            "finding": "merchant-listing-gtin13-product-ean"
+                        }
+                    }
+                },
+                {
+                    "key": "template-product",
+                    "tone": "info",
+                    "title": "The Product template has a newer version",
+                    "description": "Your snippet is unchanged. The library can add the new version beside it, switched off.",
+                    "action": "Open the library",
+                    "target": {
+                        "route": "hryvinskyi_richsnippets/library/index",
+                        "params": {
+                            "template": "product"
+                        }
+                    }
+                }
+            ],
+            "none": null
+        }
+    },
+    "deutsch": {
+        "store": 2,
+        "state": "live",
+        "badge": {
+            "on": true,
+            "text": "6 snippets on"
+        },
+        "status": {
+            "tone": "ok",
+            "word": "Live",
+            "note": "6 snippets on 4 kinds of page, in Deutsch.",
+            "action": {
+                "label": "Test a page",
+                "route": "hryvinskyi_richsnippets/test/index",
+                "params": {
+                    "store": "2"
+                }
+            }
+        },
+        "facts": [
+            {
+                "key": "pages",
+                "label": "Pages with snippets",
+                "value": "72",
+                "tone": null
+            },
+            {
+                "key": "check",
+                "label": "Catalog check",
+                "value": "Today, 03:00",
+                "tone": null
+            },
+            {
+                "key": "format",
+                "label": "Written as",
+                "value": "Compact, in the head",
+                "tone": null
+            },
+            {
+                "key": "theme",
+                "label": "Theme’s own markup",
+                "value": "None",
+                "tone": null
+            }
+        ],
+        "kinds": {
+            "subtitle": "Each name is one snippet, written as one script block.",
+            "rows": [
+                {
+                    "kind": "home",
+                    "label": "Home page",
+                    "icon": "home",
+                    "pages": "1 page",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "home",
+                            "store": "2"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 1,
+                            "code": "organization",
+                            "name": "Organization",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 2,
+                            "code": "website",
+                            "name": "Website name",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "product",
+                    "label": "Product pages",
+                    "icon": "inventory_2",
+                    "pages": "184 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "product:12",
+                            "store": "2"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 3,
+                            "code": "product",
+                            "name": "Product",
+                            "on": true,
+                            "sub": "146 pages"
+                        },
+                        {
+                            "id": 4,
+                            "code": "product-variants",
+                            "name": "Product with variants",
+                            "on": true,
+                            "sub": "38 Configurable"
+                        },
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "label": "Category pages",
+                    "icon": "category",
+                    "pages": "21 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "category:3",
+                            "store": "2"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 6,
+                            "code": "product-list",
+                            "name": "Product list",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "cms",
+                    "label": "CMS pages",
+                    "icon": "article",
+                    "pages": "9 pages",
+                    "see": {
+                        "route": "hryvinskyi_richsnippets/test/index",
+                        "params": {
+                            "page": "cms:4",
+                            "store": "2"
+                        }
+                    },
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": true,
+                            "sub": null
+                        },
+                        {
+                            "id": 7,
+                            "code": "shop-in-berlin",
+                            "name": "Shop in Berlin",
+                            "on": true,
+                            "sub": "Contact"
+                        }
+                    ]
+                },
+                {
+                    "kind": "other",
+                    "label": "Every other page",
+                    "icon": "public",
+                    "pages": "Cart, checkout, account, search",
+                    "see": null,
+                    "empty": "Nothing. No snippet is set for these pages.",
+                    "snippets": []
+                }
+            ]
+        },
+        "features": {
+            "subtitle": "How much of the shop has what each kind of result needs.",
+            "rows": [
+                {
+                    "rule": "merchant_listing",
+                    "label": "Merchant listing",
+                    "on": "Product pages",
+                    "met": 184,
+                    "total": 184,
+                    "bar": true,
+                    "text": "184 of 184 products have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "review_stars",
+                    "label": "Review stars",
+                    "on": "Product pages",
+                    "met": 113,
+                    "total": 184,
+                    "bar": true,
+                    "text": "113 of 184 products carry review stars; the others leave it out",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "product_variants",
+                    "label": "Product variants",
+                    "on": "Product pages",
+                    "met": 38,
+                    "total": 38,
+                    "bar": true,
+                    "text": "38 of 38 products have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "breadcrumb",
+                    "label": "Breadcrumb",
+                    "on": "Product pages, category pages and CMS pages",
+                    "met": 207,
+                    "total": 207,
+                    "bar": true,
+                    "text": "207 of 207 pages have what Google requires",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "organization",
+                    "label": "Organization",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "Google requires nothing here and recommends as much as applies.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                },
+                {
+                    "rule": "site_name",
+                    "label": "Site name",
+                    "on": "The home page",
+                    "met": 1,
+                    "total": 1,
+                    "bar": false,
+                    "text": "A name and the address of the home page.",
+                    "status": "met",
+                    "statusLabel": "Met"
+                }
+            ],
+            "footer": "From the catalog check of today at 03:00, compared with what Google publishes for each result type. Google decides whether a result is shown.",
+            "empty": null
+        },
+        "attention": {
+            "count": 0,
+            "items": [],
+            "none": "Nothing. Every page meets what Google requires, no recommended value is missing, and the theme writes no markup of its own."
+        }
+    },
+    "none": {
+        "store": null,
+        "state": "none",
+        "badge": {
+            "on": false,
+            "text": "Nothing is output"
+        },
+        "status": {
+            "tone": "none",
+            "word": "Nothing is output yet",
+            "note": "No snippet is added yet.",
+            "action": null
+        },
+        "facts": [
+            {
+                "key": "pages",
+                "label": "Pages with snippets",
+                "value": "Not checked yet",
+                "tone": null
+            },
+            {
+                "key": "check",
+                "label": "Catalog check",
+                "value": "Not run yet",
+                "tone": null
+            },
+            {
+                "key": "format",
+                "label": "Written as",
+                "value": "Compact, in the head",
+                "tone": null
+            },
+            {
+                "key": "theme",
+                "label": "Theme’s own markup",
+                "value": "Still there",
+                "tone": "warn"
+            }
+        ],
+        "kinds": {
+            "subtitle": "What would be written once the snippets are on.",
+            "rows": [
+                {
+                    "kind": "home",
+                    "label": "Home page",
+                    "icon": "home",
+                    "pages": "1 page",
+                    "see": null,
+                    "empty": "Nothing.",
+                    "snippets": []
+                },
+                {
+                    "kind": "product",
+                    "label": "Product pages",
+                    "icon": "inventory_2",
+                    "pages": "184 pages",
+                    "see": null,
+                    "empty": "Nothing.",
+                    "snippets": []
+                },
+                {
+                    "kind": "category",
+                    "label": "Category pages",
+                    "icon": "category",
+                    "pages": "21 pages",
+                    "see": null,
+                    "empty": "Nothing.",
+                    "snippets": []
+                },
+                {
+                    "kind": "cms",
+                    "label": "CMS pages",
+                    "icon": "article",
+                    "pages": "9 pages",
+                    "see": null,
+                    "empty": "Nothing.",
+                    "snippets": []
+                },
+                {
+                    "kind": "other",
+                    "label": "Every other page",
+                    "icon": "public",
+                    "pages": "Cart, checkout, account, search",
+                    "see": null,
+                    "empty": "Nothing. No snippet is set for these pages.",
+                    "snippets": []
+                }
+            ]
+        },
+        "features": {
+            "subtitle": "Nothing while the snippets are off.",
+            "rows": [],
+            "footer": null,
+            "empty": {
+                "title": "Nothing to show yet",
+                "text": "No snippet is added, so the pages carry no structured data from this module yet."
+            }
+        },
+        "attention": {
+            "count": 0,
+            "items": [],
+            "none": "Nothing yet."
+        }
+    },
+    "off": {
+        "store": null,
+        "state": "off",
+        "badge": {
+            "on": false,
+            "text": "All snippets off"
+        },
+        "status": {
+            "tone": "off",
+            "word": "Off",
+            "note": "5 snippets are added and none is switched on. Added on 13 November 2026.",
+            "action": {
+                "label": "Open Snippets",
+                "route": "hryvinskyi_richsnippets/snippets/index",
+                "params": {}
+            }
+        },
+        "facts": [
+            {
+                "key": "pages",
+                "label": "Pages with snippets",
+                "value": "Not checked yet",
+                "tone": null
+            },
+            {
+                "key": "check",
+                "label": "Catalog check",
+                "value": "Not run yet",
+                "tone": null
+            },
+            {
+                "key": "format",
+                "label": "Written as",
+                "value": "Compact, in the head",
+                "tone": null
+            },
+            {
+                "key": "theme",
+                "label": "Theme’s own markup",
+                "value": "Still there",
+                "tone": "warn"
+            }
+        ],
+        "kinds": {
+            "subtitle": "What would be written once the snippets are on.",
+            "rows": [
+                {
+                    "kind": "home",
+                    "label": "Home page",
+                    "icon": "home",
+                    "pages": "1 page",
+                    "see": null,
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 1,
+                            "code": "organization",
+                            "name": "Organization",
+                            "on": false,
+                            "sub": "off"
+                        },
+                        {
+                            "id": 2,
+                            "code": "website",
+                            "name": "Website name",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "product",
+                    "label": "Product pages",
+                    "icon": "inventory_2",
+                    "pages": "184 pages",
+                    "see": null,
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 3,
+                            "code": "product",
+                            "name": "Product",
+                            "on": false,
+                            "sub": "off"
+                        },
+                        {
+                            "id": 4,
+                            "code": "product-variants",
+                            "name": "Product with variants",
+                            "on": false,
+                            "sub": "off"
+                        },
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "category",
+                    "label": "Category pages",
+                    "icon": "category",
+                    "pages": "21 pages",
+                    "see": null,
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "cms",
+                    "label": "CMS pages",
+                    "icon": "article",
+                    "pages": "9 pages",
+                    "see": null,
+                    "empty": null,
+                    "snippets": [
+                        {
+                            "id": 5,
+                            "code": "breadcrumbs",
+                            "name": "Breadcrumbs",
+                            "on": false,
+                            "sub": "off"
+                        }
+                    ]
+                },
+                {
+                    "kind": "other",
+                    "label": "Every other page",
+                    "icon": "public",
+                    "pages": "Cart, checkout, account, search",
+                    "see": null,
+                    "empty": "Nothing. No snippet is set for these pages.",
+                    "snippets": []
+                }
+            ]
+        },
+        "features": {
+            "subtitle": "Nothing while the snippets are off.",
+            "rows": [],
+            "footer": null,
+            "empty": {
+                "title": "Nothing to show yet",
+                "text": "Every snippet is off, so the pages carry no structured data from this module yet."
+            }
+        },
+        "attention": {
+            "count": 1,
+            "items": [
+                {
+                    "key": "theme-markup",
+                    "tone": "warn",
+                    "title": "The theme still writes its own Product markup",
+                    "description": "Product pages carry two descriptions of the same product, which can disagree.",
+                    "action": "Open Settings",
+                    "target": {
+                        "route": "adminhtml/system_config/edit",
+                        "params": {
+                            "section": "hryvinskyi_rich_snippets"
+                        }
+                    }
+                }
+            ],
+            "none": null
+        }
+    }
+}

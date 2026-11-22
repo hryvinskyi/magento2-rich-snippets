@@ -1,0 +1,130 @@
+{
+    "hryvinskyi_rich_snippets_snippet": {
+        "column": {
+            "snippet_id": true,
+            "code": true,
+            "name": true,
+            "type": true,
+            "is_block": true,
+            "active": true,
+            "page_kinds": true,
+            "match_mode": true,
+            "conditions": true,
+            "store_ids": true,
+            "template": true,
+            "origin_code": true,
+            "origin_version": true,
+            "sort_order": true,
+            "created_at": true,
+            "updated_at": true,
+            "updated_by": true
+        },
+        "index": {
+            "HRYVINSKYI_RICH_SNIPPETS_SNIPPET_ACTIVE_IS_BLOCK": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_SNIPPET_CODE": true
+        }
+    },
+    "hryvinskyi_rich_snippets_idempotency": {
+        "column": {
+            "entry_id": true,
+            "idempotency_key": true,
+            "action": true,
+            "result": true,
+            "created_at": true
+        },
+        "index": {
+            "HRYVINSKYI_RICH_SNIPPETS_IDEMPOTENCY_CREATED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_IDEMPOTENCY_IDEMPOTENCY_KEY": true
+        }
+    },
+    "hryvinskyi_rich_snippets_observation": {
+        "column": {
+            "observation_id": true,
+            "store_id": true,
+            "kind": true,
+            "found": true,
+            "properties": true,
+            "path": true,
+            "seen_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_OBSERVATION_STORE_ID_KIND": true,
+            "HRYVINSKYI_RICH_SNIPPETS_OBSERVATION_STORE_ID_STORE_STORE_ID": true
+        }
+    },
+    "hryvinskyi_rich_snippets_check_run": {
+        "column": {
+            "run_id": true,
+            "state": true,
+            "triggered_by": true,
+            "pending": true,
+            "requested_at": true,
+            "started_at": true,
+            "finished_at": true,
+            "heartbeat_at": true,
+            "pages_total": true,
+            "pages_checked": true,
+            "store_views": true,
+            "failure": true
+        },
+        "index": {
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_STATE_FINISHED_AT": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_REQUESTED_AT": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_PENDING": true
+        }
+    },
+    "hryvinskyi_rich_snippets_check_finding": {
+        "column": {
+            "finding_id": true,
+            "run_id": true,
+            "store_id": true,
+            "finding_key": true,
+            "rule_code": true,
+            "path": true,
+            "sources": true,
+            "tone": true,
+            "snippets": true,
+            "pages": true,
+            "pages_by_kind": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_RUN_ID_STORE_ID_FINDING_KEY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_RUN_ID_CHECK_RUN_RUN_ID": true
+        }
+    },
+    "hryvinskyi_rich_snippets_check_finding_item": {
+        "column": {
+            "finding_id": true,
+            "kind": true,
+            "entity_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_ITEM_FINDING_ID_CHECK_FINDING_FINDING_ID": true
+        }
+    },
+    "hryvinskyi_rich_snippets_check_aggregate": {
+        "column": {
+            "run_id": true,
+            "store_id": true,
+            "metric": true,
+            "subject": true,
+            "value": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "HRYVINSKYI_RICH_SNIPPETS_CHECK_AGGREGATE_RUN_ID_CHECK_RUN_RUN_ID": true
+        }
+    }
+}

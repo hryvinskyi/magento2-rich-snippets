@@ -1,0 +1,20 @@
+{
+    "label": "Return policy",
+    "phrase": "a return policy",
+    "appliesTo": [
+        {"type": "MerchantReturnPolicy"},
+        {"type": "OnlineStore", "at": "hasMerchantReturnPolicy"},
+        {"type": "Organization", "at": "hasMerchantReturnPolicy"}
+    ],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "applicableCountry", "missing": "No country for the return policy"},
+        {"path": "returnPolicyCategory", "missing": "No kind of return policy"},
+        {"path": "merchantReturnDays", "missing": "No number of days to return"}
+    ],
+    "recommended": ["returnMethod", "returnFees"],
+    "texts": {
+        "requirement": "the countries, the kind of policy and the number of days",
+        "met": "The countries, the kind of policy and the number of days."
+    }
+}

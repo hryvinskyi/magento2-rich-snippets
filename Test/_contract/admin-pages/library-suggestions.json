@@ -1,0 +1,144 @@
+{
+    "product": {
+        "template": "product",
+        "questions": [
+            {
+                "question": "brand",
+                "label": "Brand",
+                "default": "attribute:manufacturer",
+                "total": 184,
+                "options": [
+                    {
+                        "key": "attribute:manufacturer",
+                        "label": "Manufacturer · attribute manufacturer",
+                        "leftOut": false,
+                        "hint": "Filled for 31 of 184 products. The others get the shop name.",
+                        "tone": "ok",
+                        "fillCount": 31
+                    },
+                    {
+                        "key": "attribute:brand",
+                        "label": "Brand · attribute brand",
+                        "leftOut": false,
+                        "hint": "Filled for 0 of 184 products.",
+                        "tone": "warn",
+                        "fillCount": 0
+                    },
+                    {
+                        "key": "shop",
+                        "label": "Always “Linden & Co.”",
+                        "leftOut": false,
+                        "hint": "The same on every product.",
+                        "tone": "ok",
+                        "fillCount": null
+                    },
+                    {
+                        "key": "leave_out",
+                        "label": "Leave it out",
+                        "leftOut": true,
+                        "hint": "Google recommends a brand.",
+                        "tone": "warn",
+                        "fillCount": null
+                    }
+                ]
+            },
+            {
+                "question": "gtin",
+                "label": "GTIN (EAN, UPC)",
+                "default": "attribute:ean",
+                "total": 184,
+                "options": [
+                    {
+                        "key": "attribute:ean",
+                        "label": "EAN · attribute ean",
+                        "leftOut": false,
+                        "hint": "Found by its code. Filled for 161 of 184 products.",
+                        "tone": "ok",
+                        "fillCount": 161
+                    },
+                    {
+                        "key": "attribute:barcode",
+                        "label": "Barcode · attribute barcode",
+                        "leftOut": false,
+                        "hint": "Filled for 4 of 184 products.",
+                        "tone": "warn",
+                        "fillCount": 4
+                    },
+                    {
+                        "key": "leave_out",
+                        "label": "Leave it out",
+                        "leftOut": true,
+                        "hint": "Google recommends a GTIN where a product has one.",
+                        "tone": "warn",
+                        "fillCount": null
+                    }
+                ]
+            },
+            {
+                "question": "description",
+                "label": "Description",
+                "default": "attribute:short_description",
+                "total": 184,
+                "options": [
+                    {
+                        "key": "attribute:short_description",
+                        "label": "Short description",
+                        "leftOut": false,
+                        "hint": "Filled for 184 of 184 products. HTML is removed.",
+                        "tone": "ok",
+                        "fillCount": 184
+                    },
+                    {
+                        "key": "attribute:description",
+                        "label": "Description",
+                        "leftOut": false,
+                        "hint": "Filled for 184 of 184 products. HTML is removed, cut at 5,000 characters.",
+                        "tone": "ok",
+                        "fillCount": 184
+                    },
+                    {
+                        "key": "attribute:meta_description",
+                        "label": "Meta description",
+                        "leftOut": false,
+                        "hint": "Filled for 97 of 184 products.",
+                        "tone": "warn",
+                        "fillCount": 97
+                    }
+                ]
+            }
+        ]
+    },
+    "organization": {
+        "template": "organization",
+        "questions": [
+            {
+                "question": "social_profiles",
+                "label": "Social profiles",
+                "default": "type_in",
+                "total": null,
+                "options": [
+                    {
+                        "key": "type_in",
+                        "label": "Type them in after adding",
+                        "leftOut": false,
+                        "hint": "The snippet opens with an empty list under sameAs.",
+                        "tone": "ok",
+                        "fillCount": null
+                    },
+                    {
+                        "key": "cms_block:footer_links",
+                        "label": "Take the 4 links from the CMS block “footer_links”",
+                        "leftOut": false,
+                        "hint": "4 links found in the CMS block “footer_links”.",
+                        "tone": "ok",
+                        "fillCount": null
+                    }
+                ]
+            }
+        ]
+    },
+    "breadcrumbs": {
+        "template": "breadcrumbs",
+        "questions": []
+    }
+}

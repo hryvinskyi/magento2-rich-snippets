@@ -1,0 +1,28 @@
+{
+    "label": "Merchant listing",
+    "phrase": "a merchant listing",
+    "appliesTo": [{"type": "Product"}],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "name", "missing": "No name"},
+        {"path": "image", "missing": "No image"},
+        {"path": "offers.price", "missing": "No offer: Google needs one"},
+        {"path": "offers.priceCurrency", "missing": "No currency for the price"}
+    ],
+    "recommended": [
+        "description",
+        "sku",
+        {"anyOf": ["gtin", "gtin8", "gtin12", "gtin13", "gtin14"]},
+        "brand.name",
+        "offers.availability",
+        "offers.itemCondition",
+        "offers.hasMerchantReturnPolicy",
+        {"path": "offers.shippingDetails", "why": "Google can use it to show delivery cost and time with the result."},
+        "aggregateRating",
+        "review"
+    ],
+    "texts": {
+        "requirement": "name, image and an offer with a price and a currency",
+        "met": "Name, image and an offer with a price and a currency."
+    }
+}

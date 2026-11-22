@@ -1,0 +1,24 @@
+{
+    "version": 1,
+    "group": "blocks",
+    "name": "Return policy",
+    "icon": "assignment_return",
+    "description": "Return window, method and fees, written once and used by the shop and by every product.",
+    "where": "Inside Organization and Product",
+    "block": true,
+    "google": {
+        "results": ["return_policy"],
+        "short": "Google: return policy",
+        "long": "Google can show the return window with a product. It needs the countries, the kind of policy and, for a limited window, the number of days. Return settings in Merchant Center or Search Console take precedence over markup."
+    },
+    "properties": ["applicableCountry", "returnPolicyCategory", "merchantReturnDays", "returnMethod", "returnFees"],
+    "template": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "{{store.countries}}",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "refundType": "https://schema.org/FullRefund"
+    }
+}

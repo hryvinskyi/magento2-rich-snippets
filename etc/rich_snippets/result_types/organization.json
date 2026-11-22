@@ -1,0 +1,22 @@
+{
+    "label": "Organization",
+    "phrase": "organization details",
+    "appliesTo": [{"type": "OnlineStore"}, {"type": "Organization"}],
+    "googleStatus": "ok",
+    "required": [],
+    "recommended": [
+        "name",
+        "url",
+        "logo",
+        "address",
+        "telephone",
+        "email",
+        "sameAs",
+        "hasMerchantReturnPolicy",
+        "hasShippingService"
+    ],
+    "texts": {
+        "requirement": "nothing",
+        "met": "Google requires nothing here and recommends as much as applies."
+    }
+}

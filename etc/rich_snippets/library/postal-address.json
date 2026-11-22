@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "group": "blocks",
+    "name": "Postal address",
+    "icon": "location_on",
+    "description": "The address from Store Information, for the shop and for a local business.",
+    "where": "Inside Organization and Local business",
+    "block": true,
+    "google": {
+        "status": "none",
+        "short": "Google: read with the snippets that use it",
+        "long": "Read as part of Organization and Local business."
+    },
+    "properties": ["streetAddress", "postalCode", "addressLocality", "addressCountry"],
+    "template": {
+        "@type": "PostalAddress",
+        "streetAddress": "{{store.address.street}}",
+        "postalCode": "{{store.address.postcode}}",
+        "addressLocality": "{{store.address.city}}",
+        "addressCountry": "{{store.address.country}}"
+    }
+}

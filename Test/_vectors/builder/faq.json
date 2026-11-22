@@ -1,0 +1,74 @@
+{
+    "name": "faq",
+    "description": "Items entered in the editor: a JSON array of objects",
+    "projection": "tree",
+    "template": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How long does delivery take?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Two to four working days within Germany, four to seven elsewhere in the EU.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Can I return a bag I have used?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Yes, within 30 days, as long as it has not been monogrammed.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Do you repair bags?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"For as long as you own it. Stitching and hardware are repaired free of charge.\"\n      }\n    }\n  ]\n}",
+    "printed": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"How long does delivery take?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Two to four working days within Germany, four to seven elsewhere in the EU.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Can I return a bag I have used?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Yes, within 30 days, as long as it has not been monogrammed.\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Do you repair bags?\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"For as long as you own it. Stitching and hardware are repaired free of charge.\"\n      }\n    }\n  ]\n}",
+    "rows": [
+        {
+            "path": "mainEntity",
+            "kind": "list",
+            "when": null
+        },
+        {
+            "path": "mainEntity/1",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/1/name",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "mainEntity/1/acceptedAnswer",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/1/acceptedAnswer/text",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "mainEntity/2",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/2/name",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "mainEntity/2/acceptedAnswer",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/2/acceptedAnswer/text",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "mainEntity/3",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/3/name",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "mainEntity/3/acceptedAnswer",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "mainEntity/3/acceptedAnswer/text",
+            "kind": "fixed",
+            "when": null
+        }
+    ]
+}

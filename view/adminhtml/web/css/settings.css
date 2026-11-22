@@ -1,0 +1,50 @@
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+
+/* The read-only lines of the Rich Snippets settings: a status with a dot of its tone, and the last check's counts */
+.rich-snippets-status {
+    align-items: baseline;
+    display: flex;
+    gap: 0.6rem;
+    margin: 0.6rem 0 0;
+}
+
+.rich-snippets-status__dot {
+    background: #adadad;
+    border-radius: 50%;
+    flex: none;
+    height: 0.8rem;
+    width: 0.8rem;
+}
+
+.rich-snippets-status--ok .rich-snippets-status__dot {
+    background: #79a22e;
+}
+
+.rich-snippets-status--warn .rich-snippets-status__dot {
+    background: #eb5202;
+}
+
+.rich-snippets-last-check {
+    margin-top: 0.6rem;
+}
+
+.rich-snippets-last-check__table {
+    border-collapse: collapse;
+    margin-bottom: 0.6rem;
+}
+
+.rich-snippets-last-check__table th,
+.rich-snippets-last-check__table td {
+    border: 1px solid #d6d6d6;
+    padding: 0.4rem 1rem;
+    text-align: left;
+}
+
+.rich-snippets-last-check__value--invalid {
+    color: #e22626;
+    font-weight: 600;
+}

@@ -1,0 +1,22 @@
+{
+    "label": "Product variants",
+    "phrase": "product variants",
+    "appliesTo": [{"type": "ProductGroup"}],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "name", "missing": "No name"},
+        {"path": "productGroupID", "missing": "No product group ID"},
+        {"path": "variesBy", "missing": "Nothing says how the variants differ"},
+        {"path": "hasVariant.name", "missing": "A variant has no name"},
+        {"path": "hasVariant.image", "missing": "A variant has no image"},
+        {"path": "hasVariant.offers.price", "missing": "A variant has no offer"},
+        {"path": "hasVariant.offers.priceCurrency", "missing": "A variant has no currency for its price"},
+        {"anyOf": ["hasVariant.sku", "hasVariant.gtin", "hasVariant.gtin8", "hasVariant.gtin12", "hasVariant.gtin13", "hasVariant.gtin14"], "missing": "A variant has no SKU or GTIN"},
+        {"path": "hasVariant.url", "missing": "A variant has no address"}
+    ],
+    "recommended": ["description", "brand.name", "hasVariant.offers.availability", "aggregateRating", "review"],
+    "texts": {
+        "requirement": "a name, a group ID, what the variants differ by, and for each variant a name, an image, an offer with a price and a currency, a SKU or GTIN and an address that selects it",
+        "met": "Each variant has its own name, image, price, SKU or GTIN and an address that selects it."
+    }
+}

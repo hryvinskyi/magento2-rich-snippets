@@ -1,0 +1,18 @@
+{
+    "label": "Shipping policy",
+    "phrase": "a shipping policy",
+    "appliesTo": [{"type": "ShippingService"}],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "shippingConditions", "missing": "No shipping conditions"}
+    ],
+    "recommended": [
+        "shippingConditions.shippingDestination",
+        "shippingConditions.shippingRate",
+        "shippingConditions.transitTime"
+    ],
+    "texts": {
+        "requirement": "the conditions it ships under",
+        "met": "The conditions it ships under, with where to, at what cost and how fast."
+    }
+}

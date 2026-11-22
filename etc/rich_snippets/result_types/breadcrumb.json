@@ -1,0 +1,16 @@
+{
+    "label": "Breadcrumb",
+    "phrase": "a breadcrumb",
+    "appliesTo": [{"type": "BreadcrumbList"}],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "itemListElement.position", "missing": "A breadcrumb level has no position"},
+        {"path": "itemListElement.name", "missing": "A breadcrumb level has no name"},
+        {"path": "itemListElement.item", "missing": "A breadcrumb level has no address"}
+    ],
+    "recommended": [],
+    "texts": {
+        "requirement": "levels each with a position, a name and an address",
+        "met": "At least two levels, each with a position, a name and an address."
+    }
+}

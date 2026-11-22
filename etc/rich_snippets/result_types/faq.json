@@ -1,0 +1,15 @@
+{
+    "label": "FAQ",
+    "phrase": "FAQ results",
+    "appliesTo": [{"type": "FAQPage"}],
+    "googleStatus": "gone",
+    "required": [
+        {"path": "mainEntity", "missing": "No questions"}
+    ],
+    "recommended": [],
+    "texts": {
+        "requirement": "questions with their answers",
+        "met": "Questions with their answers.",
+        "status": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read it."
+    }
+}

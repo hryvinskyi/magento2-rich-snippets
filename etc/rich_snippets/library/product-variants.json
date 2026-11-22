@@ -1,0 +1,59 @@
+{
+    "version": 1,
+    "group": "product",
+    "name": "Product with variants",
+    "icon": "style",
+    "description": "A configurable product: the group, and one Product per variant with its own price and stock.",
+    "summary": "Every variant of a configurable product",
+    "where": "Product pages, configurable only",
+    "google": {
+        "results": ["product_variants"],
+        "short": "Google: product variants",
+        "long": "Google reads each variant with its own price and availability. Each variant needs its own SKU or GTIN and an address that selects it."
+    },
+    "properties": ["name", "productGroupID", "variesBy", "hasVariant", "sku", "offers", "color", "size"],
+    "uses": ["return-policy"],
+    "placement": {
+        "pageKinds": ["product"],
+        "conditions": {
+            "type": "rich_snippets/combine", "attribute": null, "operator": null, "value": "1",
+            "is_value_processed": null, "aggregator": "all",
+            "conditions": [{"type": "product_type", "attribute": null, "operator": "==", "value": "configurable", "is_value_processed": null}]
+        }
+    },
+    "questions": [
+        {"code": "brand", "label": "Brand", "suggester": "brand"},
+        {"code": "gtin", "label": "GTIN (EAN, UPC)", "suggester": "gtin", "root": "variant"}
+    ],
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "ProductGroup",
+        "name": "{{product.name}}",
+        "productGroupID": "{{product.sku}}",
+        "variesBy": "{{product.varies_by}}",
+        "brand": {
+            "@type": "Brand",
+            "name": "{{? brand }}"
+        },
+        "hasVariant": {
+            "@each": "product.variants",
+            "@type": "Product",
+            "name": "{{variant.name}}",
+            "sku": "{{variant.sku}}",
+            "gtin13": "{{? gtin }}",
+            "image": "{{variant.image}}",
+            "color": "{{variant.color}}",
+            "size": "{{variant.size}}",
+            "url": "{{variant.url}}",
+            "offers": {
+                "@type": "Offer",
+                "url": "{{variant.url}}",
+                "price": "{{variant.price}}",
+                "priceCurrency": "{{store.currency}}",
+                "availability": "{{variant.availability}}",
+                "itemCondition": "https://schema.org/NewCondition",
+                "hasMerchantReturnPolicy": {"@include": "return-policy"}
+            }
+        }
+    }
+}

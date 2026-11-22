@@ -1,0 +1,159 @@
+{
+    "name": "product",
+    "description": "The Product template of the library, as the builder prints it",
+    "projection": "tree",
+    "template": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"{{product.name}}\",\n  \"description\": \"{{product.short_description | plain | limit:5000}}\",\n  \"sku\": \"{{product.sku}}\",\n  \"gtin13\": \"{{product.ean}}\",\n  \"image\": {\n    \"@each\": \"product.gallery\",\n    \"@value\": \"{{image.url}}\"\n  },\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"{{product.manufacturer | default:'Linden & Co.'}}\"\n  },\n  \"color\": \"{{product.color}}\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"{{product.url}}\",\n    \"price\": \"{{product.final_price}}\",\n    \"priceCurrency\": \"{{store.currency}}\",\n    \"priceValidUntil\": \"{{product.special_to_date}}\",\n    \"priceSpecification\": {\n      \"@if\": \"product.on_sale\",\n      \"@type\": \"UnitPriceSpecification\",\n      \"priceType\": \"https://schema.org/StrikethroughPrice\",\n      \"price\": \"{{product.regular_price}}\",\n      \"priceCurrency\": \"{{store.currency}}\"\n    },\n    \"availability\": \"{{product.availability}}\",\n    \"itemCondition\": \"https://schema.org/NewCondition\",\n    \"hasMerchantReturnPolicy\": { \"@include\": \"return-policy\" }\n  },\n  \"aggregateRating\": {\n    \"@type\": \"AggregateRating\",\n    \"ratingValue\": \"{{reviews.rating}}\",\n    \"reviewCount\": \"{{reviews.count}}\"\n  },\n  \"review\": {\n    \"@each\": \"reviews.latest\",\n    \"@limit\": 3,\n    \"@type\": \"Review\",\n    \"author\": {\n      \"@type\": \"Person\",\n      \"name\": \"{{review.nickname}}\"\n    },\n    \"datePublished\": \"{{review.date}}\",\n    \"reviewBody\": \"{{review.text}}\",\n    \"reviewRating\": {\n      \"@type\": \"Rating\",\n      \"ratingValue\": \"{{review.rating}}\"\n    }\n  }\n}",
+    "printed": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Product\",\n  \"name\": \"{{product.name}}\",\n  \"description\": \"{{product.short_description | plain | limit:5000}}\",\n  \"sku\": \"{{product.sku}}\",\n  \"gtin13\": \"{{product.ean}}\",\n  \"image\": {\n    \"@each\": \"product.gallery\",\n    \"@value\": \"{{image.url}}\"\n  },\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"{{product.manufacturer | default:'Linden & Co.'}}\"\n  },\n  \"color\": \"{{product.color}}\",\n  \"offers\": {\n    \"@type\": \"Offer\",\n    \"url\": \"{{product.url}}\",\n    \"price\": \"{{product.final_price}}\",\n    \"priceCurrency\": \"{{store.currency}}\",\n    \"priceValidUntil\": \"{{product.special_to_date}}\",\n    \"priceSpecification\": {\n      \"@if\": \"product.on_sale\",\n      \"@type\": \"UnitPriceSpecification\",\n      \"priceType\": \"https://schema.org/StrikethroughPrice\",\n      \"price\": \"{{product.regular_price}}\",\n      \"priceCurrency\": \"{{store.currency}}\"\n    },\n    \"availability\": \"{{product.availability}}\",\n    \"itemCondition\": \"https://schema.org/NewCondition\",\n    \"hasMerchantReturnPolicy\": { \"@include\": \"return-policy\" }\n  },\n  \"aggregateRating\": {\n    \"@type\": \"AggregateRating\",\n    \"ratingValue\": \"{{reviews.rating}}\",\n    \"reviewCount\": \"{{reviews.count}}\"\n  },\n  \"review\": {\n    \"@each\": \"reviews.latest\",\n    \"@limit\": 3,\n    \"@type\": \"Review\",\n    \"author\": {\n      \"@type\": \"Person\",\n      \"name\": \"{{review.nickname}}\"\n    },\n    \"datePublished\": \"{{review.date}}\",\n    \"reviewBody\": \"{{review.text}}\",\n    \"reviewRating\": {\n      \"@type\": \"Rating\",\n      \"ratingValue\": \"{{review.rating}}\"\n    }\n  }\n}",
+    "rows": [
+        {
+            "path": "name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "description",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "sku",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "gtin13",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "image",
+            "kind": "list",
+            "when": null
+        },
+        {
+            "path": "brand",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "brand/name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "color",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "offers/url",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/price",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/priceCurrency",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/priceValidUntil",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/priceSpecification",
+            "kind": "object",
+            "when": "product.on_sale"
+        },
+        {
+            "path": "offers/priceSpecification/priceType",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "offers/priceSpecification/price",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/priceSpecification/priceCurrency",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/availability",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "offers/itemCondition",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "offers/hasMerchantReturnPolicy",
+            "kind": "snippet",
+            "when": null
+        },
+        {
+            "path": "aggregateRating",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "aggregateRating/ratingValue",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "aggregateRating/reviewCount",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "review",
+            "kind": "list",
+            "when": null
+        },
+        {
+            "path": "review/author",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "review/author/name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "review/datePublished",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "review/reviewBody",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "review/reviewRating",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "review/reviewRating/ratingValue",
+            "kind": "field",
+            "when": null
+        }
+    ]
+}

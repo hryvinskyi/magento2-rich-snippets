@@ -1,0 +1,9 @@
+{
+    "name": "hryvinskyi-rich-snippets-js-tests",
+    "private": true,
+    "description": "Node tests of the module's browser code; run from this directory with npm test",
+    "type": "module",
+    "scripts": {
+        "test": "node --test"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "lib": [
+            "ES2022"
+        ],
+        "types": [],
+        "paths": {
+            "@hryvinskyi/admin-ui": [
+                "../../../AdminUi/frontend/admin-ui/types/pure.d.ts",
+                "../../../magento2-admin-ui/frontend/admin-ui/types/pure.d.ts",
+                "../../../../../../vendor/hryvinskyi/magento2-admin-ui/frontend/admin-ui/types/pure.d.ts"
+            ]
+        }
+    },
+    "include": [
+        "src/*/domain"
+    ],
+    "exclude": [
+        "src/*/domain/**/*.test.ts"
+    ]
+}

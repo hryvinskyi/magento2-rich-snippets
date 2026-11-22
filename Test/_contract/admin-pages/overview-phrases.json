@@ -1,0 +1,31 @@
+{
+    "keys": [
+        "overview.attention.title",
+        "overview.features.failedText",
+        "overview.features.failedTitle",
+        "overview.features.title",
+        "overview.hero.blank",
+        "overview.hero.library",
+        "overview.hero.step1.text",
+        "overview.hero.step1.title",
+        "overview.hero.step2.text",
+        "overview.hero.step2.title",
+        "overview.hero.step3.text",
+        "overview.hero.step3.title",
+        "overview.hero.text",
+        "overview.hero.title",
+        "overview.kinds.see",
+        "overview.kinds.title",
+        "overview.source.check",
+        "overview.source.limits",
+        "overview.source.title",
+        "overview.store.allLine",
+        "overview.store.oneLine",
+        "page.loading",
+        "page.loadingLabel",
+        "page.store.all",
+        "page.store.label",
+        "page.storefront",
+        "page.unavailable"
+    ]
+}

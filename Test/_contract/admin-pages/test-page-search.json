@@ -1,0 +1,27 @@
+{
+    "pages": {
+        "pages": [
+            {
+                "ref": "home:2",
+                "kind": "home",
+                "id": 2,
+                "label": "Home page",
+                "url": "https://linden.example/",
+                "path": "/"
+            },
+            {
+                "ref": "product:12",
+                "kind": "product",
+                "id": 12,
+                "label": "Field satchel",
+                "url": "https://linden.example/bags/field-satchel.html",
+                "path": "/bags/field-satchel.html"
+            }
+        ],
+        "address": null
+    },
+    "address": {
+        "pages": [],
+        "address": "/checkout/cart"
+    }
+}

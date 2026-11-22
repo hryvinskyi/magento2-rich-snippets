@@ -1,0 +1,48 @@
+{
+    "saved": {
+        "snippet": {
+            "id": 3,
+            "code": "product",
+            "name": "Product",
+            "type": "Product",
+            "template": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"{{product.name}}\",\n    \"offers\": {\"@type\": \"Offer\", \"hasMerchantReturnPolicy\": {\"@include\": \"return-policy\"}}\n}",
+            "isBlock": false,
+            "active": true,
+            "pageKinds": [
+                "product"
+            ],
+            "conditions": "{\"type\":\"rich_snippets/combine\",\"attribute\":null,\"operator\":null,\"value\":\"1\",\"is_value_processed\":null,\"aggregator\":\"all\",\"conditions\":[{\"type\":\"product_type\",\"attribute\":null,\"operator\":\"!=\",\"value\":\"configurable\",\"is_value_processed\":null}]}",
+            "storeIds": [
+                0
+            ],
+            "origin": {
+                "code": "product",
+                "version": 3
+            },
+            "updatedAt": "2026-11-12 09:30:00",
+            "updatedBy": "admin"
+        },
+        "problems": []
+    },
+    "refused": {
+        "snippet": null,
+        "problems": [
+            {
+                "part": "type",
+                "path": "$",
+                "code": "type_missing",
+                "params": {},
+                "offset": null,
+                "blocking": true,
+                "message": "Enter a schema.org type, for example Product."
+            }
+        ]
+    },
+    "conflict": {
+        "conflict": {
+            "updatedAt": "2026-11-13 08:04:11",
+            "updatedBy": "anna",
+            "message": "Someone else saved this snippet at Nov 13, 2026, 9:04 AM. Your changes are still here; reload to see theirs."
+        }
+    }
+}

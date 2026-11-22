@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "group": "shop",
+    "name": "Breadcrumbs",
+    "icon": "chevron_right",
+    "description": "The path to the page, shown in the result in place of the raw address.",
+    "summary": "The path to every page",
+    "where": "Product, category and CMS pages",
+    "google": {
+        "results": ["breadcrumb"],
+        "short": "Google: breadcrumb",
+        "long": "Google shows the path in place of the address. It needs at least two levels, each with a name, a position and an address."
+    },
+    "properties": ["itemListElement", "position", "name", "item"],
+    "placement": {"pageKinds": ["product", "category", "cms"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": {
+            "@each": "breadcrumbs.items",
+            "@type": "ListItem",
+            "position": "{{crumb.position}}",
+            "name": "{{crumb.name}}",
+            "item": "{{crumb.item}}"
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "version": 1,
+    "group": "blocks",
+    "name": "Shipping policy",
+    "icon": "local_shipping",
+    "description": "Delivery cost and delivery time for the whole shop.",
+    "where": "Inside Organization",
+    "block": true,
+    "google": {
+        "results": ["shipping_policy"],
+        "short": "Google: shipping policy",
+        "long": "Google can show delivery cost and time with a product. Supported at shop level since November 2025."
+    },
+    "properties": ["shippingConditions", "shippingDestination", "shippingRate", "transitTime"],
+    "template": {
+        "@type": "ShippingService",
+        "shippingConditions": {
+            "@type": "ShippingConditions",
+            "shippingDestination": {
+                "@type": "DefinedRegion",
+                "addressCountry": "{{store.countries}}"
+            },
+            "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": 0,
+                "currency": "{{store.currency}}"
+            },
+            "transitTime": {
+                "@type": "ServicePeriod",
+                "duration": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 4,
+                    "unitCode": "DAY"
+                }
+            }
+        }
+    }
+}

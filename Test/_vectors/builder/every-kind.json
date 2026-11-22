@@ -1,0 +1,149 @@
+{
+    "name": "every-kind",
+    "description": "Every kind of value, written loosely and printed in the builder's form; what the builder cannot draw stays as code",
+    "projection": "tree",
+    "template": "{\n    \"@type\": \"Thing\",\n    \"@context\": \"https://schema.org\",\n    \"name\": \"{{ product.name }}\",\n    \"description\": \"{{product.short_description|plain|limit:300|default:\\\"Made by \\\\\\\"Linden\\\\\\\"\\\"}}\",\n    \"postalCode\": \"01069\",\n    \"count\": 12,\n    \"ratio\": 4.50,\n    \"isAccessibleForFree\": true,\n    \"itemCondition\": \"https://schema.org/NewCondition\",\n    \"braces\": \"Write {{{{ and }} as they are\",\n    \"headline\": \"{{product.name}} by {{store.name}}\",\n    \"comparison\": \"{{ product.final_price > 10 }}\",\n    \"brand\": {\"name\": \"{{product.manufacturer | default:'O\\\\'Neill'}}\", \"@type\": \"Brand\"},\n    \"loose\": {\"name\": \"Linden\"},\n    \"both\": {\"@type\": [\"Product\", \"Car\"], \"name\": \"{{product.name}}\"},\n    \"policy\": {\"@include\": \"return-policy\", \"@if\": \"product.on_sale\"},\n    \"image\": {\"@each\": \"product.gallery\", \"@as\": \"picture\", \"@limit\": 2, \"@value\": \"{{picture.url}}\"},\n    \"guarded\": {\"@if\": \"reviews.count\", \"@value\": {\"@each\": \"reviews.latest\", \"@value\": \"{{review.text}}\"}},\n    \"price\": {\"@value\": \"{{product.final_price}}\", \"@if\": \"product.on_sale\"},\n    \"tags\": [\"Leather\", \"{{product.sku}}\", {\"@if\": \"product.on_sale\", \"@value\": \"Sale\"}],\n    \"filtered\": {\"@each\": \"reviews.latest\", \"@if\": \"review.rating\", \"@value\": \"{{review.text}}\"},\n    \"complex\": {\"@if\": \"product.on_sale and reviews.count\", \"@type\": \"Offer\"},\n    \"empty\": {},\n    \"nothing\": null\n}",
+    "printed": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Thing\",\n  \"name\": \"{{product.name}}\",\n  \"description\": \"{{product.short_description | plain | limit:300 | default:'Made by \\\"Linden\\\"'}}\",\n  \"postalCode\": \"01069\",\n  \"count\": 12,\n  \"ratio\": 4.50,\n  \"isAccessibleForFree\": true,\n  \"itemCondition\": \"https://schema.org/NewCondition\",\n  \"braces\": \"Write {{{{ and }} as they are\",\n  \"headline\": \"{{product.name}} by {{store.name}}\",\n  \"comparison\": \"{{ product.final_price > 10 }}\",\n  \"brand\": {\n    \"@type\": \"Brand\",\n    \"name\": \"{{product.manufacturer | default:'O\\\\'Neill'}}\"\n  },\n  \"loose\": {\n    \"name\": \"Linden\"\n  },\n  \"both\": {\n    \"@type\": [\"Product\", \"Car\"],\n    \"name\": \"{{product.name}}\"\n  },\n  \"policy\": { \"@if\": \"product.on_sale\", \"@include\": \"return-policy\" },\n  \"image\": {\n    \"@each\": \"product.gallery\",\n    \"@as\": \"picture\",\n    \"@limit\": 2,\n    \"@value\": \"{{picture.url}}\"\n  },\n  \"guarded\": {\n    \"@if\": \"reviews.count\",\n    \"@value\": {\n      \"@each\": \"reviews.latest\",\n      \"@value\": \"{{review.text}}\"\n    }\n  },\n  \"price\": {\n    \"@if\": \"product.on_sale\",\n    \"@value\": \"{{product.final_price}}\"\n  },\n  \"tags\": [\n    \"Leather\",\n    \"{{product.sku}}\",\n    {\n      \"@if\": \"product.on_sale\",\n      \"@value\": \"Sale\"\n    }\n  ],\n  \"filtered\": {\n    \"@each\": \"reviews.latest\",\n    \"@if\": \"review.rating\",\n    \"@value\": \"{{review.text}}\"\n  },\n  \"complex\": {\n    \"@if\": \"product.on_sale and reviews.count\",\n    \"@type\": \"Offer\"\n  },\n  \"empty\": {},\n  \"nothing\": null\n}",
+    "rows": [
+        {
+            "path": "name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "description",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "postalCode",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "count",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "ratio",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "isAccessibleForFree",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "itemCondition",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "braces",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "headline",
+            "kind": "text",
+            "when": null
+        },
+        {
+            "path": "comparison",
+            "kind": "text",
+            "when": null
+        },
+        {
+            "path": "brand",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "brand/name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "loose",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "loose/name",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "both",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "both/name",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "policy",
+            "kind": "snippet",
+            "when": "product.on_sale"
+        },
+        {
+            "path": "image",
+            "kind": "list",
+            "when": null
+        },
+        {
+            "path": "guarded",
+            "kind": "list",
+            "when": "reviews.count"
+        },
+        {
+            "path": "price",
+            "kind": "field",
+            "when": "product.on_sale"
+        },
+        {
+            "path": "tags",
+            "kind": "list",
+            "when": null
+        },
+        {
+            "path": "tags/1",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "tags/2",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "tags/3",
+            "kind": "fixed",
+            "when": "product.on_sale"
+        },
+        {
+            "path": "filtered",
+            "kind": "code",
+            "when": null
+        },
+        {
+            "path": "complex",
+            "kind": "code",
+            "when": null
+        },
+        {
+            "path": "empty",
+            "kind": "object",
+            "when": null
+        },
+        {
+            "path": "nothing",
+            "kind": "code",
+            "when": null
+        }
+    ]
+}

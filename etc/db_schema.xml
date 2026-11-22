@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="hryvinskyi_rich_snippets_snippet" resource="default" engine="innodb"
+           comment="Rich snippets: one JSON-LD block a shop writes, with where it is output">
+        <column xsi:type="int" name="snippet_id" unsigned="true" nullable="false" identity="true"
+                comment="Snippet ID, internal to the module; includes and imports match by code"/>
+        <column xsi:type="varchar" name="code" length="64" nullable="false"
+                comment="Stable code includes and imports match by; never changes"/>
+        <column xsi:type="varchar" name="name" length="255" nullable="false" comment="Name, seen in the admin only"/>
+        <column xsi:type="varchar" name="type" length="255" nullable="false" default=""
+                comment="First schema.org type of the template's root, kept for listing"/>
+        <column xsi:type="boolean" name="is_block" nullable="false" default="0"
+                comment="Building block: output only inside the snippets that include it"/>
+        <column xsi:type="boolean" name="active" nullable="false" default="0"
+                comment="Switched on; always off for a building block"/>
+        <column xsi:type="json" name="page_kinds" nullable="false" comment="Kinds of page, a JSON list of codes"/>
+        <column xsi:type="mediumtext" name="conditions" nullable="false"
+                comment="Conditions, the expression builder's JSON text kept as written; empty for none"/>
+        <column xsi:type="json" name="store_ids" nullable="false"
+                comment="Store views, a JSON list of store IDs; 0 is every store view"/>
+        <column xsi:type="mediumtext" name="template" nullable="false"
+                comment="The JSON template, the source of truth of the snippet"/>
+        <column xsi:type="varchar" name="origin_code" length="64" nullable="true"
+                comment="Code of the library template the snippet was added from"/>
+        <column xsi:type="int" name="origin_version" unsigned="true" nullable="true"
+                comment="Version of the library template the snippet was added from"/>
+        <column xsi:type="int" name="sort_order" unsigned="true" nullable="false" default="0"
+                comment="Output order on a page; ties break by ID"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Created at"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Updated at"/>
+        <column xsi:type="varchar" name="updated_by" length="255" nullable="false" default=""
+                comment="User name of the admin who saved last; empty for a save without one"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="snippet_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="HRYVINSKYI_RICH_SNIPPETS_SNIPPET_CODE">
+            <column name="code"/>
+        </constraint>
+        <index referenceId="HRYVINSKYI_RICH_SNIPPETS_SNIPPET_ACTIVE_IS_BLOCK" indexType="btree">
+            <column name="active"/>
+            <column name="is_block"/>
+        </index>
+    </table>
+    <table name="hryvinskyi_rich_snippets_idempotency" resource="default" engine="innodb"
+           comment="Rich snippets: results of creating writes by idempotency key, so a replay answers the first result">
+        <column xsi:type="int" name="entry_id" unsigned="true" nullable="false" identity="true"
+                comment="Entry ID, internal to the module"/>
+        <column xsi:type="varchar" name="idempotency_key" length="64" nullable="false"
+                comment="The key the admin page generated once for one intent"/>
+        <column xsi:type="varchar" name="action" length="32" nullable="false" comment="The write the key was used for"/>
+        <column xsi:type="json" name="result" nullable="false" comment="The answer of the first write, as JSON"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="Created at; old entries are pruned"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entry_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="HRYVINSKYI_RICH_SNIPPETS_IDEMPOTENCY_IDEMPOTENCY_KEY">
+            <column name="idempotency_key"/>
+        </constraint>
+        <index referenceId="HRYVINSKYI_RICH_SNIPPETS_IDEMPOTENCY_CREATED_AT" indexType="btree">
+            <column name="created_at"/>
+        </index>
+    </table>
+    <table name="hryvinskyi_rich_snippets_observation" resource="default" engine="innodb"
+           comment="Rich snippets: what the last page test saw of the theme's own microdata, per store view and kind">
+        <column xsi:type="int" name="observation_id" unsigned="true" nullable="false" identity="true"
+                comment="Observation ID, internal to the module"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false"
+                comment="Store view the page belongs to"/>
+        <column xsi:type="varchar" name="kind" length="32" nullable="false" comment="Code of the page's kind"/>
+        <column xsi:type="boolean" name="found" nullable="false" default="0"
+                comment="Whether the page carried schema.org microdata"/>
+        <column xsi:type="json" name="properties" nullable="false"
+                comment="The items seen, a JSON list of their type and property names"/>
+        <column xsi:type="text" name="path" nullable="false" comment="Path of the page read, from the base address on"/>
+        <column xsi:type="timestamp" name="seen_at" on_update="false" nullable="false"
+                default="CURRENT_TIMESTAMP" comment="When the page was read"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="observation_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="HRYVINSKYI_RICH_SNIPPETS_OBSERVATION_STORE_ID_KIND">
+            <column name="store_id"/>
+            <column name="kind"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HRYVINSKYI_RICH_SNIPPETS_OBSERVATION_STORE_ID_STORE_STORE_ID"
+                    table="hryvinskyi_rich_snippets_observation" column="store_id" referenceTable="store"
+                    referenceColumn="store_id" onDelete="CASCADE"/>
+    </table>
+    <table name="hryvinskyi_rich_snippets_check_run" resource="default" engine="innodb"
+           comment="Rich snippets: catalog checks, requested, running or finished">
+        <column xsi:type="int" name="run_id" unsigned="true" nullable="false" identity="true"
+                comment="Run ID, internal to the module"/>
+        <column xsi:type="varchar" name="state" length="16" nullable="false" default="requested"
+                comment="requested, running, done or failed"/>
+        <column xsi:type="varchar" name="triggered_by" length="16" nullable="false" default="manual"
+                comment="What asked for the run: schedule, manual or import"/>
+        <column xsi:type="smallint" name="pending" unsigned="true" nullable="true"
+                comment="1 while the run is requested or running, else empty; unique, so one run waits at a time"/>
+        <column xsi:type="datetime" name="requested_at" nullable="false" comment="When the run was asked for, UTC"/>
+        <column xsi:type="datetime" name="started_at" nullable="true" comment="When the run was claimed, UTC"/>
+        <column xsi:type="datetime" name="finished_at" nullable="true" comment="When the run ended, UTC"/>
+        <column xsi:type="datetime" name="heartbeat_at" nullable="true"
+                comment="When the running check last reported progress, UTC"/>
+        <column xsi:type="int" name="pages_total" unsigned="true" nullable="false" default="0"
+                comment="Pages to check, one per page and store view"/>
+        <column xsi:type="int" name="pages_checked" unsigned="true" nullable="false" default="0"
+                comment="Pages checked so far, one per page and store view"/>
+        <column xsi:type="smallint" name="store_views" unsigned="true" nullable="false" default="0"
+                comment="Store views the run checks"/>
+        <column xsi:type="varchar" name="failure" length="32" nullable="true"
+                comment="Why a failed run stopped: stale or error"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="run_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_PENDING">
+            <column name="pending"/>
+        </constraint>
+        <index referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_STATE_FINISHED_AT" indexType="btree">
+            <column name="state"/>
+            <column name="finished_at"/>
+        </index>
+        <index referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_RUN_REQUESTED_AT" indexType="btree">
+            <column name="requested_at"/>
+        </index>
+    </table>
+    <table name="hryvinskyi_rich_snippets_check_finding" resource="default" engine="innodb"
+           comment="Rich snippets: gaps in the shop's data a catalog check found, per run, store view and kind of gap">
+        <column xsi:type="int" name="finding_id" unsigned="true" nullable="false" identity="true"
+                comment="Finding ID, internal to the module"/>
+        <column xsi:type="int" name="run_id" unsigned="true" nullable="false" comment="The run that found it"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false"
+                comment="The store view it was found in"/>
+        <column xsi:type="varchar" name="finding_key" length="191" nullable="false"
+                comment="Stable key of the kind of gap: result type, property path and variables read"/>
+        <column xsi:type="varchar" name="rule_code" length="64" nullable="false"
+                comment="Code of the kind of Google result that misses something"/>
+        <column xsi:type="varchar" name="path" length="255" nullable="false" default=""
+                comment="Property path that is missing; empty when the whole result is left out"/>
+        <column xsi:type="text" name="sources" nullable="false"
+                comment="JSON list of the variable paths the template read and found empty"/>
+        <column xsi:type="varchar" name="tone" length="8" nullable="false" comment="bad, warn or note"/>
+        <column xsi:type="text" name="snippets" nullable="false"
+                comment="JSON list of the codes of the snippets that wrote the pages"/>
+        <column xsi:type="int" name="pages" unsigned="true" nullable="false" default="0"
+                comment="Pages with the gap"/>
+        <column xsi:type="text" name="pages_by_kind" nullable="false"
+                comment="JSON object of the pages with the gap by kind of page"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="finding_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_RUN_ID_STORE_ID_FINDING_KEY">
+            <column name="run_id"/>
+            <column name="store_id"/>
+            <column name="finding_key"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_RUN_ID_CHECK_RUN_RUN_ID"
+                    table="hryvinskyi_rich_snippets_check_finding" column="run_id"
+                    referenceTable="hryvinskyi_rich_snippets_check_run" referenceColumn="run_id" onDelete="CASCADE"/>
+    </table>
+    <table name="hryvinskyi_rich_snippets_check_finding_item" resource="default" engine="innodb"
+           comment="Rich snippets: every page of a finding, kept for the latest finished and the running check only">
+        <column xsi:type="int" name="finding_id" unsigned="true" nullable="false" comment="The finding"/>
+        <column xsi:type="varchar" name="kind" length="32" nullable="false" comment="Code of the page's kind"/>
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" default="0"
+                comment="The entity the page shows; 0 for a page that shows none"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="finding_id"/>
+            <column name="kind"/>
+            <column name="entity_id"/>
+        </constraint>
+        <constraint xsi:type="foreign"
+                    referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_FINDING_ITEM_FINDING_ID_CHECK_FINDING_FINDING_ID"
+                    table="hryvinskyi_rich_snippets_check_finding_item" column="finding_id"
+                    referenceTable="hryvinskyi_rich_snippets_check_finding" referenceColumn="finding_id"
+                    onDelete="CASCADE"/>
+    </table>
+    <table name="hryvinskyi_rich_snippets_check_aggregate" resource="default" engine="innodb"
+           comment="Rich snippets: the counts of a catalog check per store view; store view 0 is every store view">
+        <column xsi:type="int" name="run_id" unsigned="true" nullable="false" comment="The run counted"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false"
+                comment="The store view counted; 0 for every store view together"/>
+        <column xsi:type="varchar" name="metric" length="32" nullable="false" comment="What is counted"/>
+        <column xsi:type="varchar" name="subject" length="191" nullable="false" default=""
+                comment="What the count is about: a kind of page, a result type, a snippet code; empty for none"/>
+        <column xsi:type="int" name="value" unsigned="true" nullable="false" default="0" comment="The count"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="run_id"/>
+            <column name="store_id"/>
+            <column name="metric"/>
+            <column name="subject"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="HRYVINSKYI_RICH_SNIPPETS_CHECK_AGGREGATE_RUN_ID_CHECK_RUN_RUN_ID"
+                    table="hryvinskyi_rich_snippets_check_aggregate" column="run_id"
+                    referenceTable="hryvinskyi_rich_snippets_check_run" referenceColumn="run_id" onDelete="CASCADE"/>
+    </table>
+</schema>

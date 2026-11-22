@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "group": "category",
+    "name": "Product list",
+    "icon": "view_list",
+    "description": "The products of a category page, in the order they are shown.",
+    "where": "Category pages",
+    "google": {
+        "status": "none",
+        "short": "Google: no result of its own",
+        "long": "Google shows no result of its own for a product list on a category page. Other search engines and assistants can read it."
+    },
+    "properties": ["itemListElement", "position", "url", "name"],
+    "placement": {"pageKinds": ["category"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": {
+            "@each": "category.products",
+            "@type": "ListItem",
+            "position": "{{listed.position}}",
+            "url": "{{listed.url}}",
+            "name": "{{listed.name}}"
+        }
+    }
+}

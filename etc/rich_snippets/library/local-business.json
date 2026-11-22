@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "group": "shop",
+    "name": "Local business",
+    "icon": "storefront",
+    "description": "A shop people can walk into: address, opening hours, phone, location.",
+    "where": "A CMS page you choose",
+    "google": {
+        "status": "ok",
+        "short": "Google: local business",
+        "long": "Google can show the address and opening hours of a shop people can visit. Use it only for a place with a door."
+    },
+    "properties": ["name", "image", "address", "geo", "telephone", "openingHoursSpecification", "url"],
+    "uses": ["postal-address"],
+    "placement": {"pageKinds": ["cms"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "Store",
+        "name": "{{store.name}}",
+        "image": "{{store.logo}}",
+        "address": {"@include": "postal-address"},
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "",
+            "longitude": ""
+        },
+        "telephone": "{{store.phone}}",
+        "openingHoursSpecification": [],
+        "url": "{{store.url}}"
+    }
+}

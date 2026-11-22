@@ -1,0 +1,325 @@
+{
+    "done": {
+        "page": {
+            "ref": "product:12",
+            "kind": "product",
+            "label": "Field satchel",
+            "path": "/bags/field-satchel.html",
+            "readPath": "/bags/field-satchel.html"
+        },
+        "store": 1,
+        "testedAt": "2026-11-21T13:52:00+00:00",
+        "durationMs": 412,
+        "failure": null,
+        "blocks": [
+            {
+                "code": "product",
+                "snippetId": 3,
+                "name": "Product",
+                "type": "Product",
+                "json": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"Field satchel\",\n    \"description\": \"A waxed canvas satchel with a leather strap.\",\n    \"sku\": \"LC-FS-TAN\",\n    \"gtin13\": \"4006381333931\",\n    \"image\": [\n        \"https://shop.example/media/satchel-1.jpg\",\n        \"https://shop.example/media/satchel-2.jpg\"\n    ],\n    \"brand\": {\n        \"@type\": \"Brand\",\n        \"name\": \"Linden & Co.\"\n    },\n    \"color\": \"Tan\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"url\": \"https://shop.example/bags/field-satchel.html\",\n        \"price\": \"240.00\",\n        \"priceCurrency\": \"EUR\",\n        \"availability\": \"https://schema.org/InStock\",\n        \"itemCondition\": \"https://schema.org/NewCondition\",\n        \"hasMerchantReturnPolicy\": {\n            \"@type\": \"MerchantReturnPolicy\",\n            \"applicableCountry\": [\n                \"DE\",\n                \"AT\"\n            ],\n            \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n            \"merchantReturnDays\": 30,\n            \"returnMethod\": \"https://schema.org/ReturnByMail\",\n            \"returnFees\": \"https://schema.org/FreeReturn\"\n        },\n        \"priceValidUntil\": \"2026-12-31\"\n    },\n    \"aggregateRating\": {\n        \"@type\": \"AggregateRating\",\n        \"ratingValue\": 4.6,\n        \"reviewCount\": 12\n    },\n    \"review\": [\n        {\n            \"@type\": \"Review\",\n            \"author\": {\n                \"@type\": \"Person\",\n                \"name\": \"Mara\"\n            },\n            \"reviewBody\": \"Sturdy.\"\n        },\n        {\n            \"@type\": \"Review\",\n            \"author\": {\n                \"@type\": \"Person\",\n                \"name\": \"Jonas\"\n            },\n            \"reviewBody\": \"Fine.\"\n        }\n    ]\n}",
+                "size": 1125,
+                "lines": 60,
+                "verdict": "ok",
+                "summary": "A merchant listing with rating and 2 reviews."
+            },
+            {
+                "code": "breadcrumbs",
+                "snippetId": 5,
+                "name": "Breadcrumbs",
+                "type": "BreadcrumbList",
+                "json": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"BreadcrumbList\",\n    \"itemListElement\": [\n        {\n            \"@type\": \"ListItem\",\n            \"position\": 1,\n            \"name\": \"Home\",\n            \"item\": \"https://shop.example/\"\n        },\n        {\n            \"@type\": \"ListItem\",\n            \"position\": 2,\n            \"name\": \"Bags\",\n            \"item\": \"https://shop.example/bags.html\"\n        },\n        {\n            \"@type\": \"ListItem\",\n            \"position\": 3,\n            \"name\": \"Field satchel\",\n            \"item\": \"https://shop.example/bags/field-satchel.html\"\n        }\n    ]\n}",
+                "size": 356,
+                "lines": 24,
+                "verdict": "ok",
+                "summary": "Home › Bags › Field satchel"
+            }
+        ],
+        "themeMarkup": {
+            "found": true,
+            "items": [
+                {
+                    "type": "Product",
+                    "properties": [
+                        "name",
+                        "offers",
+                        "aggregateRating"
+                    ]
+                }
+            ],
+            "text": "The theme writes its own Product microdata here: name, offers and aggregateRating, in the HTML of this page. Two descriptions of one thing can disagree, and Search Console then reports both."
+        },
+        "notOutput": [
+            {
+                "code": "organization",
+                "snippetId": 1,
+                "name": "Organization",
+                "reason": "other_kinds",
+                "text": "Set for the home page."
+            },
+            {
+                "code": "product-variants",
+                "snippetId": 4,
+                "name": "Product with variants",
+                "reason": "conditions_not_met",
+                "text": "Set for product type Configurable; this one is Simple."
+            },
+            {
+                "code": "product-list",
+                "snippetId": 6,
+                "name": "Product list",
+                "reason": "switched_off",
+                "text": "Switched off."
+            },
+            {
+                "code": "faq",
+                "snippetId": 8,
+                "name": "FAQ",
+                "reason": "other_kinds",
+                "text": "Set for CMS pages."
+            },
+            {
+                "code": "shipping",
+                "snippetId": 9,
+                "name": "Shipping",
+                "reason": "empty",
+                "text": "Every property is empty on this page, so nothing is written."
+            }
+        ],
+        "features": [
+            {
+                "rule": "merchant_listing",
+                "label": "Merchant listing",
+                "verdict": "met",
+                "description": "Name, image and an offer with a price and a currency. Recommended and not there:",
+                "missingRequired": [],
+                "missingRecommended": [
+                    "offers.shippingDetails"
+                ]
+            },
+            {
+                "rule": "review_stars",
+                "label": "Review stars",
+                "verdict": "met",
+                "description": "An average rating and the number of reviews behind it. Every recommended value is there too.",
+                "missingRequired": [],
+                "missingRecommended": []
+            },
+            {
+                "rule": "breadcrumb",
+                "label": "Breadcrumb",
+                "verdict": "met",
+                "description": "At least two levels, each with a position, a name and an address. Every recommended value is there too.",
+                "missingRequired": [],
+                "missingRecommended": []
+            }
+        ]
+    },
+    "problem": {
+        "page": {
+            "ref": "product:13",
+            "kind": "product",
+            "label": "Leather care kit",
+            "path": "/accessories/leather-care-kit.html",
+            "readPath": "/accessories/leather-care-kit.html"
+        },
+        "store": 1,
+        "testedAt": "2026-11-21T13:52:00+00:00",
+        "durationMs": 380,
+        "failure": null,
+        "blocks": [
+            {
+                "code": "product",
+                "snippetId": 3,
+                "name": "Product",
+                "type": "Product",
+                "json": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"Leather care kit\",\n    \"description\": \"A waxed canvas satchel with a leather strap.\",\n    \"sku\": \"LC-CARE-01\",\n    \"brand\": {\n        \"@type\": \"Brand\",\n        \"name\": \"Linden & Co.\"\n    },\n    \"color\": \"Tan\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"url\": \"https://shop.example/bags/field-satchel.html\",\n        \"price\": \"240.00\",\n        \"priceCurrency\": \"EUR\",\n        \"availability\": \"https://schema.org/InStock\",\n        \"itemCondition\": \"https://schema.org/NewCondition\",\n        \"hasMerchantReturnPolicy\": {\n            \"@type\": \"MerchantReturnPolicy\",\n            \"applicableCountry\": [\n                \"DE\",\n                \"AT\"\n            ],\n            \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n            \"merchantReturnDays\": 30,\n            \"returnMethod\": \"https://schema.org/ReturnByMail\",\n            \"returnFees\": \"https://schema.org/FreeReturn\"\n        }\n    }\n}",
+                "size": 718,
+                "lines": 31,
+                "verdict": "bad",
+                "summary": "Merchant listing: image missing."
+            },
+            {
+                "code": null,
+                "snippetId": null,
+                "name": null,
+                "type": "",
+                "json": "{\"@type\": \"Product\",",
+                "size": 20,
+                "lines": 1,
+                "verdict": "bad",
+                "summary": "The JSON of this block cannot be read, so search engines ignore it."
+            }
+        ],
+        "themeMarkup": {
+            "found": false,
+            "items": [],
+            "text": ""
+        },
+        "notOutput": [],
+        "features": [
+            {
+                "rule": "merchant_listing",
+                "label": "Merchant listing",
+                "verdict": "not_met",
+                "description": "Required and missing on this page:",
+                "missingRequired": [
+                    "image"
+                ],
+                "missingRecommended": [
+                    "gtin",
+                    "offers.shippingDetails",
+                    "aggregateRating",
+                    "review"
+                ]
+            },
+            {
+                "rule": "review_stars",
+                "label": "Review stars",
+                "verdict": "left_out",
+                "description": "The product has no reviews yet, so the rating is left out. Nothing to fix.",
+                "missingRequired": [
+                    "aggregateRating.ratingValue",
+                    "aggregateRating.reviewCount"
+                ],
+                "missingRecommended": []
+            }
+        ]
+    },
+    "nothing": {
+        "page": {
+            "ref": null,
+            "kind": "other",
+            "label": "/checkout/cart",
+            "path": "/checkout/cart",
+            "readPath": "/checkout/cart"
+        },
+        "store": 1,
+        "testedAt": "2026-11-21T13:52:00+00:00",
+        "durationMs": 296,
+        "failure": null,
+        "blocks": [],
+        "themeMarkup": {
+            "found": false,
+            "items": [],
+            "text": ""
+        },
+        "notOutput": [
+            {
+                "code": "organization",
+                "snippetId": 1,
+                "name": "Organization",
+                "reason": "other_kinds",
+                "text": "Set for the home page."
+            },
+            {
+                "code": "breadcrumbs",
+                "snippetId": 5,
+                "name": "Breadcrumbs",
+                "reason": "other_kinds",
+                "text": "Set for product pages, category pages and CMS pages."
+            },
+            {
+                "code": "trade",
+                "snippetId": 7,
+                "name": "Trade prices",
+                "reason": "other_stores",
+                "text": "Set for other store views."
+            }
+        ],
+        "features": []
+    },
+    "twice": {
+        "page": {
+            "ref": "product:12",
+            "kind": "product",
+            "label": "Field satchel",
+            "path": "/bags/field-satchel.html",
+            "readPath": "/bags/field-satchel.html"
+        },
+        "store": 1,
+        "testedAt": "2026-11-21T13:52:00+00:00",
+        "durationMs": 401,
+        "failure": null,
+        "blocks": [
+            {
+                "code": "product",
+                "snippetId": 3,
+                "name": "Product",
+                "type": "Product",
+                "json": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"Field satchel\",\n    \"description\": \"A waxed canvas satchel with a leather strap.\",\n    \"sku\": \"LC-FS-TAN\",\n    \"gtin13\": \"4006381333931\",\n    \"image\": [\n        \"https://shop.example/media/satchel-1.jpg\",\n        \"https://shop.example/media/satchel-2.jpg\"\n    ],\n    \"brand\": {\n        \"@type\": \"Brand\",\n        \"name\": \"Linden & Co.\"\n    },\n    \"color\": \"Tan\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"url\": \"https://shop.example/bags/field-satchel.html\",\n        \"price\": \"240.00\",\n        \"priceCurrency\": \"EUR\",\n        \"availability\": \"https://schema.org/InStock\",\n        \"itemCondition\": \"https://schema.org/NewCondition\",\n        \"hasMerchantReturnPolicy\": {\n            \"@type\": \"MerchantReturnPolicy\",\n            \"applicableCountry\": [\n                \"DE\",\n                \"AT\"\n            ],\n            \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n            \"merchantReturnDays\": 30,\n            \"returnMethod\": \"https://schema.org/ReturnByMail\",\n            \"returnFees\": \"https://schema.org/FreeReturn\"\n        },\n        \"priceValidUntil\": \"2026-12-31\"\n    },\n    \"aggregateRating\": {\n        \"@type\": \"AggregateRating\",\n        \"ratingValue\": 4.6,\n        \"reviewCount\": 12\n    },\n    \"review\": [\n        {\n            \"@type\": \"Review\",\n            \"author\": {\n                \"@type\": \"Person\",\n                \"name\": \"Mara\"\n            },\n            \"reviewBody\": \"Sturdy.\"\n        },\n        {\n            \"@type\": \"Review\",\n            \"author\": {\n                \"@type\": \"Person\",\n                \"name\": \"Jonas\"\n            },\n            \"reviewBody\": \"Fine.\"\n        }\n    ]\n}",
+                "size": 1125,
+                "lines": 60,
+                "verdict": "ok",
+                "summary": "A merchant listing with rating and 2 reviews."
+            },
+            {
+                "code": "product-copy",
+                "snippetId": 10,
+                "name": "Product copy",
+                "type": "Product",
+                "json": "{\n    \"@context\": \"https://schema.org\",\n    \"@type\": \"Product\",\n    \"name\": \"Leather care kit\",\n    \"description\": \"A waxed canvas satchel with a leather strap.\",\n    \"sku\": \"LC-CARE-01\",\n    \"brand\": {\n        \"@type\": \"Brand\",\n        \"name\": \"Linden & Co.\"\n    },\n    \"color\": \"Tan\",\n    \"offers\": {\n        \"@type\": \"Offer\",\n        \"url\": \"https://shop.example/bags/field-satchel.html\",\n        \"price\": \"240.00\",\n        \"priceCurrency\": \"EUR\",\n        \"availability\": \"https://schema.org/InStock\",\n        \"itemCondition\": \"https://schema.org/NewCondition\",\n        \"hasMerchantReturnPolicy\": {\n            \"@type\": \"MerchantReturnPolicy\",\n            \"applicableCountry\": [\n                \"DE\",\n                \"AT\"\n            ],\n            \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n            \"merchantReturnDays\": 30,\n            \"returnMethod\": \"https://schema.org/ReturnByMail\",\n            \"returnFees\": \"https://schema.org/FreeReturn\"\n        }\n    }\n}",
+                "size": 718,
+                "lines": 31,
+                "verdict": "bad",
+                "summary": "Merchant listing: image missing."
+            }
+        ],
+        "themeMarkup": {
+            "found": false,
+            "items": [],
+            "text": ""
+        },
+        "notOutput": [],
+        "features": [
+            {
+                "rule": "merchant_listing",
+                "label": "Merchant listing",
+                "verdict": "not_met",
+                "description": "Required and missing on this page:",
+                "missingRequired": [
+                    "image"
+                ],
+                "missingRecommended": [
+                    "gtin",
+                    "offers.shippingDetails",
+                    "aggregateRating",
+                    "review"
+                ]
+            },
+            {
+                "rule": "review_stars",
+                "label": "Review stars",
+                "verdict": "met",
+                "description": "An average rating and the number of reviews behind it. Every recommended value is there too.",
+                "missingRequired": [],
+                "missingRecommended": []
+            }
+        ]
+    },
+    "failed": {
+        "page": {
+            "ref": "product:12",
+            "kind": "product",
+            "label": "Field satchel",
+            "path": "/bags/field-satchel.html",
+            "readPath": null
+        },
+        "store": 1,
+        "testedAt": "2026-11-21T13:52:00+00:00",
+        "durationMs": 64,
+        "failure": {
+            "reason": "http_status",
+            "httpStatus": 503,
+            "text": "The storefront answered 503 for this address: the shop is in maintenance mode. The test reads the page as a visitor would, so it needs the storefront to answer. The catalog check does not, and still works."
+        },
+        "blocks": [],
+        "themeMarkup": {
+            "found": false,
+            "items": [],
+            "text": ""
+        },
+        "notOutput": [],
+        "features": []
+    }
+}

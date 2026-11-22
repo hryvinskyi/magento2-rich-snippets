@@ -1,0 +1,139 @@
+{
+    "data": {
+        "rows": [
+            {
+                "id": 1,
+                "code": "organization",
+                "name": "Organization",
+                "type": "OnlineStore",
+                "isBlock": false,
+                "active": true,
+                "pageKinds": ["home"],
+                "conditions": "",
+                "conditionSummary": "",
+                "storeIds": [0],
+                "storeNames": [],
+                "propertyCount": 14,
+                "uses": [
+                    {"code": "return-policy", "name": "Return policy"},
+                    {"code": "postal-address", "name": "Postal address"}
+                ],
+                "usedIn": [],
+                "updatedAt": "2026-11-03 09:12:00",
+                "updatedBy": "admin",
+                "flags": {"bad": null, "warn": null, "note": null}
+            },
+            {
+                "id": 3,
+                "code": "product",
+                "name": "Product",
+                "type": "Product",
+                "isBlock": false,
+                "active": true,
+                "pageKinds": ["product"],
+                "conditions": "{\"type\":\"rich_snippets/combine\",\"attribute\":null,\"operator\":null,\"value\":\"1\",\"is_value_processed\":null,\"aggregator\":\"all\",\"conditions\":[{\"type\":\"product_type\",\"attribute\":null,\"operator\":\"!=\",\"value\":\"configurable\",\"is_value_processed\":null}]}",
+                "conditionSummary": "Product type is not Configurable",
+                "storeIds": [0],
+                "storeNames": [],
+                "propertyCount": 13,
+                "uses": [{"code": "return-policy", "name": "Return policy"}],
+                "usedIn": [],
+                "updatedAt": "2026-11-12 14:30:00",
+                "updatedBy": "admin",
+                "flags": {
+                    "bad": "No offer: Google needs one",
+                    "warn": null,
+                    "note": "EAN is empty for 23 products"
+                }
+            },
+            {
+                "id": 6,
+                "code": "product-list",
+                "name": "Product list",
+                "type": "ItemList",
+                "isBlock": false,
+                "active": false,
+                "pageKinds": ["category"],
+                "conditions": "",
+                "conditionSummary": "",
+                "storeIds": [0],
+                "storeNames": [],
+                "propertyCount": 5,
+                "uses": [],
+                "usedIn": [],
+                "updatedAt": "2026-10-14 08:00:00",
+                "updatedBy": "admin",
+                "flags": {"bad": null, "warn": null, "note": null}
+            },
+            {
+                "id": 8,
+                "code": "faq",
+                "name": "FAQ",
+                "type": "FAQPage",
+                "isBlock": false,
+                "active": true,
+                "pageKinds": ["cms"],
+                "conditions": "{\"type\":\"rich_snippets/combine\",\"attribute\":null,\"operator\":null,\"value\":\"1\",\"is_value_processed\":null,\"aggregator\":\"all\",\"conditions\":[{\"type\":\"cms_page\",\"attribute\":null,\"operator\":\"()\",\"value\":\"faq,shipping-returns\",\"is_value_processed\":null}]}",
+                "conditionSummary": "CMS page is one of FAQ, Shipping & returns",
+                "storeIds": [1],
+                "storeNames": ["English"],
+                "propertyCount": 10,
+                "uses": [],
+                "usedIn": [],
+                "updatedAt": "2026-11-09 16:45:00",
+                "updatedBy": "admin",
+                "flags": {"bad": null, "warn": null, "note": "Google no longer shows FAQ results"}
+            },
+            {
+                "id": 9,
+                "code": "return-policy",
+                "name": "Return policy",
+                "type": "MerchantReturnPolicy",
+                "isBlock": true,
+                "active": false,
+                "pageKinds": [],
+                "conditions": "",
+                "conditionSummary": "",
+                "storeIds": [0],
+                "storeNames": [],
+                "propertyCount": 6,
+                "uses": [],
+                "usedIn": [
+                    {"code": "organization", "name": "Organization"},
+                    {"code": "product", "name": "Product"}
+                ],
+                "updatedAt": "2026-11-03 09:10:00",
+                "updatedBy": "admin",
+                "flags": {"bad": null, "warn": null, "note": null}
+            },
+            {
+                "id": 11,
+                "code": "product-imported",
+                "name": "Product (imported)",
+                "type": "Product",
+                "isBlock": false,
+                "active": true,
+                "pageKinds": ["product"],
+                "conditions": "",
+                "conditionSummary": "",
+                "storeIds": [0],
+                "storeNames": [],
+                "propertyCount": 19,
+                "uses": [{"code": "gone-block", "name": null}],
+                "usedIn": [],
+                "updatedAt": "2026-11-13 10:05:00",
+                "updatedBy": "admin",
+                "flags": {"bad": null, "warn": "Second Product on the same pages", "note": null}
+            }
+        ],
+        "counts": {
+            "all": 6,
+            "attention": 2,
+            "kinds": {"home": 1, "product": 2, "category": 1, "cms": 1, "other": 0},
+            "blocks": 1,
+            "on": 4,
+            "off": 1,
+            "flags": {"bad": 1, "warn": 1, "note": 2}
+        }
+    }
+}

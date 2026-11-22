@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_hryvinskyi_rich_snippets">
+        <observer name="hryvinskyi_rich_snippets_clean_pages"
+                  instance="Hryvinskyi\RichSnippets\Observer\CleanPagesOnSettingsSave"/>
+    </event>
+    <!--
+        A store view goes with its store group or its website too, and only its own deletion is announced for it, so
+        the snippets let go of deleted store views after each of the three deletions is committed
+    -->
+    <event name="store_delete">
+        <observer name="hryvinskyi_rich_snippets_forget_deleted_store_views"
+                  instance="Hryvinskyi\RichSnippets\Observer\ForgetDeletedStoreViews"/>
+    </event>
+    <event name="store_group_delete">
+        <observer name="hryvinskyi_rich_snippets_forget_deleted_store_views"
+                  instance="Hryvinskyi\RichSnippets\Observer\ForgetDeletedStoreViews"/>
+    </event>
+    <event name="website_delete_commit_after">
+        <observer name="hryvinskyi_rich_snippets_forget_deleted_store_views"
+                  instance="Hryvinskyi\RichSnippets\Observer\ForgetDeletedStoreViews"/>
+    </event>
+    <event name="catalog_product_import_finish_before">
+        <observer name="hryvinskyi_rich_snippets_request_check"
+                  instance="Hryvinskyi\RichSnippets\Observer\RequestCheckAfterImport"/>
+    </event>
+</config>

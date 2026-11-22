@@ -1,0 +1,15 @@
+{
+    "label": "Site name",
+    "phrase": "a site name",
+    "appliesTo": [{"type": "WebSite"}],
+    "googleStatus": "ok",
+    "required": [
+        {"path": "name", "missing": "No site name"},
+        {"path": "url", "missing": "No site address"}
+    ],
+    "recommended": ["alternateName"],
+    "texts": {
+        "requirement": "a name and the address of the home page",
+        "met": "A name and the address of the home page."
+    }
+}

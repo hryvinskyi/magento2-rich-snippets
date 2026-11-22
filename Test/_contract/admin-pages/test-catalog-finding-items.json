@@ -1,0 +1,179 @@
+{
+    "first": {
+        "finding": {
+            "key": "merchant-listing-gtin13-product-ean",
+            "tone": "warn",
+            "title": "EAN is empty",
+            "description": "gtin13 is left out. Google recommends it for a merchant listing.",
+            "fix": "Fill EAN where there is a value. Where there is none, the property is simply left out.",
+            "snippets": [
+                {
+                    "code": "product",
+                    "name": "Product"
+                },
+                {
+                    "code": "product-variants",
+                    "name": "Product with variants"
+                }
+            ],
+            "pages": 23,
+            "allProducts": true,
+            "count": "23 products",
+            "meta": "23 products · Product and Product with variants",
+            "label": "EAN is empty: 23 products. Show them.",
+            "fileName": "rich-snippets-merchant-listing-gtin13-product-ean.csv",
+            "saved": "23 products were saved as rich-snippets-merchant-listing-gtin13-product-ean.csv."
+        },
+        "total": 23,
+        "page": 1,
+        "pageSize": 8,
+        "note": "The first 3 of 23. The download has all of them.",
+        "items": [
+            {
+                "ref": "product:31",
+                "kind": "product",
+                "id": 31,
+                "store": 1,
+                "label": "Leather care kit",
+                "sku": "LC-CARE-01",
+                "group": "Accessories"
+            },
+            {
+                "ref": "product:32",
+                "kind": "product",
+                "id": 32,
+                "store": 1,
+                "label": "Key fob",
+                "sku": "LC-KF-TAN",
+                "group": "Small leather goods"
+            },
+            {
+                "ref": "product:33",
+                "kind": "product",
+                "id": 33,
+                "store": 2,
+                "label": "Shoulder strap, wide",
+                "sku": "LC-STR-W",
+                "group": "Accessories"
+            }
+        ]
+    },
+    "later": {
+        "finding": {
+            "key": "merchant-listing-gtin13-product-ean",
+            "tone": "warn",
+            "title": "EAN is empty",
+            "description": "gtin13 is left out. Google recommends it for a merchant listing.",
+            "fix": "Fill EAN where there is a value. Where there is none, the property is simply left out.",
+            "snippets": [
+                {
+                    "code": "product",
+                    "name": "Product"
+                },
+                {
+                    "code": "product-variants",
+                    "name": "Product with variants"
+                }
+            ],
+            "pages": 23,
+            "allProducts": true,
+            "count": "23 products",
+            "meta": "23 products · Product and Product with variants",
+            "label": "EAN is empty: 23 products. Show them.",
+            "fileName": "rich-snippets-merchant-listing-gtin13-product-ean.csv",
+            "saved": "23 products were saved as rich-snippets-merchant-listing-gtin13-product-ean.csv."
+        },
+        "total": 23,
+        "page": 2,
+        "pageSize": 8,
+        "note": "9 to 11 of 23. The download has all of them.",
+        "items": [
+            {
+                "ref": "product:31",
+                "kind": "product",
+                "id": 31,
+                "store": 1,
+                "label": "Leather care kit",
+                "sku": "LC-CARE-01",
+                "group": "Accessories"
+            },
+            {
+                "ref": "product:32",
+                "kind": "product",
+                "id": 32,
+                "store": 1,
+                "label": "Key fob",
+                "sku": "LC-KF-TAN",
+                "group": "Small leather goods"
+            },
+            {
+                "ref": "product:33",
+                "kind": "product",
+                "id": 33,
+                "store": 2,
+                "label": "Shoulder strap, wide",
+                "sku": "LC-STR-W",
+                "group": "Accessories"
+            }
+        ]
+    },
+    "all": {
+        "finding": {
+            "key": "merchant-listing-gtin13-product-ean",
+            "tone": "warn",
+            "title": "EAN is empty",
+            "description": "gtin13 is left out. Google recommends it for a merchant listing.",
+            "fix": "Fill EAN where there is a value. Where there is none, the property is simply left out.",
+            "snippets": [
+                {
+                    "code": "product",
+                    "name": "Product"
+                },
+                {
+                    "code": "product-variants",
+                    "name": "Product with variants"
+                }
+            ],
+            "pages": 23,
+            "allProducts": true,
+            "count": "23 products",
+            "meta": "23 products · Product and Product with variants",
+            "label": "EAN is empty: 23 products. Show them.",
+            "fileName": "rich-snippets-merchant-listing-gtin13-product-ean.csv",
+            "saved": "23 products were saved as rich-snippets-merchant-listing-gtin13-product-ean.csv."
+        },
+        "total": 3,
+        "page": 1,
+        "pageSize": 8,
+        "note": null,
+        "items": [
+            {
+                "ref": "product:31",
+                "kind": "product",
+                "id": 31,
+                "store": 1,
+                "label": "Leather care kit",
+                "sku": "LC-CARE-01",
+                "group": "Accessories"
+            },
+            {
+                "ref": "product:32",
+                "kind": "product",
+                "id": 32,
+                "store": 1,
+                "label": "Key fob",
+                "sku": "LC-KF-TAN",
+                "group": "Small leather goods"
+            },
+            {
+                "ref": "product:33",
+                "kind": "product",
+                "id": 33,
+                "store": 2,
+                "label": "Shoulder strap, wide",
+                "sku": "LC-STR-W",
+                "group": "Accessories"
+            }
+        ]
+    }
+}

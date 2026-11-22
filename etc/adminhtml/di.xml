@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\ChangeAuthorInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\AdminChangeAuthor"/>
+
+    <!-- The screens the Rich Snippets pages link to, each with the permission that opens it -->
+    <virtualType name="HryvinskyiRichSnippetsAdminRoutes" type="Hryvinskyi\AdminUi\Model\Page\AdminRoutes">
+        <arguments>
+            <argument name="resources" xsi:type="array">
+                <item name="hryvinskyi_richsnippets/overview/index" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::VIEW</item>
+                <item name="hryvinskyi_richsnippets/snippets/index" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::VIEW</item>
+                <item name="hryvinskyi_richsnippets/snippets/new" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::SNIPPETS</item>
+                <item name="hryvinskyi_richsnippets/snippets/edit" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::VIEW</item>
+                <item name="hryvinskyi_richsnippets/library/index" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::VIEW</item>
+                <item name="hryvinskyi_richsnippets/test/index" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::VIEW</item>
+                <item name="adminhtml/system_config/edit" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::CONFIG</item>
+                <item name="catalog/product/index" xsi:type="string">Magento_Catalog::products</item>
+                <item name="catalog/product/edit" xsi:type="string">Magento_Catalog::products</item>
+                <item name="catalog/category/edit" xsi:type="string">Magento_Catalog::categories</item>
+                <item name="cms/page/edit" xsi:type="string">Magento_Cms::save</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--
+        The tabs every Rich Snippets page draws under its header, in the design's order; the Snippets tab carries the
+        number of snippets that need attention
+    -->
+    <virtualType name="HryvinskyiRichSnippetsModuleNavigation" type="Hryvinskyi\AdminUi\Model\Page\ModuleNavigation">
+        <arguments>
+            <argument name="routes" xsi:type="object">HryvinskyiRichSnippetsAdminRoutes</argument>
+            <argument name="items" xsi:type="array">
+                <item name="overview" xsi:type="array">
+                    <item name="label" xsi:type="string">Overview</item>
+                    <item name="route" xsi:type="string">hryvinskyi_richsnippets/overview/index</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+                <item name="snippets" xsi:type="array">
+                    <item name="label" xsi:type="string">Snippets</item>
+                    <item name="route" xsi:type="string">hryvinskyi_richsnippets/snippets/index</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="count" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Snippets\AttentionTabCount</item>
+                </item>
+                <item name="library" xsi:type="array">
+                    <item name="label" xsi:type="string">Library</item>
+                    <item name="route" xsi:type="string">hryvinskyi_richsnippets/library/index</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                </item>
+                <item name="test" xsi:type="array">
+                    <item name="label" xsi:type="string">Test</item>
+                    <item name="route" xsi:type="string">hryvinskyi_richsnippets/test/index</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+                <item name="settings" xsi:type="array">
+                    <item name="label" xsi:type="string">Settings</item>
+                    <item name="route" xsi:type="string">adminhtml/system_config/edit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="section" xsi:type="string">hryvinskyi_rich_snippets</item>
+                    </item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!--
+        What the admin may do on the Rich Snippets pages: change snippets (the switches, Save, Add and Import), run
+        tests (the page test and "Check now") and change the settings; every endpoint checks the same permission again
+    -->
+    <virtualType name="HryvinskyiRichSnippetsPagePermissions" type="Hryvinskyi\AdminUi\Model\Page\PagePermissions">
+        <arguments>
+            <argument name="resources" xsi:type="array">
+                <item name="snippets" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::SNIPPETS</item>
+                <item name="test" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::TEST</item>
+                <item name="config" xsi:type="const">Hryvinskyi\RichSnippets\Model\Admin\AdminResources::CONFIG</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- The Overview offers "Test a page" and "See one" only to an admin who may run tests -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Overview\State\LiveState">
+        <arguments>
+            <argument name="permissions" xsi:type="object">HryvinskyiRichSnippetsPagePermissions</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Overview\KindRows">
+        <arguments>
+            <argument name="permissions" xsi:type="object">HryvinskyiRichSnippetsPagePermissions</argument>
+        </arguments>
+    </type>
+
+    <!-- What every Rich Snippets page's island shares: the module's name, tabs, linked screens and permissions -->
+    <virtualType name="HryvinskyiRichSnippetsPageIsland" type="Hryvinskyi\AdminUi\Model\Page\ModuleIsland">
+        <arguments>
+            <argument name="navigation" xsi:type="object">HryvinskyiRichSnippetsModuleNavigation</argument>
+            <argument name="routes" xsi:type="object">HryvinskyiRichSnippetsAdminRoutes</argument>
+            <argument name="permissions" xsi:type="object">HryvinskyiRichSnippetsPagePermissions</argument>
+            <argument name="module" xsi:type="string">Rich Snippets</argument>
+            <argument name="rootClass" xsi:type="string">rich-snippets-page</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- The Overview island: its wording, its document and its built entry -->
+    <virtualType name="HryvinskyiRichSnippetsOverviewIsland" type="HryvinskyiRichSnippetsPageIsland">
+        <arguments>
+            <argument name="phrases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Overview\OverviewPhrases</argument>
+            <argument name="content" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Overview\OverviewPage</argument>
+            <argument name="name" xsi:type="string">rich-snippets-overview</argument>
+            <argument name="entry" xsi:type="string">Hryvinskyi_RichSnippets::js/admin-pages/overview.js</argument>
+            <argument name="page" xsi:type="string">overview</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Overview\Index">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsOverviewIsland</argument>
+        </arguments>
+    </type>
+
+    <!-- The snippet list's island: its wording, its document and its built entry -->
+    <virtualType name="HryvinskyiRichSnippetsSnippetsIsland" type="HryvinskyiRichSnippetsPageIsland">
+        <arguments>
+            <argument name="phrases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Snippets\SnippetsPhrases</argument>
+            <argument name="content" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Snippets\SnippetsPage</argument>
+            <argument name="name" xsi:type="string">rich-snippets-snippets</argument>
+            <argument name="entry" xsi:type="string">Hryvinskyi_RichSnippets::js/admin-pages/snippets.js</argument>
+            <argument name="page" xsi:type="string">snippets</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Snippets\Index">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsSnippetsIsland</argument>
+        </arguments>
+    </type>
+
+    <!-- The library's island: its wording, its document and its built entry -->
+    <virtualType name="HryvinskyiRichSnippetsLibraryIsland" type="HryvinskyiRichSnippetsPageIsland">
+        <arguments>
+            <argument name="phrases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Library\LibraryPhrases</argument>
+            <argument name="content" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Library\LibraryPage</argument>
+            <argument name="name" xsi:type="string">rich-snippets-library</argument>
+            <argument name="entry" xsi:type="string">Hryvinskyi_RichSnippets::js/admin-pages/library.js</argument>
+            <argument name="page" xsi:type="string">library</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Library\Index">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsLibraryIsland</argument>
+        </arguments>
+    </type>
+
+    <!--
+        The snippet editor's document: the types a blank snippet suggests, the kinds of page it starts set for, and
+        the value a property starts with when its kind of value is changed
+    -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Editor\EditorPage">
+        <arguments>
+            <argument name="typeSuggestions" xsi:type="array">
+                <item name="product" xsi:type="string">Product</item>
+                <item name="online_store" xsi:type="string">OnlineStore</item>
+                <item name="store" xsi:type="string">Store</item>
+                <item name="breadcrumb_list" xsi:type="string">BreadcrumbList</item>
+                <item name="article" xsi:type="string">Article</item>
+                <item name="video_object" xsi:type="string">VideoObject</item>
+                <item name="event" xsi:type="string">Event</item>
+            </argument>
+            <argument name="blankKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="textDefault" xsi:type="string">{{product.name}} by {{store.name}}</argument>
+            <argument name="codeDefault" xsi:type="string">{"@if": "product.on_sale", "@value": "{{product.special_to_date | date}}"}</argument>
+            <argument name="whenDefault" xsi:type="string">product.on_sale</argument>
+            <argument name="listCollection" xsi:type="string">product.gallery</argument>
+            <argument name="listItem" xsi:type="string">image.url</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsNewSnippetPage" type="Hryvinskyi\RichSnippets\Model\Admin\Editor\EditorPage">
+        <arguments>
+            <argument name="newSnippet" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- The editor's island, with the expression builder's stylesheet for its conditions; one opened on a blank snippet -->
+    <virtualType name="HryvinskyiRichSnippetsEditorIsland" type="HryvinskyiRichSnippetsPageIsland">
+        <arguments>
+            <argument name="phrases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Editor\EditorPhrases</argument>
+            <argument name="content" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Editor\EditorPage</argument>
+            <argument name="name" xsi:type="string">rich-snippets-editor</argument>
+            <argument name="entry" xsi:type="string">Hryvinskyi_RichSnippets::js/admin-pages/editor.js</argument>
+            <argument name="page" xsi:type="string">snippets</argument>
+            <argument name="styles" xsi:type="array">
+                <item name="expression_builder" xsi:type="string">Hryvinskyi_UiFormElements::css/expression-builder.css</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsNewSnippetIsland" type="HryvinskyiRichSnippetsEditorIsland">
+        <arguments>
+            <argument name="content" xsi:type="object">HryvinskyiRichSnippetsNewSnippetPage</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Snippets\Edit">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsEditorIsland</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Snippets\NewAction">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsNewSnippetIsland</argument>
+        </arguments>
+    </type>
+
+    <!-- The Test page's island: its wording, its document and its built entry -->
+    <virtualType name="HryvinskyiRichSnippetsTestIsland" type="HryvinskyiRichSnippetsPageIsland">
+        <arguments>
+            <argument name="phrases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\TestPhrases</argument>
+            <argument name="content" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\TestPage</argument>
+            <argument name="name" xsi:type="string">rich-snippets-test</argument>
+            <argument name="entry" xsi:type="string">Hryvinskyi_RichSnippets::js/admin-pages/test.js</argument>
+            <argument name="page" xsi:type="string">test</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Controller\Adminhtml\Test\Index">
+        <arguments>
+            <argument name="island" xsi:type="object">HryvinskyiRichSnippetsTestIsland</argument>
+        </arguments>
+    </type>
+</config>

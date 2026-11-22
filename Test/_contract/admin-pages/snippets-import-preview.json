@@ -1,0 +1,93 @@
+{
+    "preview": {
+        "exportedAt": "2026-11-13 10:00:00",
+        "source": "shop.example",
+        "count": 4,
+        "snippets": [
+            {
+                "code": "breadcrumbs",
+                "name": "Breadcrumbs",
+                "type": "BreadcrumbList",
+                "isBlock": false,
+                "status": "new",
+                "existingId": null,
+                "changedHere": null,
+                "changedInFile": null,
+                "choices": [
+                    "add",
+                    "skip"
+                ],
+                "problems": [],
+                "pageKinds": [
+                    "product",
+                    "category"
+                ],
+                "conditionSummary": ""
+            },
+            {
+                "code": "product",
+                "name": "Product",
+                "type": "Product",
+                "isBlock": false,
+                "status": "changed",
+                "existingId": 3,
+                "changedHere": "2026-11-12 14:30:00",
+                "changedInFile": "2026-11-13 09:00:00",
+                "choices": [
+                    "replace",
+                    "keep_both",
+                    "skip"
+                ],
+                "problems": [
+                    {
+                        "reason": "store_unknown",
+                        "params": {
+                            "store": "trade_de"
+                        }
+                    }
+                ],
+                "pageKinds": [
+                    "product"
+                ],
+                "conditionSummary": ""
+            },
+            {
+                "code": "organization",
+                "name": "Organization",
+                "type": "OnlineStore",
+                "isBlock": false,
+                "status": "identical",
+                "existingId": 1,
+                "changedHere": null,
+                "changedInFile": null,
+                "choices": [
+                    "skip",
+                    "replace"
+                ],
+                "problems": [],
+                "pageKinds": [
+                    "home"
+                ],
+                "conditionSummary": ""
+            },
+            {
+                "code": "return-policy",
+                "name": "Return policy",
+                "type": "MerchantReturnPolicy",
+                "isBlock": true,
+                "status": "changed",
+                "existingId": 9,
+                "changedHere": null,
+                "changedInFile": null,
+                "choices": [
+                    "replace",
+                    "keep_both",
+                    "skip"
+                ],
+                "problems": [],
+                "pageKinds": [],
+                "conditionSummary": ""
+            }
+        ]
+    }
+}

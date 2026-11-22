@@ -1,0 +1,25 @@
+{
+    "name": "@hryvinskyi/rich-snippets-admin-pages",
+    "description": "Sources of the Rich Snippets admin pages' islands: one entry per page with its readers, endpoints, state and components, drawn on the admin UI kit's module page and built against the kit's published declarations into view/adminhtml/web/js/admin-pages/.",
+    "private": true,
+    "type": "module",
+    "engines": {
+        "node": ">=22.15"
+    },
+    "scripts": {
+        "build": "node scripts/build.mjs",
+        "check": "node scripts/check.mjs",
+        "test": "node --import tsx --import ./test/page-modules.mjs --import ./test/setup-dom.ts --test 'src/**/*.test.{ts,tsx}' 'test/**/*.test.ts'",
+        "verify-build": "node scripts/verify-build.mjs"
+    },
+    "devDependencies": {
+        "@happy-dom/global-registrator": "21.0.4",
+        "@testing-library/preact": "3.2.4",
+        "@types/node": "26.6.3",
+        "esbuild": "0.28.2",
+        "happy-dom": "21.0.4",
+        "preact": "10.29.8",
+        "tsx": "4.23.15",
+        "typescript": "7.0.2"
+    }
+}

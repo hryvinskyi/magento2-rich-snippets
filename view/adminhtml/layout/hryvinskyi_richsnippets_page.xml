@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<!--
+    What every Rich Snippets admin page shares. A page takes <update handle="hryvinskyi_richsnippets_page"/> in its own
+    layout and opens its island in its controller. The handle hosts the island, links the pages' stylesheet after the
+    kit's and removes the platform's page title: the island draws the module's header, its navigation and the page.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="hryvinskyi_admin_ui_island"/>
+    <head>
+        <css src="Hryvinskyi_RichSnippets::css/admin-pages.css"/>
+    </head>
+    <body>
+        <referenceBlock name="page.title" remove="true"/>
+    </body>
+</page>

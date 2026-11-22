@@ -1,0 +1,8 @@
+{
+    "name": "opaque-root",
+    "description": "A root holding a directive: the builder cannot draw it and leaves the template as it is",
+    "projection": "opaque",
+    "template": "{\n  \"@if\": \"product.on_sale\",\n  \"@type\": \"Offer\",\n  \"price\": \"{{product.final_price}}\"\n}",
+    "printed": "{\n  \"@if\": \"product.on_sale\",\n  \"@type\": \"Offer\",\n  \"price\": \"{{product.final_price}}\"\n}",
+    "rows": []
+}

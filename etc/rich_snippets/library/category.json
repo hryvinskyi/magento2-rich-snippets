@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "group": "category",
+    "name": "Category",
+    "icon": "category",
+    "description": "Name, description and image of the category.",
+    "where": "Category pages",
+    "google": {
+        "status": "none",
+        "short": "Google: no result of its own",
+        "long": "Google shows no result of its own for it. It tells any reader what the page is about."
+    },
+    "properties": ["name", "description", "image", "url"],
+    "placement": {"pageKinds": ["category"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "{{category.name}}",
+        "description": "{{category.description | plain | limit:5000}}",
+        "image": "{{category.image}}",
+        "url": "{{category.url}}"
+    }
+}

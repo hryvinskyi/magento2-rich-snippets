@@ -1,0 +1,55 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "lib": [
+            "ES2022",
+            "DOM"
+        ],
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "erasableSyntaxOnly": true,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "preact",
+        "types": [
+            "node"
+        ],
+        "paths": {
+            "@hryvinskyi/admin-ui": [
+                "../../../AdminUi/frontend/admin-ui/types/index.d.ts",
+                "../../../magento2-admin-ui/frontend/admin-ui/types/index.d.ts",
+                "../../../../../../vendor/hryvinskyi/magento2-admin-ui/frontend/admin-ui/types/index.d.ts"
+            ],
+            "Hryvinskyi_UiFormElements/js/expression-builder/mount": [
+                "../../../UiFormElements/types/mount.d.ts",
+                "../../../magento2-ui-form-elements/types/mount.d.ts",
+                "../../../../../../vendor/hryvinskyi/magento2-ui-form-elements/types/mount.d.ts"
+            ],
+            "preact": [
+                "./node_modules/preact/src/index.d.ts"
+            ],
+            "preact/hooks": [
+                "./node_modules/preact/hooks/src/index.d.ts"
+            ],
+            "preact/jsx-runtime": [
+                "./node_modules/preact/jsx-runtime/src/index.d.ts"
+            ]
+        }
+    },
+    "include": [
+        "src",
+        "test"
+    ]
+}

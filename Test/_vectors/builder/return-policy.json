@@ -1,0 +1,39 @@
+{
+    "name": "return-policy",
+    "description": "A building block: no @context, numbers stay numbers",
+    "projection": "tree",
+    "template": "{\n  \"@type\": \"MerchantReturnPolicy\",\n  \"applicableCountry\": \"{{store.countries}}\",\n  \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n  \"merchantReturnDays\": 30,\n  \"returnMethod\": \"https://schema.org/ReturnByMail\",\n  \"returnFees\": \"https://schema.org/FreeReturn\",\n  \"refundType\": \"https://schema.org/FullRefund\"\n}",
+    "printed": "{\n  \"@type\": \"MerchantReturnPolicy\",\n  \"applicableCountry\": \"{{store.countries}}\",\n  \"returnPolicyCategory\": \"https://schema.org/MerchantReturnFiniteReturnWindow\",\n  \"merchantReturnDays\": 30,\n  \"returnMethod\": \"https://schema.org/ReturnByMail\",\n  \"returnFees\": \"https://schema.org/FreeReturn\",\n  \"refundType\": \"https://schema.org/FullRefund\"\n}",
+    "rows": [
+        {
+            "path": "applicableCountry",
+            "kind": "field",
+            "when": null
+        },
+        {
+            "path": "returnPolicyCategory",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "merchantReturnDays",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "returnMethod",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "returnFees",
+            "kind": "fixed",
+            "when": null
+        },
+        {
+            "path": "refundType",
+            "kind": "fixed",
+            "when": null
+        }
+    ]
+}

@@ -1,0 +1,2358 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetRepositoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\SnippetRepository"/>
+    <!-- The library: templates as data, questions with suggested answers, adds that run once per key -->
+    <preference for="Hryvinskyi\RichSnippets\Api\LibraryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Library"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\LibraryTemplatePoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\LibraryTemplatePool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\QuestionSuggesterPoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Question\QuestionSuggesterPool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\LibraryTemplateInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\LibraryTemplate"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\LibraryQuestionInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\LibraryQuestion"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\AnswerOptionInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Question\AnswerOption"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\QuestionSuggestionsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Question\QuestionSuggestions"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\LibraryEntryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\LibraryEntry"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\AddedSnippetInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\AddedSnippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Library\LibraryTemplateFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Factory\LibraryTemplateFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Library\Question\AnswerFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Factory\AnswerFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Library\LibraryResultFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Factory\LibraryResultFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Library\Question\ShopNameInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Question\StoreShopName"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Library\Question\AttributeFillCountsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Library\Question\CachedAttributeFillCounts"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Idempotency\IdempotentWriteInterface"
+                type="Hryvinskyi\RichSnippets\Model\Idempotency\DatabaseIdempotentWrite"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetRootRepositoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\SnippetRepository"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetRootInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\OriginInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Origin"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Factory\SnippetFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\OriginFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Factory\OriginFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\TemplateTypeInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\TemplateType"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetReaderInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Storage\DatabaseSnippetReader"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetWriterInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Storage\DatabaseSnippetWriter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\IncludeEdgesInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Storage\StoredIncludeEdges"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\PageCacheCleanerInterface"
+                type="Hryvinskyi\RichSnippets\Model\Cache\SnippetPageCacheCleaner"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\ExistingStoreViewsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Storage\DatabaseStoreViews"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\ChangeAuthorInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\NoChangeAuthor"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Selection\SelectionIndexInvalidatorInterface"
+                type="Hryvinskyi\RichSnippets\Model\Selection\CachedSelectionIndex"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Selection\SelectionIndexInterface"
+                type="Hryvinskyi\RichSnippets\Model\Selection\CachedSelectionIndex"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\CodeAllocatorInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\CodeAllocator"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageCacheTagInterface"
+                type="Hryvinskyi\RichSnippets\Model\Cache\PageCacheTag"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PlacementVocabularyInterface"
+                type="Hryvinskyi\RichSnippets\Model\Placement\PoolPlacementVocabulary"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\PageEntityInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\PageEntity"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageEntityFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\Factory\PageEntityFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageKindPoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\PageKindPool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageContextInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\StorefrontPageContext"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Page\Cms\StoreCmsPagesInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\Cms\ConfiguredStoreCmsPages"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ExistingPagesInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\ExistingPages"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionFieldPoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\ConditionFieldPool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ConditionTreeInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionTree"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ConditionGroupInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionGroup"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ConditionLeafInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionLeaf"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionTreeFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\Factory\ConditionTreeFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionTreeParserInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionTreeParser"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionTreePrinterInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Tree\ConditionTreePrinter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionSentenceInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Sentence\ConditionSentence"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionBuilderConfigInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Builder\ConditionBuilderConfig"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionOperatorPoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Operator\ConditionOperatorPool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ConditionValueSqlInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Sql\SelectValueSql"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Condition\Sql\ConditionValueSqlFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Sql\Factory\ConditionValueSqlFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Condition\Attribute\ProductAttributeSubjectFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Condition\Attribute\Factory\ProductAttributeSubjectFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ConditionMismatchInterface"
+                type="Hryvinskyi\RichSnippets\Model\Placement\ConditionMismatch"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\PlacementCountInterface"
+                type="Hryvinskyi\RichSnippets\Model\Placement\PlacementCount"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PlacementCounterInterface"
+                type="Hryvinskyi\RichSnippets\Model\Placement\PlacementCounter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\SnippetExclusionInterface"
+                type="Hryvinskyi\RichSnippets\Model\Selection\SnippetExclusion"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Placement\ConditionMismatchFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Placement\Factory\ConditionMismatchFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Selection\SnippetExclusionFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Selection\Factory\SnippetExclusionFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetSelectorInterface"
+                type="Hryvinskyi\RichSnippets\Model\Selection\SnippetSelector"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageCacheTagsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Cache\PageCacheTags"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FieldInterface"
+                type="Hryvinskyi\RichSnippets\Model\Field\Field"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\FieldFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Field\Factory\FieldFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\FieldCatalogInterface"
+                type="Hryvinskyi\RichSnippets\Model\Field\FieldCatalog"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\CollectionPoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Collection\CollectionPool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\CollectionLimitsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Field\CollectionLimitReader"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageScopeFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Field\PageScopeFactory"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageDataPrefetchInterface"
+                type="Hryvinskyi\RichSnippets\Model\Data\PageDataPrefetch"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\FrontendEmulationInterface"
+                type="Hryvinskyi\RichSnippets\Model\Emulation\FrontendEmulation"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetOutputInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\SnippetOutput"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\RenderedBlockInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\RenderedBlock"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ResultTypeRulePoolInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\ResultTypeRulePool"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\RequirementCheckerInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\RequirementChecker"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\RequirementInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Requirement"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ResultTypeRuleInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\ResultTypeRule"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\MissingPropertyInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Check\MissingProperty"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\LeftOutPropertyInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Check\LeftOutProperty"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FeatureCheckInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Check\FeatureCheck"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\OutputCheckInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Check\OutputCheck"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FeatureTallyInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Check\FeatureTally"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Requirement\RuleFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Factory\RuleFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Requirement\CheckFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Requirement\Factory\CheckFactoryAdapter"/>
+
+    <!--
+        The snippets' own template engine. Item names, includes by snippet code and the store view's address and
+        time zone apply to snippet templates only; the engine's global bindings stay as they are for every other
+        template. The filter pool is the engine's with `url` and `date` replaced: a virtual type's array argument is
+        merged item by item over its parent's, so every other filter is the engine's own. Compiling, caching
+        compiled forms and evaluating all see this one pool, so a filter is validated against the pool it runs in.
+    -->
+    <virtualType name="HryvinskyiRichSnippetsUrlFilter" type="Hryvinskyi\JsonTemplate\Engine\Filter\Url\UrlFilter">
+        <arguments>
+            <argument name="baseUrl" xsi:type="object">Hryvinskyi\RichSnippets\Model\Engine\StoreBaseUrl</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsDateFilter"
+                 type="Hryvinskyi\JsonTemplate\Engine\Filter\Date\DateFilter">
+        <arguments>
+            <argument name="timezone" xsi:type="object">Hryvinskyi\RichSnippets\Model\Engine\StoreTimezone</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsFilterPool" type="Hryvinskyi\JsonTemplate\Engine\Filter\FilterPool">
+        <arguments>
+            <argument name="filters" xsi:type="array">
+                <item name="url" xsi:type="object">HryvinskyiRichSnippetsUrlFilter</item>
+                <item name="date" xsi:type="object">HryvinskyiRichSnippetsDateFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCompiler" type="Hryvinskyi\JsonTemplate\Engine\Compiler">
+        <arguments>
+            <argument name="filters" xsi:type="object">HryvinskyiRichSnippetsFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsTemplateKey"
+                 type="Hryvinskyi\JsonTemplate\Engine\Template\CompiledTemplateKey">
+        <arguments>
+            <argument name="filters" xsi:type="object">HryvinskyiRichSnippetsFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCachedTemplates"
+                 type="Hryvinskyi\JsonTemplate\Model\Cache\CacheTemplateStorage">
+        <arguments>
+            <argument name="keys" xsi:type="object">HryvinskyiRichSnippetsTemplateKey</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsTemplateStorage"
+                 type="Hryvinskyi\JsonTemplate\Engine\Template\MemoizingTemplateStorage">
+        <arguments>
+            <argument name="inner" xsi:type="object">HryvinskyiRichSnippetsCachedTemplates</argument>
+            <argument name="keys" xsi:type="object">HryvinskyiRichSnippetsTemplateKey</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsEvaluator" type="Hryvinskyi\JsonTemplate\Engine\Evaluator">
+        <arguments>
+            <argument name="filters" xsi:type="object">HryvinskyiRichSnippetsFilterPool</argument>
+            <argument name="itemAliases" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\ItemAliases</argument>
+            <argument name="includes" xsi:type="object">Hryvinskyi\RichSnippets\Model\Engine\SnippetIncludeResolver</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsTemplateEngine" type="Hryvinskyi\JsonTemplate\Engine\TemplateEngine">
+        <arguments>
+            <argument name="storage" xsi:type="object">HryvinskyiRichSnippetsTemplateStorage</argument>
+            <argument name="compiler" xsi:type="object">HryvinskyiRichSnippetsCompiler</argument>
+            <argument name="evaluator" xsi:type="object">HryvinskyiRichSnippetsEvaluator</argument>
+        </arguments>
+    </virtualType>
+    <!-- Includes are evaluated by the engine that asks for them, so the resolver reaches the engine lazily -->
+    <virtualType name="HryvinskyiRichSnippetsTemplateEngineProxy"
+                 type="Hryvinskyi\JsonTemplate\Api\TemplateEngineInterface\Proxy">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Snippet\SaveSnippet">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Snippet\Storage\StoredIncludeEdges">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+
+    <!-- Kinds of page: each owns the full action names of its requests; a request no kind owns is "other" -->
+    <virtualType name="HryvinskyiRichSnippetsProductPageKind"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Kind\RequestParamKindResolver">
+        <arguments>
+            <argument name="actionNames" xsi:type="array">
+                <item name="view" xsi:type="string">catalog_product_view</item>
+            </argument>
+            <argument name="param" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryPageKind"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Kind\RequestParamKindResolver">
+        <arguments>
+            <argument name="actionNames" xsi:type="array">
+                <item name="view" xsi:type="string">catalog_category_view</item>
+            </argument>
+            <argument name="param" xsi:type="string">id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageKind"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Kind\RequestParamKindResolver">
+        <arguments>
+            <argument name="actionNames" xsi:type="array">
+                <item name="view" xsi:type="string">cms_page_view</item>
+            </argument>
+            <argument name="param" xsi:type="string">page_id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsHomePageKind"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Kind\HomeKindResolver">
+        <arguments>
+            <argument name="actionNames" xsi:type="array">
+                <item name="index" xsi:type="string">cms_index_index</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Page\PageKindPool">
+        <arguments>
+            <argument name="kinds" xsi:type="array">
+                <item name="home" xsi:type="object">HryvinskyiRichSnippetsHomePageKind</item>
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsProductPageKind</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategoryPageKind</item>
+                <item name="cms" xsi:type="object">HryvinskyiRichSnippetsCmsPageKind</item>
+                <item name="other" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Kind\NoEntityKindResolver</item>
+            </argument>
+            <argument name="fallbackKind" xsi:type="string">other</argument>
+        </arguments>
+    </type>
+
+    <!-- Catalog attribute values in a store view, falling back to the default value -->
+    <virtualType name="HryvinskyiRichSnippetsProductAttributeJoin"
+                 type="Hryvinskyi\RichSnippets\Model\Catalog\EavStoreValueJoin">
+        <arguments>
+            <argument name="entityTypeCode" xsi:type="string">catalog_product</argument>
+            <argument name="entityInterface" xsi:type="string">Magento\Catalog\Api\Data\ProductInterface</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryAttributeJoin"
+                 type="Hryvinskyi\RichSnippets\Model\Catalog\EavStoreValueJoin">
+        <arguments>
+            <argument name="entityTypeCode" xsi:type="string">catalog_category</argument>
+            <argument name="entityInterface" xsi:type="string">Magento\Catalog\Api\Data\CategoryInterface</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- The pages a store view has, kind by kind; "other" has no pages one can list -->
+    <type name="Hryvinskyi\RichSnippets\Model\Page\Existing\ProductPages">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Page\Existing\CategoryPages">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Page\ExistingPages">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="home" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Existing\HomePage</item>
+                <item name="product" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Existing\ProductPages</item>
+                <item name="category" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Existing\CategoryPages</item>
+                <item name="cms" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Existing\CmsPages</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Condition operators by code: what a condition may ask of a value; another module adds its own -->
+    <virtualType name="HryvinskyiRichSnippetsConditionNotEquals"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\NegatedOperator">
+        <arguments>
+            <argument name="negated" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\EqualsOperator</argument>
+            <argument name="code" xsi:type="string">!=</argument>
+            <argument name="label" xsi:type="string">is not</argument>
+            <argument name="requirement" xsi:type="string">%1 other than %2</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionNotOneOf"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\NegatedOperator">
+        <arguments>
+            <argument name="negated" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\OneOfOperator</argument>
+            <argument name="code" xsi:type="string">!()</argument>
+            <argument name="label" xsi:type="string">is not one of</argument>
+            <argument name="requirement" xsi:type="string">%1 other than %2</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionNotContains"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\NegatedOperator">
+        <arguments>
+            <argument name="negated" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\ContainsOperator</argument>
+            <argument name="code" xsi:type="string">!{}</argument>
+            <argument name="label" xsi:type="string">does not contain</argument>
+            <argument name="requirement" xsi:type="string">%1 not containing %2</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionAtLeast"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\ComparisonOperator">
+        <arguments>
+            <argument name="code" xsi:type="string">&gt;=</argument>
+            <argument name="label" xsi:type="string">equals or greater than</argument>
+            <argument name="requirement" xsi:type="string">%1 of at least %2</argument>
+            <argument name="sqlOperator" xsi:type="string">&gt;=</argument>
+            <argument name="accepted" xsi:type="array">
+                <item name="equal" xsi:type="number">0</item>
+                <item name="greater" xsi:type="number">1</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionGreater"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\ComparisonOperator">
+        <arguments>
+            <argument name="code" xsi:type="string">&gt;</argument>
+            <argument name="label" xsi:type="string">greater than</argument>
+            <argument name="requirement" xsi:type="string">%1 greater than %2</argument>
+            <argument name="sqlOperator" xsi:type="string">&gt;</argument>
+            <argument name="accepted" xsi:type="array">
+                <item name="greater" xsi:type="number">1</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionAtMost"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\ComparisonOperator">
+        <arguments>
+            <argument name="code" xsi:type="string">&lt;=</argument>
+            <argument name="label" xsi:type="string">equals or less than</argument>
+            <argument name="requirement" xsi:type="string">%1 of at most %2</argument>
+            <argument name="sqlOperator" xsi:type="string">&lt;=</argument>
+            <argument name="accepted" xsi:type="array">
+                <item name="less" xsi:type="number">-1</item>
+                <item name="equal" xsi:type="number">0</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsConditionLess"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\Operator\ComparisonOperator">
+        <arguments>
+            <argument name="code" xsi:type="string">&lt;</argument>
+            <argument name="label" xsi:type="string">less than</argument>
+            <argument name="requirement" xsi:type="string">%1 less than %2</argument>
+            <argument name="sqlOperator" xsi:type="string">&lt;</argument>
+            <argument name="accepted" xsi:type="array">
+                <item name="less" xsi:type="number">-1</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Operator\ConditionOperatorPool">
+        <arguments>
+            <argument name="operators" xsi:type="array">
+                <item name="==" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\EqualsOperator</item>
+                <item name="!=" xsi:type="object">HryvinskyiRichSnippetsConditionNotEquals</item>
+                <item name="()" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\OneOfOperator</item>
+                <item name="!()" xsi:type="object">HryvinskyiRichSnippetsConditionNotOneOf</item>
+                <item name="{}" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Operator\ContainsOperator</item>
+                <item name="!{}" xsi:type="object">HryvinskyiRichSnippetsConditionNotContains</item>
+                <item name="&gt;=" xsi:type="object">HryvinskyiRichSnippetsConditionAtLeast</item>
+                <item name="&gt;" xsi:type="object">HryvinskyiRichSnippetsConditionGreater</item>
+                <item name="&lt;=" xsi:type="object">HryvinskyiRichSnippetsConditionAtMost</item>
+                <item name="&lt;" xsi:type="object">HryvinskyiRichSnippetsConditionLess</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Condition fields: what "Only when" can test, per kind of page -->
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Source\CategoryNames">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Source\ProductTypeValues">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Source\AttributeSetValues">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Source\ProductCategoryValues">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Source\CmsPageValues">
+        <arguments>
+            <argument name="pages" xsi:type="object">HryvinskyiRichSnippetsCmsPageSource</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsProductTypeField"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\ConditionField">
+        <arguments>
+            <argument name="source" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Source\ProductTypeValues</argument>
+            <argument name="pageKind" xsi:type="string">product</argument>
+            <argument name="label" xsi:type="string">Product type</argument>
+            <argument name="phrase" xsi:type="string">product type</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsAttributeSetField"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\ConditionField">
+        <arguments>
+            <argument name="source" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Source\AttributeSetValues</argument>
+            <argument name="pageKind" xsi:type="string">product</argument>
+            <argument name="label" xsi:type="string">Attribute set</argument>
+            <argument name="phrase" xsi:type="string">attribute set</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductCategoryField"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\ConditionField">
+        <arguments>
+            <argument name="source" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Source\ProductCategoryValues</argument>
+            <argument name="pageKind" xsi:type="string">product</argument>
+            <argument name="label" xsi:type="string">Category</argument>
+            <argument name="phrase" xsi:type="string">category</argument>
+            <argument name="inputType" xsi:type="string">tree</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryPageField"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\ConditionField">
+        <arguments>
+            <argument name="source" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Source\CategoryValues</argument>
+            <argument name="pageKind" xsi:type="string">category</argument>
+            <argument name="label" xsi:type="string">Category page</argument>
+            <argument name="phrase" xsi:type="string">the category page</argument>
+            <argument name="inputType" xsi:type="string">tree</argument>
+            <argument name="namesOwnValue" xsi:type="boolean">false</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageField"
+                 type="Hryvinskyi\RichSnippets\Model\Condition\ConditionField">
+        <arguments>
+            <argument name="source" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Source\CmsPageValues</argument>
+            <argument name="pageKind" xsi:type="string">cms</argument>
+            <argument name="label" xsi:type="string">CMS page</argument>
+            <argument name="phrase" xsi:type="string">the CMS page</argument>
+            <argument name="namesOwnValue" xsi:type="boolean">false</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- The product attributes a condition may read, and the values suggested for the free-text ones -->
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Attribute\ConditionAttributes">
+        <arguments>
+            <argument name="excludedCodes" xsi:type="array">
+                <item name="tier_price" xsi:type="string">tier_price</item>
+                <item name="quantity_and_stock_status" xsi:type="string">quantity_and_stock_status</item>
+                <item name="media_gallery" xsi:type="string">media_gallery</item>
+                <item name="category_ids" xsi:type="string">category_ids</item>
+            </argument>
+            <argument name="excludedInputs" xsi:type="array">
+                <item name="gallery" xsi:type="string">gallery</item>
+                <item name="weee" xsi:type="string">weee</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsAttributeValueSuggester"
+                 type="Hryvinskyi\UiFormElements\Model\AttributeValueSuggester">
+        <arguments>
+            <argument name="suggestableCodes" xsi:type="array">
+                <item name="sku" xsi:type="string">sku</item>
+                <item name="name" xsi:type="string">name</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Attribute\ProductAttributeField">
+        <arguments>
+            <argument name="attributeValueSuggester" xsi:type="object">HryvinskyiRichSnippetsAttributeValueSuggester</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Builder\ConditionBuilderConfig">
+        <arguments>
+            <argument name="attributeValueSuggester" xsi:type="object">HryvinskyiRichSnippetsAttributeValueSuggester</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\Attribute\ProductAttributeSubject">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="join" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+        </arguments>
+    </type>
+
+    <type name="Hryvinskyi\RichSnippets\Model\Condition\ConditionFieldPool">
+        <arguments>
+            <argument name="fields" xsi:type="array">
+                <item name="product_attribute" xsi:type="object">Hryvinskyi\RichSnippets\Model\Condition\Attribute\ProductAttributeField</item>
+                <item name="attribute_set" xsi:type="object">HryvinskyiRichSnippetsAttributeSetField</item>
+                <item name="product_category" xsi:type="object">HryvinskyiRichSnippetsProductCategoryField</item>
+                <item name="product_type" xsi:type="object">HryvinskyiRichSnippetsProductTypeField</item>
+                <item name="category_page" xsi:type="object">HryvinskyiRichSnippetsCategoryPageField</item>
+                <item name="cms_page" xsi:type="object">HryvinskyiRichSnippetsCmsPageField</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Selection\CandidatePrefetch">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+
+    <type name="Hryvinskyi\RichSnippets\Model\Selection\CachedSelectionIndex">
+        <arguments>
+            <argument name="cache" xsi:type="object">Hryvinskyi\RichSnippets\Model\Cache\Type\RichSnippetsCache</argument>
+            <argument name="json" xsi:type="object">Magento\Framework\Serialize\Serializer\Json</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Snippet\Storage\SnippetRowMapper">
+        <arguments>
+            <argument name="json" xsi:type="object">Magento\Framework\Serialize\Serializer\Json</argument>
+        </arguments>
+    </type>
+
+    <type name="Hryvinskyi\RichSnippets\Model\Engine\SnippetIncludeResolver">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngineProxy</argument>
+        </arguments>
+    </type>
+
+    <!-- Attribute values of many entities at once -->
+    <virtualType name="HryvinskyiRichSnippetsProductValues" type="Hryvinskyi\RichSnippets\Model\Catalog\EavValueReader">
+        <arguments>
+            <argument name="entityTypeCode" xsi:type="string">catalog_product</argument>
+            <argument name="entityInterface" xsi:type="string">Magento\Catalog\Api\Data\ProductInterface</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryValues" type="Hryvinskyi\RichSnippets\Model\Catalog\EavValueReader">
+        <arguments>
+            <argument name="entityTypeCode" xsi:type="string">catalog_category</argument>
+            <argument name="entityInterface" xsi:type="string">Magento\Catalog\Api\Data\CategoryInterface</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Breadcrumb\CategoryTrails">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Breadcrumb\ProductCategories">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+        </arguments>
+    </type>
+
+    <!-- Prices: one resolver per product type over the visitor's price index rows -->
+    <type name="Hryvinskyi\RichSnippets\Model\Price\PriceResolverPool">
+        <arguments>
+            <argument name="fallback" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\FinalPriceResolver</argument>
+            <argument name="resolvers" xsi:type="array">
+                <item name="simple" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\FinalPriceResolver</item>
+                <item name="virtual" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\FinalPriceResolver</item>
+                <item name="downloadable" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\FinalPriceResolver</item>
+                <item name="configurable" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\LowestChildPriceResolver</item>
+                <item name="bundle" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\MinimalPriceResolver</item>
+                <item name="grouped" xsi:type="object">Hryvinskyi\RichSnippets\Model\Price\Resolver\MinimalPriceResolver</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Attribute values as templates read them, by input type -->
+    <type name="Hryvinskyi\RichSnippets\Model\Field\Attribute\AttributeValueResolverPool">
+        <arguments>
+            <argument name="fallback" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\TextValue</argument>
+            <argument name="resolvers" xsi:type="array">
+                <item name="select" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\SelectValue</item>
+                <item name="multiselect" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\MultiselectValue</item>
+                <item name="boolean" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\BooleanValue</item>
+                <item name="date" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\DateValue</item>
+                <item name="datetime" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\DateTimeValue</item>
+                <item name="media_image" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\MediaImageValue</item>
+                <item name="price" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Attribute\PriceValue</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Entity sources: each part loads its share of the data for every named entity at once -->
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Product\AttributeValuesPart">
+        <arguments>
+            <argument name="reader" xsi:type="object">HryvinskyiRichSnippetsProductValues</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Product\SpecialPricePart">
+        <arguments>
+            <argument name="reader" xsi:type="object">HryvinskyiRichSnippetsProductValues</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Product\TrailPart">
+        <arguments>
+            <argument name="reader" xsi:type="object">HryvinskyiRichSnippetsProductValues</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Product\VariantsPart">
+        <arguments>
+            <argument name="reader" xsi:type="object">HryvinskyiRichSnippetsProductValues</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsLatestReviewsPart"
+                 type="Hryvinskyi\RichSnippets\Model\Data\Product\LatestReviewsPart">
+        <arguments>
+            <argument name="collectionPath" xsi:type="string">reviews.latest</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductUrlPart" type="Hryvinskyi\RichSnippets\Model\Data\UrlPart">
+        <arguments>
+            <argument name="entityType" xsi:type="string">product</argument>
+            <argument name="route" xsi:type="string">catalog/product/view/id/%d</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductSource" type="Hryvinskyi\RichSnippets\Model\Data\EntityDataSource">
+        <arguments>
+            <argument name="parts" xsi:type="array">
+                <item name="attributes" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\AttributeValuesPart</item>
+                <item name="price" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\PricePart</item>
+                <item name="special" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\SpecialPricePart</item>
+                <item name="stock" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\StockPart</item>
+                <item name="reviews" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\ReviewSummaryPart</item>
+                <item name="latest_reviews" xsi:type="object">HryvinskyiRichSnippetsLatestReviewsPart</item>
+                <item name="gallery" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\GalleryPart</item>
+                <item name="url" xsi:type="object">HryvinskyiRichSnippetsProductUrlPart</item>
+                <item name="trail" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\TrailPart</item>
+                <item name="variants" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\VariantsPart</item>
+                <item name="varies_by" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\VariesByPart</item>
+                <item name="categories" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Product\CategoriesPart</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="HryvinskyiRichSnippetsCategoryAttributesPart" type="Hryvinskyi\RichSnippets\Model\Data\EavValuesPart">
+        <arguments>
+            <argument name="reader" xsi:type="object">HryvinskyiRichSnippetsCategoryValues</argument>
+            <argument name="root" xsi:type="string">category</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryUrlPart" type="Hryvinskyi\RichSnippets\Model\Data\UrlPart">
+        <arguments>
+            <argument name="entityType" xsi:type="string">category</argument>
+            <argument name="route" xsi:type="string">catalog/category/view/id/%d</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Category\AttributeOrder">
+        <arguments>
+            <argument name="values" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\Category\ListedProductsPart">
+        <arguments>
+            <argument name="categoryValues" xsi:type="object">HryvinskyiRichSnippetsCategoryValues</argument>
+            <argument name="productValues" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+            <argument name="fallbackOrder" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Category\AttributeOrder</argument>
+            <argument name="orders" xsi:type="array">
+                <item name="position" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Category\PositionOrder</item>
+                <item name="price" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Category\PriceOrder</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsCategorySource" type="Hryvinskyi\RichSnippets\Model\Data\EntityDataSource">
+        <arguments>
+            <argument name="parts" xsi:type="array">
+                <item name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributesPart</item>
+                <item name="url" xsi:type="object">HryvinskyiRichSnippetsCategoryUrlPart</item>
+                <item name="trail" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Category\TrailPart</item>
+                <item name="products" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Category\ListedProductsPart</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageSource" type="Hryvinskyi\RichSnippets\Model\Data\EntityDataSource">
+        <arguments>
+            <argument name="parts" xsi:type="array">
+                <item name="page" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Cms\PagePart</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsStoreSource" type="Hryvinskyi\RichSnippets\Model\Data\EntityDataSource">
+        <arguments>
+            <argument name="parts" xsi:type="array">
+                <item name="information" xsi:type="object">Hryvinskyi\RichSnippets\Model\Data\Store\InformationPart</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Data\PageDataPrefetch">
+        <arguments>
+            <argument name="storeSource" xsi:type="object">HryvinskyiRichSnippetsStoreSource</argument>
+            <argument name="kindSources" xsi:type="array">
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsProductSource</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategorySource</item>
+                <item name="cms" xsi:type="object">HryvinskyiRichSnippetsCmsPageSource</item>
+                <item name="home" xsi:type="object">HryvinskyiRichSnippetsCmsPageSource</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Field resolvers -->
+    <type name="Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsProductUrlResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">url</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductTypeResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">attributes</argument>
+            <argument name="key" xsi:type="string">values.type_id</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductPriceResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">price</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductSpecialResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">special</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductVariesByResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">varies_by</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductStockResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">stock</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsReviewSummaryResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">reviews</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsCmsPageSource</argument>
+            <argument name="part" xsi:type="string">page</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryAttributeResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\AttributeResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsCategorySource</argument>
+            <argument name="root" xsi:type="string">category</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryUrlResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsCategorySource</argument>
+            <argument name="part" xsi:type="string">url</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Field\Resolver\CategoryImageResolver">
+        <arguments>
+            <argument name="categories" xsi:type="object">HryvinskyiRichSnippetsCategorySource</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsStoreResolver" type="Hryvinskyi\RichSnippets\Model\Field\Resolver\PartKeyResolver">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsStoreSource</argument>
+            <argument name="part" xsi:type="string">information</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Field groups, in the order the field picker lists them -->
+    <virtualType name="HryvinskyiRichSnippetsProductFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">product</argument>
+            <argument name="label" xsi:type="string">Product</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">product.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                    <item name="attribute" xsi:type="string">name</item>
+                    <item name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver</item>
+                </item>
+                <item name="sku" xsi:type="array">
+                    <item name="path" xsi:type="string">product.sku</item>
+                    <item name="label" xsi:type="string">SKU</item>
+                    <item name="attribute" xsi:type="string">sku</item>
+                    <item name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver</item>
+                </item>
+                <item name="short_description" xsi:type="array">
+                    <item name="path" xsi:type="string">product.short_description</item>
+                    <item name="label" xsi:type="string">Short description</item>
+                    <item name="attribute" xsi:type="string">short_description</item>
+                    <item name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">product.url</item>
+                    <item name="label" xsi:type="string">Page address</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductUrlResolver</item>
+                </item>
+                <item name="image" xsi:type="array">
+                    <item name="path" xsi:type="string">product.image</item>
+                    <item name="label" xsi:type="string">Main image</item>
+                    <item name="attribute" xsi:type="string">image</item>
+                    <item name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver</item>
+                </item>
+                <item name="type" xsi:type="array">
+                    <item name="path" xsi:type="string">product.type</item>
+                    <item name="label" xsi:type="string">Product type</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductTypeResolver</item>
+                </item>
+                <item name="varies_by" xsi:type="array">
+                    <item name="path" xsi:type="string">product.varies_by</item>
+                    <item name="label" xsi:type="string">What the variants differ by</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductVariesByResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Field\Group\ProductAttributeFieldGroup">
+        <arguments>
+            <argument name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\ProductAttributeResolver</argument>
+            <argument name="code" xsi:type="string">product_attributes</argument>
+            <argument name="label" xsi:type="string">Product attributes</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsPriceFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">price</argument>
+            <argument name="label" xsi:type="string">Price and stock</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="final_price" xsi:type="array">
+                    <item name="path" xsi:type="string">product.final_price</item>
+                    <item name="label" xsi:type="string">Final price</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductPriceResolver</item>
+                </item>
+                <item name="regular_price" xsi:type="array">
+                    <item name="path" xsi:type="string">product.regular_price</item>
+                    <item name="label" xsi:type="string">Regular price</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductPriceResolver</item>
+                </item>
+                <item name="on_sale" xsi:type="array">
+                    <item name="path" xsi:type="string">product.on_sale</item>
+                    <item name="label" xsi:type="string">On sale</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductPriceResolver</item>
+                </item>
+                <item name="special_to_date" xsi:type="array">
+                    <item name="path" xsi:type="string">product.special_to_date</item>
+                    <item name="label" xsi:type="string">Special price end date</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductSpecialResolver</item>
+                </item>
+                <item name="availability" xsi:type="array">
+                    <item name="path" xsi:type="string">product.availability</item>
+                    <item name="label" xsi:type="string">Stock status</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsProductStockResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsReviewsFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">reviews</argument>
+            <argument name="label" xsi:type="string">Reviews</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="rating" xsi:type="array">
+                    <item name="path" xsi:type="string">reviews.rating</item>
+                    <item name="label" xsi:type="string">Average rating</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsReviewSummaryResolver</item>
+                </item>
+                <item name="count" xsi:type="array">
+                    <item name="path" xsi:type="string">reviews.count</item>
+                    <item name="label" xsi:type="string">Number of reviews</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsReviewSummaryResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsReviewFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">review</argument>
+            <argument name="label" xsi:type="string">Review</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="nickname" xsi:type="array">
+                    <item name="path" xsi:type="string">review.nickname</item>
+                    <item name="label" xsi:type="string">Nickname</item>
+                </item>
+                <item name="date" xsi:type="array">
+                    <item name="path" xsi:type="string">review.date</item>
+                    <item name="label" xsi:type="string">Date</item>
+                </item>
+                <item name="title" xsi:type="array">
+                    <item name="path" xsi:type="string">review.title</item>
+                    <item name="label" xsi:type="string">Title</item>
+                </item>
+                <item name="text" xsi:type="array">
+                    <item name="path" xsi:type="string">review.text</item>
+                    <item name="label" xsi:type="string">Text</item>
+                </item>
+                <item name="rating" xsi:type="array">
+                    <item name="path" xsi:type="string">review.rating</item>
+                    <item name="label" xsi:type="string">Rating</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsImageFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">image</argument>
+            <argument name="label" xsi:type="string">Image</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">image.url</item>
+                    <item name="label" xsi:type="string">Address</item>
+                </item>
+                <item name="label" xsi:type="array">
+                    <item name="path" xsi:type="string">image.label</item>
+                    <item name="label" xsi:type="string">Label</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsVariantFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">variant</argument>
+            <argument name="label" xsi:type="string">Variant</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="sku" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.sku</item>
+                    <item name="label" xsi:type="string">SKU</item>
+                </item>
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                </item>
+                <item name="price" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.price</item>
+                    <item name="label" xsi:type="string">Price</item>
+                </item>
+                <item name="availability" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.availability</item>
+                    <item name="label" xsi:type="string">Stock status</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.url</item>
+                    <item name="label" xsi:type="string">Address that selects it</item>
+                </item>
+                <item name="image" xsi:type="array">
+                    <item name="path" xsi:type="string">variant.image</item>
+                    <item name="label" xsi:type="string">Image</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsPageFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">page</argument>
+            <argument name="label" xsi:type="string">Page</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="cms" xsi:type="string">cms</item>
+                <item name="home" xsi:type="string">home</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="title" xsi:type="array">
+                    <item name="path" xsi:type="string">page.title</item>
+                    <item name="label" xsi:type="string">Title</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">page.url</item>
+                    <item name="label" xsi:type="string">Address</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="heading" xsi:type="array">
+                    <item name="path" xsi:type="string">page.heading</item>
+                    <item name="label" xsi:type="string">Heading</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="meta_title" xsi:type="array">
+                    <item name="path" xsi:type="string">page.meta_title</item>
+                    <item name="label" xsi:type="string">Meta title</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="meta_description" xsi:type="array">
+                    <item name="path" xsi:type="string">page.meta_description</item>
+                    <item name="label" xsi:type="string">Meta description</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="created_at" xsi:type="array">
+                    <item name="path" xsi:type="string">page.created_at</item>
+                    <item name="label" xsi:type="string">Created</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+                <item name="updated_at" xsi:type="array">
+                    <item name="path" xsi:type="string">page.updated_at</item>
+                    <item name="label" xsi:type="string">Last changed</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCmsPageResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">category</argument>
+            <argument name="label" xsi:type="string">Category</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="category" xsi:type="string">category</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">category.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                    <item name="attribute" xsi:type="string">name</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeResolver</item>
+                </item>
+                <item name="description" xsi:type="array">
+                    <item name="path" xsi:type="string">category.description</item>
+                    <item name="label" xsi:type="string">Description</item>
+                    <item name="attribute" xsi:type="string">description</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeResolver</item>
+                </item>
+                <item name="meta_title" xsi:type="array">
+                    <item name="path" xsi:type="string">category.meta_title</item>
+                    <item name="label" xsi:type="string">Meta title</item>
+                    <item name="attribute" xsi:type="string">meta_title</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeResolver</item>
+                </item>
+                <item name="meta_description" xsi:type="array">
+                    <item name="path" xsi:type="string">category.meta_description</item>
+                    <item name="label" xsi:type="string">Meta description</item>
+                    <item name="attribute" xsi:type="string">meta_description</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeResolver</item>
+                </item>
+                <item name="image" xsi:type="array">
+                    <item name="path" xsi:type="string">category.image</item>
+                    <item name="label" xsi:type="string">Image</item>
+                    <item name="attribute" xsi:type="string">image</item>
+                    <item name="resolver" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Resolver\CategoryImageResolver</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">category.url</item>
+                    <item name="label" xsi:type="string">Address</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsCategoryUrlResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsListedFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">listed</argument>
+            <argument name="label" xsi:type="string">Listed product</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="category" xsi:type="string">category</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="position" xsi:type="array">
+                    <item name="path" xsi:type="string">listed.position</item>
+                    <item name="label" xsi:type="string">Position</item>
+                </item>
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">listed.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">listed.url</item>
+                    <item name="label" xsi:type="string">Address</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsStoreFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">store</argument>
+            <argument name="label" xsi:type="string">Store</argument>
+            <argument name="fields" xsi:type="array">
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">store.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="url" xsi:type="array">
+                    <item name="path" xsi:type="string">store.url</item>
+                    <item name="label" xsi:type="string">Address</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="logo" xsi:type="array">
+                    <item name="path" xsi:type="string">store.logo</item>
+                    <item name="label" xsi:type="string">Logo</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="phone" xsi:type="array">
+                    <item name="path" xsi:type="string">store.phone</item>
+                    <item name="label" xsi:type="string">Phone</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="email" xsi:type="array">
+                    <item name="path" xsi:type="string">store.email</item>
+                    <item name="label" xsi:type="string">Email</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="currency" xsi:type="array">
+                    <item name="path" xsi:type="string">store.currency</item>
+                    <item name="label" xsi:type="string">Currency</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="countries" xsi:type="array">
+                    <item name="path" xsi:type="string">store.countries</item>
+                    <item name="label" xsi:type="string">Countries it ships to</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="street" xsi:type="array">
+                    <item name="path" xsi:type="string">store.address.street</item>
+                    <item name="label" xsi:type="string">Street address</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="postcode" xsi:type="array">
+                    <item name="path" xsi:type="string">store.address.postcode</item>
+                    <item name="label" xsi:type="string">Postcode</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="city" xsi:type="array">
+                    <item name="path" xsi:type="string">store.address.city</item>
+                    <item name="label" xsi:type="string">City</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="region" xsi:type="array">
+                    <item name="path" xsi:type="string">store.address.region</item>
+                    <item name="label" xsi:type="string">Region</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+                <item name="country" xsi:type="array">
+                    <item name="path" xsi:type="string">store.address.country</item>
+                    <item name="label" xsi:type="string">Country</item>
+                    <item name="resolver" xsi:type="object">HryvinskyiRichSnippetsStoreResolver</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsBreadcrumbFields" type="Hryvinskyi\RichSnippets\Model\Field\Group\ConfiguredFieldGroup">
+        <arguments>
+            <argument name="code" xsi:type="string">breadcrumb</argument>
+            <argument name="label" xsi:type="string">Breadcrumb</argument>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+                <item name="category" xsi:type="string">category</item>
+                <item name="cms" xsi:type="string">cms</item>
+            </argument>
+            <argument name="fields" xsi:type="array">
+                <item name="position" xsi:type="array">
+                    <item name="path" xsi:type="string">crumb.position</item>
+                    <item name="label" xsi:type="string">Position</item>
+                </item>
+                <item name="name" xsi:type="array">
+                    <item name="path" xsi:type="string">crumb.name</item>
+                    <item name="label" xsi:type="string">Name</item>
+                </item>
+                <item name="item" xsi:type="array">
+                    <item name="path" xsi:type="string">crumb.item</item>
+                    <item name="label" xsi:type="string">Address</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Field\FieldCatalog">
+        <arguments>
+            <argument name="groups" xsi:type="array">
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsProductFields</item>
+                <item name="product_attributes" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Group\ProductAttributeFieldGroup</item>
+                <item name="price" xsi:type="object">HryvinskyiRichSnippetsPriceFields</item>
+                <item name="reviews" xsi:type="object">HryvinskyiRichSnippetsReviewsFields</item>
+                <item name="review" xsi:type="object">HryvinskyiRichSnippetsReviewFields</item>
+                <item name="image" xsi:type="object">HryvinskyiRichSnippetsImageFields</item>
+                <item name="variant" xsi:type="object">HryvinskyiRichSnippetsVariantFields</item>
+                <item name="page" xsi:type="object">HryvinskyiRichSnippetsPageFields</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategoryFields</item>
+                <item name="listed" xsi:type="object">HryvinskyiRichSnippetsListedFields</item>
+                <item name="store" xsi:type="object">HryvinskyiRichSnippetsStoreFields</item>
+                <item name="breadcrumb" xsi:type="object">HryvinskyiRichSnippetsBreadcrumbFields</item>
+            </argument>
+            <argument name="yieldingGroups" xsi:type="array">
+                <item name="product_attributes" xsi:type="string">product_attributes</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Lists a template repeats over, each with the name its items are read by -->
+    <virtualType name="HryvinskyiRichSnippetsGalleryCollection" type="Hryvinskyi\RichSnippets\Model\Collection\PartCollection">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">gallery</argument>
+            <argument name="path" xsi:type="string">product.gallery</argument>
+            <argument name="itemName" xsi:type="string">image</argument>
+            <argument name="label" xsi:type="string">Product › Gallery image</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLatestReviewsCollection" type="Hryvinskyi\RichSnippets\Model\Collection\PartCollection">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">latest_reviews</argument>
+            <argument name="path" xsi:type="string">reviews.latest</argument>
+            <argument name="itemName" xsi:type="string">review</argument>
+            <argument name="label" xsi:type="string">Reviews › Approved review</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsVariantsCollection" type="Hryvinskyi\RichSnippets\Model\Collection\PartCollection">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+            <argument name="part" xsi:type="string">variants</argument>
+            <argument name="path" xsi:type="string">product.variants</argument>
+            <argument name="itemName" xsi:type="string">variant</argument>
+            <argument name="label" xsi:type="string">Product › Variant</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsListedProductsCollection" type="Hryvinskyi\RichSnippets\Model\Collection\PartCollection">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsCategorySource</argument>
+            <argument name="part" xsi:type="string">products</argument>
+            <argument name="path" xsi:type="string">category.products</argument>
+            <argument name="itemName" xsi:type="string">listed</argument>
+            <argument name="label" xsi:type="string">Category › Listed product</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Breadcrumb\ProductTrail">
+        <arguments>
+            <argument name="products" xsi:type="object">HryvinskyiRichSnippetsProductSource</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsCategoryTrail" type="Hryvinskyi\RichSnippets\Model\Breadcrumb\PartTrail">
+        <arguments>
+            <argument name="source" xsi:type="object">HryvinskyiRichSnippetsCategorySource</argument>
+            <argument name="part" xsi:type="string">trail</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Breadcrumb\CmsPageTrail">
+        <arguments>
+            <argument name="pages" xsi:type="object">HryvinskyiRichSnippetsCmsPageSource</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsBreadcrumbCollection" type="Hryvinskyi\RichSnippets\Model\Collection\BreadcrumbCollection">
+        <arguments>
+            <argument name="path" xsi:type="string">breadcrumbs.items</argument>
+            <argument name="itemName" xsi:type="string">crumb</argument>
+            <argument name="label" xsi:type="string">Breadcrumb › Level</argument>
+            <argument name="trails" xsi:type="array">
+                <item name="product" xsi:type="object">Hryvinskyi\RichSnippets\Model\Breadcrumb\ProductTrail</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategoryTrail</item>
+                <item name="cms" xsi:type="object">Hryvinskyi\RichSnippets\Model\Breadcrumb\CmsPageTrail</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Collection\CollectionPool">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="product_gallery" xsi:type="object">HryvinskyiRichSnippetsGalleryCollection</item>
+                <item name="reviews_latest" xsi:type="object">HryvinskyiRichSnippetsLatestReviewsCollection</item>
+                <item name="product_variants" xsi:type="object">HryvinskyiRichSnippetsVariantsCollection</item>
+                <item name="category_products" xsi:type="object">HryvinskyiRichSnippetsListedProductsCollection</item>
+                <item name="breadcrumbs_items" xsi:type="object">HryvinskyiRichSnippetsBreadcrumbCollection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- The roots a template reads, each standing for an entity of the page -->
+    <virtualType name="HryvinskyiRichSnippetsProductSubject" type="Hryvinskyi\RichSnippets\Model\Field\Subject\PageEntitySubject">
+        <arguments>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategorySubject" type="Hryvinskyi\RichSnippets\Model\Field\Subject\PageEntitySubject">
+        <arguments>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="category" xsi:type="string">category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageSubject" type="Hryvinskyi\RichSnippets\Model\Field\Subject\PageEntitySubject">
+        <arguments>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="cms" xsi:type="string">cms</item>
+                <item name="home" xsi:type="string">home</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsBreadcrumbSubject" type="Hryvinskyi\RichSnippets\Model\Field\Subject\PageEntitySubject">
+        <arguments>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+                <item name="category" xsi:type="string">category</item>
+                <item name="cms" xsi:type="string">cms</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductRoot" type="Hryvinskyi\RichSnippets\Model\Field\FieldScopeAdapter">
+        <arguments>
+            <argument name="subject" xsi:type="object">HryvinskyiRichSnippetsProductSubject</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryRoot" type="Hryvinskyi\RichSnippets\Model\Field\FieldScopeAdapter">
+        <arguments>
+            <argument name="subject" xsi:type="object">HryvinskyiRichSnippetsCategorySubject</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCmsPageRoot" type="Hryvinskyi\RichSnippets\Model\Field\FieldScopeAdapter">
+        <arguments>
+            <argument name="subject" xsi:type="object">HryvinskyiRichSnippetsCmsPageSubject</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsBreadcrumbRoot" type="Hryvinskyi\RichSnippets\Model\Field\FieldScopeAdapter">
+        <arguments>
+            <argument name="subject" xsi:type="object">HryvinskyiRichSnippetsBreadcrumbSubject</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsStoreRoot" type="Hryvinskyi\RichSnippets\Model\Field\FieldScopeAdapter">
+        <arguments>
+            <argument name="subject" xsi:type="object">Hryvinskyi\RichSnippets\Model\Field\Subject\StoreSubject</argument>
+        </arguments>
+    </virtualType>
+    <!--
+        The roots belong to snippet templates only: they live in a pool of their own, read by the scopes the snippets
+        are evaluated in, so the engine's shared pool serves every other template without them.
+    -->
+    <virtualType name="HryvinskyiRichSnippetsVariableProviderPool"
+                 type="Hryvinskyi\JsonTemplate\Engine\Scope\VariableProviderPool">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsProductRoot</item>
+                <item name="reviews" xsi:type="object">HryvinskyiRichSnippetsProductRoot</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategoryRoot</item>
+                <item name="page" xsi:type="object">HryvinskyiRichSnippetsCmsPageRoot</item>
+                <item name="breadcrumbs" xsi:type="object">HryvinskyiRichSnippetsBreadcrumbRoot</item>
+                <item name="store" xsi:type="object">HryvinskyiRichSnippetsStoreRoot</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsScope" type="Hryvinskyi\JsonTemplate\Engine\Scope\Scope">
+        <arguments>
+            <argument name="providers" xsi:type="object">HryvinskyiRichSnippetsVariableProviderPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsGeneratedScopeFactory"
+                 type="Hryvinskyi\JsonTemplate\Api\ScopeInterfaceFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">HryvinskyiRichSnippetsScope</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsScopeFactory"
+                 type="Hryvinskyi\JsonTemplate\Model\Factory\ScopeFactoryAdapter">
+        <arguments>
+            <argument name="generated" xsi:type="object">HryvinskyiRichSnippetsGeneratedScopeFactory</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Field\PageScopeFactory">
+        <arguments>
+            <argument name="scopes" xsi:type="object">HryvinskyiRichSnippetsScopeFactory</argument>
+        </arguments>
+    </type>
+
+    <!-- What a page writes: its snippets evaluated by their own engine, and the places the blocks can go -->
+    <type name="Hryvinskyi\RichSnippets\Model\Engine\IncludedTemplates">
+        <arguments>
+            <argument name="includes" xsi:type="object">Hryvinskyi\RichSnippets\Model\Engine\SnippetIncludeResolver</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Storefront\SnippetOutput">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <!-- The places the position setting offers, each with its writer, its option, the words a sentence names it by,
+         what the Snippets page says about a snippet that is on and the editor preview's note; another module adds a
+         place with one item -->
+    <type name="Hryvinskyi\RichSnippets\Model\Storefront\OutputPositionPool">
+        <arguments>
+            <argument name="positions" xsi:type="array">
+                <item name="head" xsi:type="array">
+                    <item name="writer" xsi:type="object">Hryvinskyi\RichSnippets\Model\Storefront\Position\HeadPosition</item>
+                    <item name="label" xsi:type="string">In the head</item>
+                    <item name="place" xsi:type="string">in the head</item>
+                    <item name="line" xsi:type="string">Each snippet that is on writes one JSON-LD script block into the head of the pages it is set for.</item>
+                    <item name="note" xsi:type="string">One script block in the page head</item>
+                </item>
+                <item name="body_end" xsi:type="array">
+                    <item name="writer" xsi:type="object">Hryvinskyi\RichSnippets\Model\Storefront\Position\BodyEndPosition</item>
+                    <item name="label" xsi:type="string">At the end of the body</item>
+                    <item name="place" xsi:type="string">at the end of the body</item>
+                    <item name="line" xsi:type="string">Each snippet that is on writes one JSON-LD script block at the end of the body of the pages it is set for.</item>
+                    <item name="note" xsi:type="string">One script block at the end of the page body</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!--
+        The theme's microdata goes only from a product page that wrote a snippet describing the product, and then only
+        its items of the types the page's snippets are written as; the product types below count as one
+    -->
+    <type name="Hryvinskyi\RichSnippets\Model\Storefront\ThemeMarkupDecision">
+        <arguments>
+            <argument name="pageKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- The types the theme's markup is checked for: what lets the storefront remove it, and what a page test notes -->
+    <type name="Hryvinskyi\RichSnippets\Model\Storefront\ThemeMarkupTypes">
+        <arguments>
+            <argument name="types" xsi:type="array">
+                <item name="product" xsi:type="string">Product</item>
+                <item name="product_group" xsi:type="string">ProductGroup</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--
+        What Google asks of each kind of result, as data: one JSON file per rule under etc/rich_snippets/result_types.
+        Another module adds a rule with an item of its own in the pool's sources, keyed by the rule's code.
+    -->
+    <type name="Hryvinskyi\RichSnippets\Model\Config\ModuleJsonFile">
+        <arguments>
+            <argument name="files" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+            <argument name="json" xsi:type="object">Magento\Framework\Serialize\Serializer\Json</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsMerchantListingRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">merchant_listing.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsReviewStarsRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">review_stars.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsProductVariantsRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">product_variants.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsBreadcrumbRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">breadcrumb.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsOrganizationRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">organization.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsReturnPolicyRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">return_policy.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsSiteNameRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">site_name.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsFaqRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">faq.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsShippingPolicyRule"
+                 type="Hryvinskyi\RichSnippets\Model\Requirement\Source\ModuleRuleFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">shipping_policy.json</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Config\KeptDefinitions">
+        <arguments>
+            <argument name="cache" xsi:type="object">Hryvinskyi\RichSnippets\Model\Cache\Type\RichSnippetsCache</argument>
+            <argument name="json" xsi:type="object">Magento\Framework\Serialize\Serializer\Json</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Requirement\ResultTypeRulePool">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="merchant_listing" xsi:type="object">HryvinskyiRichSnippetsMerchantListingRule</item>
+                <item name="review_stars" xsi:type="object">HryvinskyiRichSnippetsReviewStarsRule</item>
+                <item name="product_variants" xsi:type="object">HryvinskyiRichSnippetsProductVariantsRule</item>
+                <item name="breadcrumb" xsi:type="object">HryvinskyiRichSnippetsBreadcrumbRule</item>
+                <item name="organization" xsi:type="object">HryvinskyiRichSnippetsOrganizationRule</item>
+                <item name="return_policy" xsi:type="object">HryvinskyiRichSnippetsReturnPolicyRule</item>
+                <item name="site_name" xsi:type="object">HryvinskyiRichSnippetsSiteNameRule</item>
+                <item name="faq" xsi:type="object">HryvinskyiRichSnippetsFaqRule</item>
+                <item name="shipping_policy" xsi:type="object">HryvinskyiRichSnippetsShippingPolicyRule</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--
+        How each kind of compiled template node is read without evaluating it; any other kind may hold anything. The
+        item names are the node kinds the engine publishes on Hryvinskyi\JsonTemplate\Api\Data\AstNodeKind.
+    -->
+    <virtualType name="HryvinskyiRichSnippetsListShape" type="Hryvinskyi\RichSnippets\Model\Requirement\Shape\ChildShape">
+        <arguments>
+            <argument name="key" xsi:type="string">items</argument>
+            <argument name="many" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsDirectiveShape" type="Hryvinskyi\RichSnippets\Model\Requirement\Shape\ChildShape">
+        <arguments>
+            <argument name="key" xsi:type="string">body</argument>
+            <argument name="many" xsi:type="boolean">false</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Requirement\TemplateShape">
+        <arguments>
+            <argument name="fallback" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\OpenShape</argument>
+            <argument name="nodes" xsi:type="array">
+                <item name="literal" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\LiteralShape</item>
+                <item name="text" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\TextShape</item>
+                <item name="object" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\ObjectShape</item>
+                <item name="list" xsi:type="object">HryvinskyiRichSnippetsListShape</item>
+                <item name="directive" xsi:type="object">HryvinskyiRichSnippetsDirectiveShape</item>
+                <item name="interp" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\OpenShape</item>
+                <item name="include" xsi:type="object">Hryvinskyi\RichSnippets\Model\Requirement\Shape\OpenShape</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--
+        The head tag manager knows a script element of the snippets' own, which prints the comment naming the
+        snippet's code before its tag; registered for creating and for the block cache round trip alike.
+    -->
+    <type name="Hryvinskyi\HeadTagManager\Model\Registry\HeadElementFactoryRegistry">
+        <arguments>
+            <argument name="factories" xsi:type="array">
+                <item name="rich_snippet_script" xsi:type="object">Hryvinskyi\RichSnippets\Model\Storefront\Head\Factory\MarkedScriptElementFactory</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\HeadTagManager\Model\Serializer\Strategy\SerializationStrategyRegistry">
+        <arguments>
+            <argument name="strategies" xsi:type="array">
+                <item name="rich_snippet_script" xsi:type="object">Hryvinskyi\RichSnippets\Model\Storefront\Head\MarkedScriptSerializationStrategy</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--
+        The library: one JSON file per template under etc/rich_snippets/library. Another module adds a template with an
+        item of its own in the pool's sources, keyed by the template's code, and a kind of question with an item in
+        the suggester pool.
+    -->
+    <type name="Hryvinskyi\RichSnippets\Model\Idempotency\DatabaseIdempotentWrite">
+        <arguments>
+            <argument name="json" xsi:type="object">Magento\Framework\Serialize\Serializer\Json</argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsLibraryOrganization" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">organization.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryWebsiteName" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">website-name.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryBreadcrumbs" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">breadcrumbs.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryLocalBusiness" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">local-business.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryProduct" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">product.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryProductVariants" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">product-variants.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryProductList" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">product-list.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryCategory" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">category.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryFaq" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">faq.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryArticle" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">article.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryReturnPolicy" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">return-policy.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryShippingPolicy" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">shipping-policy.json</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsLibraryPostalAddress" type="Hryvinskyi\RichSnippets\Model\Library\Source\ModuleLibraryFile">
+        <arguments>
+            <argument name="moduleName" xsi:type="string">Hryvinskyi_RichSnippets</argument>
+            <argument name="fileName" xsi:type="string">postal-address.json</argument>
+        </arguments>
+    </virtualType>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\LibraryTemplatePool">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+            <argument name="groups" xsi:type="array">
+                <item name="shop" xsi:type="string">The shop</item>
+                <item name="product" xsi:type="string">Product pages</item>
+                <item name="category" xsi:type="string">Category pages</item>
+                <item name="content" xsi:type="string">Content pages</item>
+                <item name="blocks" xsi:type="string">Building blocks</item>
+            </argument>
+            <argument name="sources" xsi:type="array">
+                <item name="organization" xsi:type="object">HryvinskyiRichSnippetsLibraryOrganization</item>
+                <item name="website-name" xsi:type="object">HryvinskyiRichSnippetsLibraryWebsiteName</item>
+                <item name="breadcrumbs" xsi:type="object">HryvinskyiRichSnippetsLibraryBreadcrumbs</item>
+                <item name="local-business" xsi:type="object">HryvinskyiRichSnippetsLibraryLocalBusiness</item>
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsLibraryProduct</item>
+                <item name="product-variants" xsi:type="object">HryvinskyiRichSnippetsLibraryProductVariants</item>
+                <item name="product-list" xsi:type="object">HryvinskyiRichSnippetsLibraryProductList</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsLibraryCategory</item>
+                <item name="faq" xsi:type="object">HryvinskyiRichSnippetsLibraryFaq</item>
+                <item name="article" xsi:type="object">HryvinskyiRichSnippetsLibraryArticle</item>
+                <item name="return-policy" xsi:type="object">HryvinskyiRichSnippetsLibraryReturnPolicy</item>
+                <item name="shipping-policy" xsi:type="object">HryvinskyiRichSnippetsLibraryShippingPolicy</item>
+                <item name="postal-address" xsi:type="object">HryvinskyiRichSnippetsLibraryPostalAddress</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\QuestionSuggesterPool">
+        <arguments>
+            <argument name="suggesters" xsi:type="array">
+                <item name="brand" xsi:type="object">Hryvinskyi\RichSnippets\Model\Library\Question\BrandSuggester</item>
+                <item name="gtin" xsi:type="object">Hryvinskyi\RichSnippets\Model\Library\Question\GtinSuggester</item>
+                <item name="description" xsi:type="object">Hryvinskyi\RichSnippets\Model\Library\Question\DescriptionSuggester</item>
+                <item name="social_profiles" xsi:type="object">Hryvinskyi\RichSnippets\Model\Library\Question\SocialProfilesSuggester</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\BrandSuggester">
+        <arguments>
+            <argument name="attributes" xsi:type="array">
+                <item name="manufacturer" xsi:type="string">manufacturer</item>
+                <item name="brand" xsi:type="string">brand</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\GtinSuggester">
+        <arguments>
+            <argument name="terms" xsi:type="array">
+                <item name="ean" xsi:type="string">ean</item>
+                <item name="upc" xsi:type="string">upc</item>
+                <item name="gtin" xsi:type="string">gtin</item>
+                <item name="isbn" xsi:type="string">isbn</item>
+                <item name="jan" xsi:type="string">jan</item>
+                <item name="barcode" xsi:type="string">barcode</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\DescriptionSuggester">
+        <arguments>
+            <argument name="attributes" xsi:type="array">
+                <item name="short_description" xsi:type="string">short_description</item>
+                <item name="description" xsi:type="string">description</item>
+                <item name="meta_description" xsi:type="string">meta_description</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\SocialProfilesSuggester">
+        <arguments>
+            <argument name="hosts" xsi:type="array">
+                <item name="facebook" xsi:type="string">facebook.com</item>
+                <item name="instagram" xsi:type="string">instagram.com</item>
+                <item name="x" xsi:type="string">x.com</item>
+                <item name="twitter" xsi:type="string">twitter.com</item>
+                <item name="linkedin" xsi:type="string">linkedin.com</item>
+                <item name="youtube" xsi:type="string">youtube.com</item>
+                <item name="pinterest" xsi:type="string">pinterest.com</item>
+                <item name="tiktok" xsi:type="string">tiktok.com</item>
+                <item name="threads" xsi:type="string">threads.net</item>
+                <item name="wikipedia" xsi:type="string">wikipedia.org</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\SqlAttributeFillCounts">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\CachedAttributeFillCounts">
+        <arguments>
+            <argument name="inner" xsi:type="object">Hryvinskyi\RichSnippets\Model\Library\Question\SqlAttributeFillCounts</argument>
+            <argument name="cache" xsi:type="object">Hryvinskyi\RichSnippets\Model\Cache\Type\RichSnippetsCache</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Question\StoreShopName">
+        <arguments>
+            <argument name="stores" xsi:type="object">HryvinskyiRichSnippetsStoreSource</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Library\Library">
+        <arguments>
+            <argument name="recommended" xsi:type="array">
+                <item name="organization" xsi:type="string">organization</item>
+                <item name="website_name" xsi:type="string">website-name</item>
+                <item name="breadcrumbs" xsi:type="string">breadcrumbs</item>
+                <item name="product" xsi:type="string">product</item>
+                <item name="product_variants" xsi:type="string">product-variants</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Snippet management: the list with its flags, switch, copy, delete, export and import -->
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetManagementInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\SnippetManagement"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetListInterface"
+                type="Hryvinskyi\RichSnippets\Model\Listing\SnippetList"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetExportInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\SnippetExport"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetImportInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\SnippetImport"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetFlagFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Flag\Factory\SnippetFlagFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\SnippetFlagInterface"
+                type="Hryvinskyi\RichSnippets\Model\Flag\SnippetFlag"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\SnippetRowInterface"
+                type="Hryvinskyi\RichSnippets\Model\Listing\SnippetRow"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\SnippetListingInterface"
+                type="Hryvinskyi\RichSnippets\Model\Listing\SnippetListing"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\SnippetExportFileInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\ExportFile"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ImportProblemInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\ImportProblem"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ImportEntryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\ImportEntry"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ImportPreviewInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\ImportPreview"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ImportedSnippetInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\ImportedSnippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Listing\ListingFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Listing\Factory\ListingFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Transfer\TransferFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Transfer\Factory\TransferFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Clock\ClockInterface"
+                type="Hryvinskyi\RichSnippets\Model\Clock\SystemClock"/>
+    <type name="Hryvinskyi\RichSnippets\Model\Listing\SnippetList">
+        <arguments>
+            <argument name="flags" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\SnippetFlagPool</argument>
+        </arguments>
+    </type>
+    <!-- The flags of the snippet list's rows; another module adds a provider here -->
+    <type name="Hryvinskyi\RichSnippets\Model\Flag\SnippetFlagPool">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="required_paths" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\Provider\RequiredPathFlags</item>
+                <item name="google_status" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\Provider\GoogleStatusFlags</item>
+                <item name="same_type_overlap" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\Provider\SameTypeOverlapFlags</item>
+                <item name="check_findings" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\Provider\FindingFlags</item>
+                <item name="deleted_store_view" xsi:type="object">Hryvinskyi\RichSnippets\Model\Flag\Provider\DeletedStoreViewFlags</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Flag\Provider\RequiredPathFlags">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Transfer\ImportCheck">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <!-- Condition values keyed by a row ID travel between shops by a label; another module adds its own here -->
+    <type name="Hryvinskyi\RichSnippets\Model\Transfer\PortableConditions">
+        <arguments>
+            <argument name="portable" xsi:type="array">
+                <item name="attribute_set" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Portable\AttributeSetName</item>
+                <item name="product_category" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Portable\CategoryPath</item>
+                <item name="category_page" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Portable\CategoryPath</item>
+                <item name="product_attribute" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Portable\AttributeOptionLabel</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Transfer\Portable\CategoryPath">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Transfer\ImportWriter">
+        <arguments>
+            <argument name="writers" xsi:type="array">
+                <item name="replace" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Write\ReplaceWriter</item>
+                <item name="keep_both" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Write\KeepBothWriter</item>
+                <item name="add" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Write\AddWriter</item>
+                <item name="skip" xsi:type="object">Hryvinskyi\RichSnippets\Model\Transfer\Write\SkipWriter</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- The editor: drafts checked, previewed and saved; the pages to preview with; the pickers' catalogs -->
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetDraftInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\SnippetDraft"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetDraftSaveInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\DraftSave"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\DraftSnippetInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\DraftSnippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\DraftProblemInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\DraftProblem"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\DraftPreviewInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\DraftPreview"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\DraftSaveResultInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\DraftSaveResult"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Draft\DraftFactoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Draft\Factory\DraftFactoryAdapter"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\PageSearchInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\PageSearch"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\PageMatchInterface"
+                type="Hryvinskyi\RichSnippets\Model\Page\PageMatch"/>
+    <type name="Hryvinskyi\RichSnippets\Model\Draft\SnippetDraft">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Draft\DraftValidation">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <type name="Hryvinskyi\RichSnippets\Model\Editor\FieldExamples">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <!-- The page search: one source per kind of page; another module adds one for a kind of its own -->
+    <type name="Hryvinskyi\RichSnippets\Model\Page\PageSearch">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="home" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Search\HomePageTitle</item>
+                <item name="product" xsi:type="object">HryvinskyiRichSnippetsProductPageSearch</item>
+                <item name="category" xsi:type="object">HryvinskyiRichSnippetsCategoryPageSearch</item>
+                <item name="cms" xsi:type="object">Hryvinskyi\RichSnippets\Model\Page\Search\CmsTitledPages</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsProductPageSearch"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Search\EavNamedPages">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsProductAttributeJoin</argument>
+            <argument name="urlEntityType" xsi:type="string">product</argument>
+            <argument name="route" xsi:type="string">catalog/product/view/id/%d</argument>
+            <argument name="entityTable" xsi:type="string">catalog_product_entity</argument>
+            <argument name="codeColumn" xsi:type="string">sku</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsCategoryPageSearch"
+                 type="Hryvinskyi\RichSnippets\Model\Page\Search\EavNamedPages">
+        <arguments>
+            <argument name="attributes" xsi:type="object">HryvinskyiRichSnippetsCategoryAttributeJoin</argument>
+            <argument name="urlEntityType" xsi:type="string">category</argument>
+            <argument name="route" xsi:type="string">catalog/category/view/id/%d</argument>
+        </arguments>
+    </virtualType>
+    <!-- The properties offered when a property is added to an object of a type, each with the field a value of
+         that name is taken from when one fits; another module adds a type or names here. A type not listed is
+         offered what the requirement rules ask for. -->
+    <type name="Hryvinskyi\RichSnippets\Model\Editor\PropertySuggestions">
+        <arguments>
+            <argument name="suggestions" xsi:type="array">
+                <item name="Product" xsi:type="array">
+                    <item name="mpn" xsi:type="array">
+                        <item name="name" xsi:type="string">mpn</item>
+                    </item>
+                    <item name="material" xsi:type="array">
+                        <item name="name" xsi:type="string">material</item>
+                        <item name="field" xsi:type="string">product.material</item>
+                    </item>
+                    <item name="size" xsi:type="array">
+                        <item name="name" xsi:type="string">size</item>
+                    </item>
+                    <item name="pattern" xsi:type="array">
+                        <item name="name" xsi:type="string">pattern</item>
+                    </item>
+                    <item name="category" xsi:type="array">
+                        <item name="name" xsi:type="string">category</item>
+                    </item>
+                    <item name="audience" xsi:type="array">
+                        <item name="name" xsi:type="string">audience</item>
+                    </item>
+                </item>
+                <item name="Offer" xsi:type="array">
+                    <item name="shippingDetails" xsi:type="array">
+                        <item name="name" xsi:type="string">shippingDetails</item>
+                    </item>
+                    <item name="validFrom" xsi:type="array">
+                        <item name="name" xsi:type="string">validFrom</item>
+                    </item>
+                    <item name="validThrough" xsi:type="array">
+                        <item name="name" xsi:type="string">validThrough</item>
+                    </item>
+                </item>
+                <item name="MerchantReturnPolicy" xsi:type="array">
+                    <item name="returnShippingFeesAmount" xsi:type="array">
+                        <item name="name" xsi:type="string">returnShippingFeesAmount</item>
+                    </item>
+                    <item name="returnLabelSource" xsi:type="array">
+                        <item name="name" xsi:type="string">returnLabelSource</item>
+                    </item>
+                    <item name="restockingFee" xsi:type="array">
+                        <item name="name" xsi:type="string">restockingFee</item>
+                    </item>
+                    <item name="itemCondition" xsi:type="array">
+                        <item name="name" xsi:type="string">itemCondition</item>
+                    </item>
+                </item>
+            </argument>
+            <!-- The field a property named by hand is taken from, for names the list does not offer -->
+            <argument name="fields" xsi:type="array">
+                <item name="Product" xsi:type="array">
+                    <item name="color" xsi:type="string">product.color</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- The values schema.org enumerates for a property, offered as fixed values; another module adds its own -->
+    <type name="Hryvinskyi\RichSnippets\Model\Editor\PropertyEnums">
+        <arguments>
+            <argument name="enums" xsi:type="array">
+                <item name="itemCondition" xsi:type="array">
+                    <item name="new" xsi:type="string">NewCondition</item>
+                    <item name="refurbished" xsi:type="string">RefurbishedCondition</item>
+                    <item name="used" xsi:type="string">UsedCondition</item>
+                </item>
+                <item name="availability" xsi:type="array">
+                    <item name="in_stock" xsi:type="string">InStock</item>
+                    <item name="out_of_stock" xsi:type="string">OutOfStock</item>
+                    <item name="pre_order" xsi:type="string">PreOrder</item>
+                    <item name="back_order" xsi:type="string">BackOrder</item>
+                    <item name="sold_out" xsi:type="string">SoldOut</item>
+                    <item name="discontinued" xsi:type="string">Discontinued</item>
+                </item>
+                <item name="returnPolicyCategory" xsi:type="array">
+                    <item name="finite" xsi:type="string">MerchantReturnFiniteReturnWindow</item>
+                    <item name="not_permitted" xsi:type="string">MerchantReturnNotPermitted</item>
+                    <item name="unlimited" xsi:type="string">MerchantReturnUnlimitedWindow</item>
+                </item>
+                <item name="returnFees" xsi:type="array">
+                    <item name="free" xsi:type="string">FreeReturn</item>
+                    <item name="customer" xsi:type="string">ReturnFeesCustomerResponsibility</item>
+                    <item name="shipping" xsi:type="string">ReturnShippingFees</item>
+                </item>
+                <item name="returnMethod" xsi:type="array">
+                    <item name="mail" xsi:type="string">ReturnByMail</item>
+                    <item name="store" xsi:type="string">ReturnInStore</item>
+                    <item name="kiosk" xsi:type="string">ReturnAtKiosk</item>
+                </item>
+                <item name="refundType" xsi:type="array">
+                    <item name="full" xsi:type="string">FullRefund</item>
+                    <item name="exchange" xsi:type="string">ExchangeRefund</item>
+                    <item name="store_credit" xsi:type="string">StoreCreditRefund</item>
+                </item>
+                <item name="priceType" xsi:type="array">
+                    <item name="strikethrough" xsi:type="string">StrikethroughPrice</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Page test: reading a storefront page as a visitor, its structured data, and the theme markup it shows -->
+    <preference for="Hryvinskyi\RichSnippets\Api\PageTestInterface"
+                type="Hryvinskyi\RichSnippets\Model\PageTest\PageTest"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\PageTestResultInterface"
+                type="Hryvinskyi\RichSnippets\Model\PageTest\PageTestResult"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\TestedBlockInterface"
+                type="Hryvinskyi\RichSnippets\Model\PageTest\TestedBlock"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\UnwrittenSnippetInterface"
+                type="Hryvinskyi\RichSnippets\Model\PageTest\UnwrittenSnippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\StorefrontReaderInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\Reading\HttpStorefrontReader"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\StorefrontPathInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\Reading\StorefrontPath"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\StorefrontPageInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\Reading\StorefrontPage"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\HtmlStructuredDataScannerInterface"
+                type="Hryvinskyi\RichSnippets\Model\Html\StructuredDataScanner"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\StructuredDataInterface"
+                type="Hryvinskyi\RichSnippets\Model\Html\StructuredData"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\JsonLdBlockInterface"
+                type="Hryvinskyi\RichSnippets\Model\Html\JsonLdBlock"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\MicrodataItemInterface"
+                type="Hryvinskyi\RichSnippets\Model\Html\MicrodataItem"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\ThemeMarkupObservationsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Observation\DatabaseThemeMarkupObservations"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\ThemeMarkupObservationInterface"
+                type="Hryvinskyi\RichSnippets\Model\Observation\ThemeMarkupObservation"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Clock\MonotonicClockInterface"
+                type="Hryvinskyi\RichSnippets\Model\Clock\SystemMonotonicClock"/>
+    <!-- The kind of page a path shows, by the entity type of its URL rewrite -->
+    <type name="Hryvinskyi\RichSnippets\Model\PageTest\TestedPages">
+        <arguments>
+            <argument name="rewriteKinds" xsi:type="array">
+                <item name="product" xsi:type="string">product</item>
+                <item name="category" xsi:type="string">category</item>
+                <item name="cms-page" xsi:type="string">cms</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- How a sentence names each kind of page; another module adds its kinds -->
+    <type name="Hryvinskyi\RichSnippets\Model\Placement\KindPhrases">
+        <arguments>
+            <argument name="kinds" xsi:type="array">
+                <item name="home" xsi:type="array">
+                    <item name="phrase" xsi:type="string">the home page</item>
+                    <item name="singular" xsi:type="boolean">true</item>
+                </item>
+                <item name="product" xsi:type="array">
+                    <item name="phrase" xsi:type="string">product pages</item>
+                </item>
+                <item name="category" xsi:type="array">
+                    <item name="phrase" xsi:type="string">category pages</item>
+                </item>
+                <item name="cms" xsi:type="array">
+                    <item name="phrase" xsi:type="string">CMS pages</item>
+                </item>
+                <item name="other" xsi:type="array">
+                    <item name="phrase" xsi:type="string">every other page</item>
+                    <item name="singular" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- One-sentence summaries of a page test's blocks, by schema.org type; another module adds its types -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\BlockSummaries">
+        <arguments>
+            <argument name="summaries" xsi:type="array">
+                <item name="Product" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\ProductSummary</item>
+                <item name="BreadcrumbList" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\BreadcrumbSummary</item>
+                <item name="WebSite" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\WebSiteSummary</item>
+                <item name="Organization" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\OrganizationSummary</item>
+                <item name="OnlineStore" xsi:type="object">HryvinskyiRichSnippetsShopSummary</item>
+                <item name="Store" xsi:type="object">HryvinskyiRichSnippetsShopSummary</item>
+                <item name="LocalBusiness" xsi:type="object">HryvinskyiRichSnippetsShopSummary</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsShopSummary"
+                 type="Hryvinskyi\RichSnippets\Model\Admin\Test\Summary\OrganizationSummary">
+        <arguments>
+            <argument name="subject" xsi:type="string">The shop</argument>
+        </arguments>
+    </virtualType>
+    <!-- Why a page snippet is not output on a tested page, one wording per reason, by the reason's value -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\ExclusionWordings">
+        <arguments>
+            <argument name="wordings" xsi:type="array">
+                <item name="switched_off" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\SwitchedOffWording</item>
+                <item name="other_stores" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\OtherStoresWording</item>
+                <item name="no_page_kinds" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\NoPageKindsWording</item>
+                <item name="other_kinds" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\OtherKindsWording</item>
+                <item name="conditions_not_met" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Reason\ConditionsNotMetWording</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- What the page test's "Against Google’s requirements" says about a kind of result under each verdict -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Test\FeatureRows">
+        <arguments>
+            <argument name="wordings" xsi:type="array">
+                <item name="met" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Feature\MetWording</item>
+                <item name="not_met" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Feature\NotMetWording</item>
+                <item name="left_out" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Test\Feature\LeftOutWording</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Catalog check: runs, their findings and counts, the job that runs them and the screens that read them -->
+    <!-- Why a finding of each tone matters and what to do about it -->
+    <type name="Hryvinskyi\RichSnippets\Model\Check\FindingWording">
+        <arguments>
+            <argument name="tones" xsi:type="array">
+                <item name="bad" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Tone\BadToneWording</item>
+                <item name="warn" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Tone\WarnToneWording</item>
+                <item name="note" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Tone\NoteToneWording</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Hryvinskyi\RichSnippets\Api\CatalogCheckInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\CatalogCheck"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\CatalogCheckRunnerInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\CatalogCheckRunner"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\CheckRunInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\CheckRun"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\CheckStatusInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\CheckStatus"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FindingInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\Finding"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FindingItemInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\FindingItem"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FindingItemsInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\FindingItems"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FindingsCsvInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\FindingsCsv"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Check\CheckRunStoreInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\Storage\DatabaseCheckRuns"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Check\CheckResultWriterInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\Storage\DatabaseCheckResultWriter"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Check\CheckResultReaderInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\Storage\DatabaseCheckResultReader"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Check\Mail\FindingsMailInterface"
+                type="Hryvinskyi\RichSnippets\Model\Check\Mail\FindingsMail"/>
+    <type name="Hryvinskyi\RichSnippets\Model\Check\ChunkCheck">
+        <arguments>
+            <argument name="engine" xsi:type="object">HryvinskyiRichSnippetsTemplateEngine</argument>
+        </arguments>
+    </type>
+    <!-- How the pages behind a finding are named, by kind of page; another module adds its kinds -->
+    <type name="Hryvinskyi\RichSnippets\Model\Check\Label\PageLabelPool">
+        <arguments>
+            <argument name="fallback" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Label\UnnamedPageLabels</argument>
+            <argument name="kinds" xsi:type="array">
+                <item name="home" xsi:type="object">HryvinskyiRichSnippetsHomePageLabels</item>
+                <item name="product" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Label\ProductLabels</item>
+                <item name="category" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Label\CategoryLabels</item>
+                <item name="cms" xsi:type="object">Hryvinskyi\RichSnippets\Model\Check\Label\CmsPageLabels</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsHomePageLabels"
+                 type="Hryvinskyi\RichSnippets\Model\Check\Label\FixedPageLabels">
+        <arguments>
+            <argument name="phrase" xsi:type="string">Home page</argument>
+        </arguments>
+    </virtualType>
+    <!-- The kinds of page the Test page's catalog facts count, in the order it lists them -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Check\CheckStatusPresenter">
+        <arguments>
+            <argument name="factLabels" xsi:type="array">
+                <item name="product" xsi:type="string">Products</item>
+                <item name="category" xsi:type="string">Categories</item>
+                <item name="cms" xsi:type="string">CMS pages</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Overview: the landing page's numbers, its page map, its Google results and what wants fixing -->
+    <preference for="Hryvinskyi\RichSnippets\Api\OverviewInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\Overview"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\OverviewReportInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\OverviewReport"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\KindOverviewInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\KindOverview"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\KindSnippetInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\KindSnippet"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\FeatureOverviewInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\FeatureOverview"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\AttentionItemInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\AttentionItem"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\AttentionTargetInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\AttentionTarget"/>
+    <preference for="Hryvinskyi\RichSnippets\Api\Data\AttentionScopeInterface"
+                type="Hryvinskyi\RichSnippets\Model\Overview\AttentionScope"/>
+    <preference for="Hryvinskyi\RichSnippets\Model\Snippet\SnippetHistoryInterface"
+                type="Hryvinskyi\RichSnippets\Model\Snippet\Storage\DatabaseSnippetHistory"/>
+    <!-- What wants fixing, one provider per sort of thing, listed in this order; another module adds its own -->
+    <type name="Hryvinskyi\RichSnippets\Model\Overview\AttentionItems">
+        <arguments>
+            <argument name="providers" xsi:type="array">
+                <item name="invalid_pages" xsi:type="object">HryvinskyiRichSnippetsInvalidPagesAttention</item>
+                <item name="theme_markup" xsi:type="object">Hryvinskyi\RichSnippets\Model\Overview\Attention\ThemeMarkupAttention</item>
+                <item name="recommended_gaps" xsi:type="object">HryvinskyiRichSnippetsRecommendedGapsAttention</item>
+                <item name="newer_template" xsi:type="object">Hryvinskyi\RichSnippets\Model\Overview\Attention\NewerTemplateAttention</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HryvinskyiRichSnippetsInvalidPagesAttention"
+                 type="Hryvinskyi\RichSnippets\Model\Overview\Attention\FindingAttention">
+        <arguments>
+            <argument name="findingTone" xsi:type="string">bad</argument>
+            <argument name="itemTone" xsi:type="string">bad</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="HryvinskyiRichSnippetsRecommendedGapsAttention"
+                 type="Hryvinskyi\RichSnippets\Model\Overview\Attention\FindingAttention">
+        <arguments>
+            <argument name="findingTone" xsi:type="string">warn</argument>
+            <argument name="itemTone" xsi:type="string">warn</argument>
+            <argument name="dataGapsOnly" xsi:type="boolean">true</argument>
+        </arguments>
+    </virtualType>
+    <!-- The Overview's words for each setup state, by the state's value -->
+    <type name="Hryvinskyi\RichSnippets\Model\Admin\Overview\State\StateWordings">
+        <arguments>
+            <argument name="wordings" xsi:type="array">
+                <item name="none" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Overview\State\NoneState</item>
+                <item name="off" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Overview\State\OffState</item>
+                <item name="live" xsi:type="object">Hryvinskyi\RichSnippets\Model\Admin\Overview\State\LiveState</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- How the Overview's page map names each kind of page; another module adds its kinds -->
+    <!-- How the admin pages label each kind of page and which glyph they draw for it; another module adds its kinds -->
+    <type name="Hryvinskyi\RichSnippets\Model\Placement\KindLabels">
+        <arguments>
+            <argument name="kinds" xsi:type="array">
+                <item name="home" xsi:type="array">
+                    <item name="label" xsi:type="string">Home page</item>
+                    <item name="page" xsi:type="string">Home page</item>
+                    <item name="icon" xsi:type="string">home</item>
+                </item>
+                <item name="product" xsi:type="array">
+                    <item name="label" xsi:type="string">Product pages</item>
+                    <item name="page" xsi:type="string">Product page</item>
+                    <item name="icon" xsi:type="string">inventory_2</item>
+                </item>
+                <item name="category" xsi:type="array">
+                    <item name="label" xsi:type="string">Category pages</item>
+                    <item name="page" xsi:type="string">Category page</item>
+                    <item name="icon" xsi:type="string">category</item>
+                </item>
+                <item name="cms" xsi:type="array">
+                    <item name="label" xsi:type="string">CMS pages</item>
+                    <item name="page" xsi:type="string">CMS page</item>
+                    <item name="icon" xsi:type="string">article</item>
+                </item>
+                <item name="other" xsi:type="array">
+                    <item name="label" xsi:type="string">Every other page</item>
+                    <item name="page" xsi:type="string">Other page</item>
+                    <item name="icon" xsi:type="string">public</item>
+                    <item name="description" xsi:type="string">Cart, checkout, account, search</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

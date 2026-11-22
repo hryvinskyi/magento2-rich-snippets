@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<!--
+Every storefront page layout has the end-of-body container, so every page renders the snippets' block: it writes the
+page's script blocks and gives the page its cache tags even where no snippet is output today.
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Hryvinskyi\RichSnippets\Block\Snippets" name="hryvinskyi.rich.snippets"/>
+        </referenceContainer>
+    </body>
+</page>

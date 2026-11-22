@@ -1,0 +1,12 @@
+{
+    "label": "Event listing",
+    "phrase": "an event listing",
+    "appliesTo": [{"type": "Event"}],
+    "googleStatus": "ok",
+    "required": ["name", "startDate", "location.name"],
+    "recommended": ["image"],
+    "texts": {
+        "requirement": "a name, a start date and a place",
+        "met": "A name, a start date and a place."
+    }
+}

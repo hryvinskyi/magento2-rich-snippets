@@ -1,0 +1,131 @@
+{
+    "findings": {
+        "store": null,
+        "subtitle": "3 kinds of gap to fix, 1 that needs nothing. Click one to see the pages.",
+        "findings": [
+            {
+                "key": "merchant-listing-image",
+                "tone": "bad",
+                "title": "No image",
+                "description": "Google needs image for a merchant listing. These pages are output without it and are reported as invalid.",
+                "fix": "Fill Main image for each of these pages.",
+                "snippets": [
+                    {
+                        "code": "product",
+                        "name": "Product"
+                    }
+                ],
+                "pages": 2,
+                "allProducts": true,
+                "count": "2 products",
+                "meta": "2 products · Product",
+                "label": "No image: 2 products. Show them.",
+                "fileName": "rich-snippets-merchant-listing-image.csv",
+                "saved": "2 products were saved as rich-snippets-merchant-listing-image.csv."
+            },
+            {
+                "key": "merchant-listing-gtin13-product-ean",
+                "tone": "warn",
+                "title": "EAN is empty",
+                "description": "gtin13 is left out. Google recommends it for a merchant listing.",
+                "fix": "Fill EAN where there is a value. Where there is none, the property is simply left out.",
+                "snippets": [
+                    {
+                        "code": "product",
+                        "name": "Product"
+                    },
+                    {
+                        "code": "product-variants",
+                        "name": "Product with variants"
+                    }
+                ],
+                "pages": 23,
+                "allProducts": true,
+                "count": "23 products",
+                "meta": "23 products · Product and Product with variants",
+                "label": "EAN is empty: 23 products. Show them.",
+                "fileName": "rich-snippets-merchant-listing-gtin13-product-ean.csv",
+                "saved": "23 products were saved as rich-snippets-merchant-listing-gtin13-product-ean.csv."
+            },
+            {
+                "key": "merchant-listing-description-product-short-description",
+                "tone": "warn",
+                "title": "Short description is empty",
+                "description": "description is left out. Google recommends it for a merchant listing.",
+                "fix": "Fill Short description where there is a value. Where there is none, the property is simply left out.",
+                "snippets": [
+                    {
+                        "code": "product",
+                        "name": "Product"
+                    }
+                ],
+                "pages": 5,
+                "allProducts": true,
+                "count": "5 products",
+                "meta": "5 products · Product",
+                "label": "Short description is empty: 5 products. Show them.",
+                "fileName": "rich-snippets-merchant-listing-description-product-short-description.csv",
+                "saved": "5 products were saved as rich-snippets-merchant-listing-description-product-short-description.csv."
+            },
+            {
+                "key": "review-stars-left-out-reviews-rating-reviews-count",
+                "tone": "note",
+                "title": "Review stars left out",
+                "description": "The product has no reviews yet, so the rating is left out. Nothing to fix.",
+                "fix": "Nothing to fix.",
+                "snippets": [
+                    {
+                        "code": "product",
+                        "name": "Product"
+                    },
+                    {
+                        "code": "product-variants",
+                        "name": "Product with variants"
+                    }
+                ],
+                "pages": 71,
+                "allProducts": true,
+                "count": "71 products",
+                "meta": "71 products · Product and Product with variants",
+                "label": "Review stars left out: 71 products. Show them.",
+                "fileName": "rich-snippets-review-stars-left-out-reviews-rating-reviews-count.csv",
+                "saved": "71 products were saved as rich-snippets-review-stars-left-out-reviews-rating-reviews-count.csv."
+            }
+        ]
+    },
+    "clean": {
+        "store": 1,
+        "subtitle": "Nothing to fix.",
+        "findings": [
+            {
+                "key": "review-stars-left-out-reviews-rating-reviews-count",
+                "tone": "note",
+                "title": "Review stars left out",
+                "description": "The product has no reviews yet, so the rating is left out. Nothing to fix.",
+                "fix": "Nothing to fix.",
+                "snippets": [
+                    {
+                        "code": "product",
+                        "name": "Product"
+                    },
+                    {
+                        "code": "product-variants",
+                        "name": "Product with variants"
+                    }
+                ],
+                "pages": 71,
+                "allProducts": true,
+                "count": "71 products",
+                "meta": "71 products · Product and Product with variants",
+                "label": "Review stars left out: 71 products. Show them.",
+                "fileName": "rich-snippets-review-stars-left-out-reviews-rating-reviews-count.csv",
+                "saved": "71 products were saved as rich-snippets-review-stars-left-out-reviews-rating-reviews-count.csv."
+            }
+        ]
+    },
+    "none": {
+        "store": null,
+        "subtitle": "Nothing to fix.",
+        "findings": []
+    }
+}

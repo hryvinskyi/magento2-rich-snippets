@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "group": "shop",
+    "name": "Website name",
+    "icon": "language",
+    "description": "The name Google shows for the site, next to its address in the results.",
+    "summary": "The name shown next to the address",
+    "where": "Home page",
+    "google": {
+        "results": ["site_name"],
+        "short": "Google: site name",
+        "long": "Google reads the site name from this snippet on the home page. It needs name and url."
+    },
+    "properties": ["name", "alternateName", "url"],
+    "placement": {"pageKinds": ["home"]},
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "{{store.name}}",
+        "alternateName": "",
+        "url": "{{store.url}}"
+    }
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- A product page opened at a variant's address opens with that variant chosen -->
+    <type name="Magento\Catalog\Helper\Product">
+        <plugin name="hryvinskyi_rich_snippets_preselect_requested_variant"
+                type="Hryvinskyi\RichSnippets\Plugin\PreselectRequestedVariant"/>
+    </type>
+
+    <!-- The storefront records what its page wrote, for the decisions taken once the response is finished -->
+    <preference for="Hryvinskyi\RichSnippets\Api\SnippetOutputInterface"
+                type="Hryvinskyi\RichSnippets\Model\Storefront\RecordingSnippetOutput"/>
+    <type name="Hryvinskyi\RichSnippets\Model\Storefront\RecordingSnippetOutput">
+        <arguments>
+            <argument name="inner" xsi:type="object">Hryvinskyi\RichSnippets\Model\Storefront\SnippetOutput</argument>
+        </arguments>
+    </type>
+
+    <!--
+        The theme's microdata leaves the rendered page before the built-in page cache stores it: the cache's plugin
+        runs at 101, after the head tag manager's at 100, so this one runs first
+    -->
+    <type name="Magento\Framework\Controller\ResultInterface">
+        <plugin name="hryvinskyi_rich_snippets_remove_theme_microdata"
+                type="Hryvinskyi\RichSnippets\Plugin\RemoveThemeMicrodata"
+                sortOrder="90"/>
+    </type>
+</config>

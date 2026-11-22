@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<!--
+The cron expression of the nightly check ships with the default of its time, so the check is scheduled on a fresh
+installation before anyone saves the settings; saving a start time writes the expression of that time.
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hryvinskyi_rich_snippets>
+            <general>
+                <enabled>1</enabled>
+            </general>
+            <output>
+                <position>head</position>
+                <format>compact</format>
+                <price_tax>catalog</price_tax>
+            </output>
+            <theme>
+                <remove_product_markup>1</remove_product_markup>
+            </theme>
+            <check>
+                <enabled>1</enabled>
+                <time>03:00</time>
+                <email/>
+            </check>
+            <developer>
+                <comments>0</comments>
+            </developer>
+        </hryvinskyi_rich_snippets>
+        <crontab>
+            <hryvinskyi_rich_snippets>
+                <jobs>
+                    <hryvinskyi_rich_snippets_schedule_check>
+                        <schedule>
+                            <cron_expr>0 3 * * *</cron_expr>
+                        </schedule>
+                    </hryvinskyi_rich_snippets_schedule_check>
+                </jobs>
+            </hryvinskyi_rich_snippets>
+        </crontab>
+    </default>
+</config>

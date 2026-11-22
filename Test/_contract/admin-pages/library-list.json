@@ -1,0 +1,944 @@
+{
+    "lib": {
+        "groups": [
+            {
+                "code": "shop",
+                "label": "The shop"
+            },
+            {
+                "code": "product",
+                "label": "Product pages"
+            },
+            {
+                "code": "category",
+                "label": "Category pages"
+            },
+            {
+                "code": "content",
+                "label": "Content pages"
+            },
+            {
+                "code": "blocks",
+                "label": "Building blocks"
+            }
+        ],
+        "recommended": [
+            "organization",
+            "website-name",
+            "breadcrumbs",
+            "product",
+            "product-variants"
+        ],
+        "templates": [
+            {
+                "code": "organization",
+                "version": 1,
+                "group": "shop",
+                "name": "Organization",
+                "type": "OnlineStore",
+                "icon": "apartment",
+                "description": "The shop itself: name, logo, contact details and social profiles. Carries the return policy.",
+                "summary": "Name, logo, contact, return policy",
+                "where": "Home page",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: organization details, return policy",
+                    "long": "Google can use it for the logo and details it shows about the shop, and for the return policy of every product. There are no required properties."
+                },
+                "properties": [
+                    "name",
+                    "url",
+                    "logo",
+                    "email",
+                    "telephone",
+                    "address",
+                    "sameAs",
+                    "hasMerchantReturnPolicy"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": true
+                    },
+                    {
+                        "code": "postal-address",
+                        "name": "Postal address",
+                        "inShop": true
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "social_profiles",
+                        "label": "Social profiles"
+                    }
+                ],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Organization 2"
+            },
+            {
+                "code": "website-name",
+                "version": 1,
+                "group": "shop",
+                "name": "Website name",
+                "type": "WebSite",
+                "icon": "language",
+                "description": "The name Google shows for the site, next to its address in the results.",
+                "summary": "The name shown next to the address",
+                "where": "Home page",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: site name",
+                    "long": "Google reads the site name from this snippet on the home page. It needs name and url."
+                },
+                "properties": [
+                    "name",
+                    "alternateName",
+                    "url"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Website name 2"
+            },
+            {
+                "code": "breadcrumbs",
+                "version": 1,
+                "group": "shop",
+                "name": "Breadcrumbs",
+                "type": "BreadcrumbList",
+                "icon": "chevron_right",
+                "description": "The path to the page, shown in the result in place of the raw address.",
+                "summary": "The path to every page",
+                "where": "Product, category and CMS pages",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: breadcrumb",
+                    "long": "Google shows the path in place of the address. It needs at least two levels, each with a name, a position and an address."
+                },
+                "properties": [
+                    "itemListElement",
+                    "position",
+                    "name",
+                    "item"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Breadcrumbs 2"
+            },
+            {
+                "code": "local-business",
+                "version": 1,
+                "group": "shop",
+                "name": "Local business",
+                "type": "Store",
+                "icon": "storefront",
+                "description": "A shop people can walk into: address, opening hours, phone, location.",
+                "summary": "",
+                "where": "A CMS page you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: local business",
+                    "long": "Google can show the address and opening hours of a shop people can visit. Use it only for a place with a door."
+                },
+                "properties": [
+                    "name",
+                    "image",
+                    "address",
+                    "geo",
+                    "telephone",
+                    "openingHoursSpecification",
+                    "url"
+                ],
+                "uses": [
+                    {
+                        "code": "postal-address",
+                        "name": "Postal address",
+                        "inShop": true
+                    }
+                ],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Local business"
+            },
+            {
+                "code": "product",
+                "version": 1,
+                "group": "product",
+                "name": "Product",
+                "type": "Product",
+                "icon": "inventory_2",
+                "description": "A simple product: name, images, price, availability, brand, GTIN, rating and reviews.",
+                "summary": "Price, stock, brand, rating of a product",
+                "where": "Product pages, except configurable",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: merchant listing, review stars",
+                    "long": "Meets what Google asks for a merchant listing: name, image and an offer with a price and a currency. Rating and reviews add the stars when a product has them."
+                },
+                "properties": [
+                    "name",
+                    "description",
+                    "sku",
+                    "gtin13",
+                    "image",
+                    "brand",
+                    "color",
+                    "offers",
+                    "aggregateRating",
+                    "review"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": true
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "brand",
+                        "label": "Brand"
+                    },
+                    {
+                        "code": "gtin",
+                        "label": "GTIN (EAN, UPC)"
+                    },
+                    {
+                        "code": "description",
+                        "label": "Description"
+                    }
+                ],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Product 2"
+            },
+            {
+                "code": "product-variants",
+                "version": 1,
+                "group": "product",
+                "name": "Product with variants",
+                "type": "ProductGroup",
+                "icon": "style",
+                "description": "A configurable product: the group, and one Product per variant with its own price and stock.",
+                "summary": "Every variant of a configurable product",
+                "where": "Product pages, configurable only",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: product variants",
+                    "long": "Google reads each variant with its own price and availability. Each variant needs its own SKU or GTIN and an address that selects it."
+                },
+                "properties": [
+                    "name",
+                    "productGroupID",
+                    "variesBy",
+                    "hasVariant",
+                    "sku",
+                    "offers",
+                    "color",
+                    "size"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": true
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "brand",
+                        "label": "Brand"
+                    },
+                    {
+                        "code": "gtin",
+                        "label": "GTIN (EAN, UPC)"
+                    }
+                ],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Product with variants 2"
+            },
+            {
+                "code": "product-list",
+                "version": 1,
+                "group": "category",
+                "name": "Product list",
+                "type": "ItemList",
+                "icon": "view_list",
+                "description": "The products of a category page, in the order they are shown.",
+                "summary": "",
+                "where": "Category pages",
+                "isBlock": false,
+                "google": {
+                    "status": "none",
+                    "short": "Google: no result of its own",
+                    "long": "Google shows no result of its own for a product list on a category page. Other search engines and assistants can read it."
+                },
+                "properties": [
+                    "itemListElement",
+                    "position",
+                    "url",
+                    "name"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Product list 2"
+            },
+            {
+                "code": "category",
+                "version": 1,
+                "group": "category",
+                "name": "Category",
+                "type": "CollectionPage",
+                "icon": "category",
+                "description": "Name, description and image of the category.",
+                "summary": "",
+                "where": "Category pages",
+                "isBlock": false,
+                "google": {
+                    "status": "none",
+                    "short": "Google: no result of its own",
+                    "long": "Google shows no result of its own for it. It tells any reader what the page is about."
+                },
+                "properties": [
+                    "name",
+                    "description",
+                    "image",
+                    "url"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Category"
+            },
+            {
+                "code": "faq",
+                "version": 1,
+                "group": "content",
+                "name": "FAQ",
+                "type": "FAQPage",
+                "icon": "quiz",
+                "description": "Questions and answers, typed into the snippet for the pages that show them.",
+                "summary": "",
+                "where": "CMS pages you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "gone",
+                    "short": "Google: no result since 2026",
+                    "long": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read the markup. The questions have to be visible on the page."
+                },
+                "properties": [
+                    "mainEntity",
+                    "name",
+                    "acceptedAnswer",
+                    "text"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "FAQ 2"
+            },
+            {
+                "code": "article",
+                "version": 1,
+                "group": "content",
+                "name": "Article",
+                "type": "Article",
+                "icon": "article",
+                "description": "A journal or blog post kept as a CMS page: headline, image, author, dates.",
+                "summary": "",
+                "where": "CMS pages you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: article",
+                    "long": "Google can show the headline, image and date of an article. There are no required properties."
+                },
+                "properties": [
+                    "headline",
+                    "image",
+                    "datePublished",
+                    "dateModified",
+                    "author"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Article"
+            },
+            {
+                "code": "return-policy",
+                "version": 1,
+                "group": "blocks",
+                "name": "Return policy",
+                "type": "MerchantReturnPolicy",
+                "icon": "assignment_return",
+                "description": "Return window, method and fees, written once and used by the shop and by every product.",
+                "summary": "",
+                "where": "Inside Organization and Product",
+                "isBlock": true,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: return policy",
+                    "long": "Google can show the return window with a product. It needs the countries, the kind of policy and, for a limited window, the number of days. Return settings in Merchant Center or Search Console take precedence over markup."
+                },
+                "properties": [
+                    "applicableCountry",
+                    "returnPolicyCategory",
+                    "merchantReturnDays",
+                    "returnMethod",
+                    "returnFees"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Return policy 2"
+            },
+            {
+                "code": "shipping-policy",
+                "version": 1,
+                "group": "blocks",
+                "name": "Shipping policy",
+                "type": "ShippingService",
+                "icon": "local_shipping",
+                "description": "Delivery cost and delivery time for the whole shop.",
+                "summary": "",
+                "where": "Inside Organization",
+                "isBlock": true,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: shipping policy",
+                    "long": "Google can show delivery cost and time with a product. Supported at shop level since November 2025."
+                },
+                "properties": [
+                    "shippingConditions",
+                    "shippingDestination",
+                    "shippingRate",
+                    "transitTime"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Shipping policy"
+            },
+            {
+                "code": "postal-address",
+                "version": 1,
+                "group": "blocks",
+                "name": "Postal address",
+                "type": "PostalAddress",
+                "icon": "location_on",
+                "description": "The address from Store Information, for the shop and for a local business.",
+                "summary": "",
+                "where": "Inside Organization and Local business",
+                "isBlock": true,
+                "google": {
+                    "status": "none",
+                    "short": "Google: read with the snippets that use it",
+                    "long": "Read as part of Organization and Local business."
+                },
+                "properties": [
+                    "streetAddress",
+                    "postalCode",
+                    "addressLocality",
+                    "addressCountry"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": true,
+                "hasNewerVersion": false,
+                "nextName": "Postal address 2"
+            }
+        ]
+    },
+    "first": {
+        "groups": [
+            {
+                "code": "shop",
+                "label": "The shop"
+            },
+            {
+                "code": "product",
+                "label": "Product pages"
+            },
+            {
+                "code": "category",
+                "label": "Category pages"
+            },
+            {
+                "code": "content",
+                "label": "Content pages"
+            },
+            {
+                "code": "blocks",
+                "label": "Building blocks"
+            }
+        ],
+        "recommended": [
+            "organization",
+            "website-name",
+            "breadcrumbs",
+            "product",
+            "product-variants"
+        ],
+        "templates": [
+            {
+                "code": "organization",
+                "version": 1,
+                "group": "shop",
+                "name": "Organization",
+                "type": "OnlineStore",
+                "icon": "apartment",
+                "description": "The shop itself: name, logo, contact details and social profiles. Carries the return policy.",
+                "summary": "Name, logo, contact, return policy",
+                "where": "Home page",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: organization details, return policy",
+                    "long": "Google can use it for the logo and details it shows about the shop, and for the return policy of every product. There are no required properties."
+                },
+                "properties": [
+                    "name",
+                    "url",
+                    "logo",
+                    "email",
+                    "telephone",
+                    "address",
+                    "sameAs",
+                    "hasMerchantReturnPolicy"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": false
+                    },
+                    {
+                        "code": "postal-address",
+                        "name": "Postal address",
+                        "inShop": false
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "social_profiles",
+                        "label": "Social profiles"
+                    }
+                ],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Organization"
+            },
+            {
+                "code": "website-name",
+                "version": 1,
+                "group": "shop",
+                "name": "Website name",
+                "type": "WebSite",
+                "icon": "language",
+                "description": "The name Google shows for the site, next to its address in the results.",
+                "summary": "The name shown next to the address",
+                "where": "Home page",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: site name",
+                    "long": "Google reads the site name from this snippet on the home page. It needs name and url."
+                },
+                "properties": [
+                    "name",
+                    "alternateName",
+                    "url"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Website name"
+            },
+            {
+                "code": "breadcrumbs",
+                "version": 1,
+                "group": "shop",
+                "name": "Breadcrumbs",
+                "type": "BreadcrumbList",
+                "icon": "chevron_right",
+                "description": "The path to the page, shown in the result in place of the raw address.",
+                "summary": "The path to every page",
+                "where": "Product, category and CMS pages",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: breadcrumb",
+                    "long": "Google shows the path in place of the address. It needs at least two levels, each with a name, a position and an address."
+                },
+                "properties": [
+                    "itemListElement",
+                    "position",
+                    "name",
+                    "item"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Breadcrumbs"
+            },
+            {
+                "code": "local-business",
+                "version": 1,
+                "group": "shop",
+                "name": "Local business",
+                "type": "Store",
+                "icon": "storefront",
+                "description": "A shop people can walk into: address, opening hours, phone, location.",
+                "summary": "",
+                "where": "A CMS page you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: local business",
+                    "long": "Google can show the address and opening hours of a shop people can visit. Use it only for a place with a door."
+                },
+                "properties": [
+                    "name",
+                    "image",
+                    "address",
+                    "geo",
+                    "telephone",
+                    "openingHoursSpecification",
+                    "url"
+                ],
+                "uses": [
+                    {
+                        "code": "postal-address",
+                        "name": "Postal address",
+                        "inShop": false
+                    }
+                ],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Local business"
+            },
+            {
+                "code": "product",
+                "version": 1,
+                "group": "product",
+                "name": "Product",
+                "type": "Product",
+                "icon": "inventory_2",
+                "description": "A simple product: name, images, price, availability, brand, GTIN, rating and reviews.",
+                "summary": "Price, stock, brand, rating of a product",
+                "where": "Product pages, except configurable",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: merchant listing, review stars",
+                    "long": "Meets what Google asks for a merchant listing: name, image and an offer with a price and a currency. Rating and reviews add the stars when a product has them."
+                },
+                "properties": [
+                    "name",
+                    "description",
+                    "sku",
+                    "gtin13",
+                    "image",
+                    "brand",
+                    "color",
+                    "offers",
+                    "aggregateRating",
+                    "review"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": false
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "brand",
+                        "label": "Brand"
+                    },
+                    {
+                        "code": "gtin",
+                        "label": "GTIN (EAN, UPC)"
+                    },
+                    {
+                        "code": "description",
+                        "label": "Description"
+                    }
+                ],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Product"
+            },
+            {
+                "code": "product-variants",
+                "version": 1,
+                "group": "product",
+                "name": "Product with variants",
+                "type": "ProductGroup",
+                "icon": "style",
+                "description": "A configurable product: the group, and one Product per variant with its own price and stock.",
+                "summary": "Every variant of a configurable product",
+                "where": "Product pages, configurable only",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: product variants",
+                    "long": "Google reads each variant with its own price and availability. Each variant needs its own SKU or GTIN and an address that selects it."
+                },
+                "properties": [
+                    "name",
+                    "productGroupID",
+                    "variesBy",
+                    "hasVariant",
+                    "sku",
+                    "offers",
+                    "color",
+                    "size"
+                ],
+                "uses": [
+                    {
+                        "code": "return-policy",
+                        "name": "Return policy",
+                        "inShop": false
+                    }
+                ],
+                "questions": [
+                    {
+                        "code": "brand",
+                        "label": "Brand"
+                    },
+                    {
+                        "code": "gtin",
+                        "label": "GTIN (EAN, UPC)"
+                    }
+                ],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Product with variants"
+            },
+            {
+                "code": "product-list",
+                "version": 1,
+                "group": "category",
+                "name": "Product list",
+                "type": "ItemList",
+                "icon": "view_list",
+                "description": "The products of a category page, in the order they are shown.",
+                "summary": "",
+                "where": "Category pages",
+                "isBlock": false,
+                "google": {
+                    "status": "none",
+                    "short": "Google: no result of its own",
+                    "long": "Google shows no result of its own for a product list on a category page. Other search engines and assistants can read it."
+                },
+                "properties": [
+                    "itemListElement",
+                    "position",
+                    "url",
+                    "name"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Product list"
+            },
+            {
+                "code": "category",
+                "version": 1,
+                "group": "category",
+                "name": "Category",
+                "type": "CollectionPage",
+                "icon": "category",
+                "description": "Name, description and image of the category.",
+                "summary": "",
+                "where": "Category pages",
+                "isBlock": false,
+                "google": {
+                    "status": "none",
+                    "short": "Google: no result of its own",
+                    "long": "Google shows no result of its own for it. It tells any reader what the page is about."
+                },
+                "properties": [
+                    "name",
+                    "description",
+                    "image",
+                    "url"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Category"
+            },
+            {
+                "code": "faq",
+                "version": 1,
+                "group": "content",
+                "name": "FAQ",
+                "type": "FAQPage",
+                "icon": "quiz",
+                "description": "Questions and answers, typed into the snippet for the pages that show them.",
+                "summary": "",
+                "where": "CMS pages you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "gone",
+                    "short": "Google: no result since 2026",
+                    "long": "Google stopped showing FAQ results in 2026. Other search engines and assistants can still read the markup. The questions have to be visible on the page."
+                },
+                "properties": [
+                    "mainEntity",
+                    "name",
+                    "acceptedAnswer",
+                    "text"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "FAQ"
+            },
+            {
+                "code": "article",
+                "version": 1,
+                "group": "content",
+                "name": "Article",
+                "type": "Article",
+                "icon": "article",
+                "description": "A journal or blog post kept as a CMS page: headline, image, author, dates.",
+                "summary": "",
+                "where": "CMS pages you choose",
+                "isBlock": false,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: article",
+                    "long": "Google can show the headline, image and date of an article. There are no required properties."
+                },
+                "properties": [
+                    "headline",
+                    "image",
+                    "datePublished",
+                    "dateModified",
+                    "author"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Article"
+            },
+            {
+                "code": "return-policy",
+                "version": 1,
+                "group": "blocks",
+                "name": "Return policy",
+                "type": "MerchantReturnPolicy",
+                "icon": "assignment_return",
+                "description": "Return window, method and fees, written once and used by the shop and by every product.",
+                "summary": "",
+                "where": "Inside Organization and Product",
+                "isBlock": true,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: return policy",
+                    "long": "Google can show the return window with a product. It needs the countries, the kind of policy and, for a limited window, the number of days. Return settings in Merchant Center or Search Console take precedence over markup."
+                },
+                "properties": [
+                    "applicableCountry",
+                    "returnPolicyCategory",
+                    "merchantReturnDays",
+                    "returnMethod",
+                    "returnFees"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Return policy"
+            },
+            {
+                "code": "shipping-policy",
+                "version": 1,
+                "group": "blocks",
+                "name": "Shipping policy",
+                "type": "ShippingService",
+                "icon": "local_shipping",
+                "description": "Delivery cost and delivery time for the whole shop.",
+                "summary": "",
+                "where": "Inside Organization",
+                "isBlock": true,
+                "google": {
+                    "status": "ok",
+                    "short": "Google: shipping policy",
+                    "long": "Google can show delivery cost and time with a product. Supported at shop level since November 2025."
+                },
+                "properties": [
+                    "shippingConditions",
+                    "shippingDestination",
+                    "shippingRate",
+                    "transitTime"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Shipping policy"
+            },
+            {
+                "code": "postal-address",
+                "version": 1,
+                "group": "blocks",
+                "name": "Postal address",
+                "type": "PostalAddress",
+                "icon": "location_on",
+                "description": "The address from Store Information, for the shop and for a local business.",
+                "summary": "",
+                "where": "Inside Organization and Local business",
+                "isBlock": true,
+                "google": {
+                    "status": "none",
+                    "short": "Google: read with the snippets that use it",
+                    "long": "Read as part of Organization and Local business."
+                },
+                "properties": [
+                    "streetAddress",
+                    "postalCode",
+                    "addressLocality",
+                    "addressCountry"
+                ],
+                "uses": [],
+                "questions": [],
+                "added": false,
+                "hasNewerVersion": false,
+                "nextName": "Postal address"
+            }
+        ]
+    }
+}

@@ -1,0 +1,230 @@
+{
+    "validate": {
+        "problems": [
+            {
+                "part": "template",
+                "path": "$.name",
+                "code": "unknown-filter",
+                "params": {
+                    "filter": "shout"
+                },
+                "offset": 14,
+                "blocking": true,
+                "message": "There is no filter called shout."
+            },
+            {
+                "part": "type",
+                "path": "$",
+                "code": "type_missing",
+                "params": {},
+                "offset": null,
+                "blocking": true,
+                "message": "Enter a schema.org type, for example Product."
+            },
+            {
+                "part": "pageKinds",
+                "path": "$",
+                "code": "no_page_kinds",
+                "params": {},
+                "offset": null,
+                "blocking": false,
+                "message": "Pick at least one kind of page, or the snippet is output nowhere."
+            }
+        ]
+    },
+    "preview": {
+        "output": {
+            "state": "output",
+            "sample": {
+                "ref": "product:12",
+                "kind": "product",
+                "id": 12,
+                "label": "Card sleeve",
+                "url": "https://linden.example/bags/card-sleeve.html",
+                "path": "/bags/card-sleeve.html"
+            },
+            "output": {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                "name": "Card sleeve",
+                "description": "A waxed canvas satchel with a leather strap.",
+                "sku": "LC-CS-BLK",
+                "image": [
+                    "https://shop.example/media/satchel-1.jpg",
+                    "https://shop.example/media/satchel-2.jpg"
+                ],
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Linden & Co."
+                },
+                "color": "Tan",
+                "offers": {
+                    "@type": "Offer",
+                    "url": "https://shop.example/bags/field-satchel.html",
+                    "price": "240.00",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock",
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": [
+                            "DE",
+                            "AT"
+                        ],
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                        "merchantReturnDays": 30,
+                        "returnMethod": "https://schema.org/ReturnByMail",
+                        "returnFees": "https://schema.org/FreeReturn"
+                    }
+                }
+            },
+            "trace": [
+                {
+                    "path": "$.name",
+                    "outcome": "value",
+                    "sources": []
+                },
+                {
+                    "path": "$.gtin13",
+                    "outcome": "empty",
+                    "sources": [
+                        "product.ean"
+                    ]
+                },
+                {
+                    "path": "$.offers.priceValidUntil",
+                    "outcome": "skipped",
+                    "sources": [
+                        "product.special_to_date"
+                    ]
+                },
+                {
+                    "path": "$.offers",
+                    "outcome": "value",
+                    "sources": []
+                },
+                {
+                    "path": "$.aggregateRating.ratingValue",
+                    "outcome": "empty",
+                    "sources": [
+                        "reviews.rating"
+                    ]
+                },
+                {
+                    "path": "$.aggregateRating.reviewCount",
+                    "outcome": "empty",
+                    "sources": [
+                        "reviews.count"
+                    ]
+                },
+                {
+                    "path": "$.aggregateRating",
+                    "outcome": "empty",
+                    "sources": []
+                },
+                {
+                    "path": "$.review",
+                    "outcome": "empty",
+                    "sources": [
+                        "reviews.latest"
+                    ]
+                },
+                {
+                    "path": "$",
+                    "outcome": "value",
+                    "sources": []
+                }
+            ],
+            "message": null,
+            "checks": [
+                {
+                    "tone": "ok",
+                    "title": "Meets Google’s requirements for a merchant listing",
+                    "text": "Name, image and an offer with a price and a currency.",
+                    "action": null
+                },
+                {
+                    "tone": "note",
+                    "title": "Google also recommends 4 more properties",
+                    "text": "gtin13, offers.shippingDetails, aggregateRating, review",
+                    "action": null
+                },
+                {
+                    "tone": "note",
+                    "title": "No review stars for Card sleeve",
+                    "text": "The product has no reviews yet, so the rating is left out. Nothing to fix.",
+                    "action": null
+                },
+                {
+                    "tone": "note",
+                    "title": "Left out for Card sleeve: gtin13, aggregateRating, review",
+                    "text": "These have no value on this page. An empty property is never output.",
+                    "action": null
+                }
+            ],
+            "problems": []
+        },
+        "conditionsNotMet": {
+            "state": "conditions_not_met",
+            "sample": {
+                "ref": "product:14",
+                "kind": "product",
+                "id": 14,
+                "label": "Weekender",
+                "url": "https://linden.example/bags/weekender.html",
+                "path": "/bags/weekender.html"
+            },
+            "output": null,
+            "trace": [],
+            "message": {
+                "title": "Not output for Weekender",
+                "text": "This page does not meet the conditions under “Only when”, in Pages."
+            },
+            "checks": [
+                {
+                    "tone": "note",
+                    "title": "Not output for Weekender",
+                    "text": "The conditions in Pages ask for “Product type is not Configurable”. It gets the “Product with variants” snippet instead.",
+                    "action": {"label": "See the conditions", "path": null, "icon": "arrow_forward", "value": null, "before": []}
+                }
+            ],
+            "problems": []
+        },
+        "noType": {
+            "state": "no_type",
+            "sample": {
+                "ref": "product:12",
+                "kind": "product",
+                "id": 12,
+                "label": "Card sleeve",
+                "url": "https://linden.example/bags/card-sleeve.html",
+                "path": "/bags/card-sleeve.html"
+            },
+            "output": null,
+            "trace": [],
+            "message": {
+                "title": "Nothing to show yet",
+                "text": "The output appears here as soon as the snippet has a type and one property with a value."
+            },
+            "checks": [
+                {
+                    "tone": "note",
+                    "title": "Choose a type first",
+                    "text": "The checks follow the type: a Product is compared with what Google needs for a product result.",
+                    "action": null
+                }
+            ],
+            "problems": [
+                {
+                    "part": "type",
+                    "path": "$",
+                    "code": "type_missing",
+                    "params": {},
+                    "offset": null,
+                    "blocking": true,
+                    "message": "Enter a schema.org type, for example Product."
+                }
+            ]
+        }
+    }
+}

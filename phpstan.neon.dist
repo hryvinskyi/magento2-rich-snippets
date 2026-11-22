@@ -1,0 +1,90 @@
+parameters:
+    level: 10
+    paths:
+        - .
+    excludePaths:
+        - vendor (?)
+        - Test/Js/node_modules (?)
+        - frontend/*/node_modules (?)
+    bootstrapFiles:
+        - ../../../../vendor/autoload.php
+        - ../../../../dev/tests/integration/framework/autoload.php
+    scanFiles:
+        - Test/phpstan/generated/SnippetRootInterfaceFactory.php
+        - Test/phpstan/generated/OriginInterfaceFactory.php
+        - Test/phpstan/generated/CacheContextFactory.php
+        - Test/phpstan/generated/PageEntityInterfaceFactory.php
+        - Test/phpstan/generated/RenderedBlockInterfaceFactory.php
+        - Test/phpstan/generated/ConditionMismatchInterfaceFactory.php
+        - Test/phpstan/generated/ConditionTreeInterfaceFactory.php
+        - Test/phpstan/generated/ConditionGroupInterfaceFactory.php
+        - Test/phpstan/generated/ConditionLeafInterfaceFactory.php
+        - Test/phpstan/generated/ConditionValueSqlInterfaceFactory.php
+        - Test/phpstan/generated/ProductAttributeSubjectFactory.php
+        - Test/phpstan/generated/SnippetExclusionInterfaceFactory.php
+        - Test/phpstan/generated/PlacementCountInterfaceFactory.php
+        - Test/phpstan/generated/ExpressionFactory.php
+        - Test/phpstan/generated/FieldInterfaceFactory.php
+        - Test/phpstan/generated/FieldValuesFactory.php
+        - Test/phpstan/generated/PageContextValueFactory.php
+        - Test/phpstan/generated/DataObjectFactory.php
+        - Test/phpstan/generated/ProductAttributeCollectionFactory.php
+        - Test/phpstan/generated/DateTimeZoneFactory.stub
+        - Test/phpstan/generated/RequirementInterfaceFactory.php
+        - Test/phpstan/generated/ResultTypeRuleInterfaceFactory.php
+        - Test/phpstan/generated/MissingPropertyInterfaceFactory.php
+        - Test/phpstan/generated/LeftOutPropertyInterfaceFactory.php
+        - Test/phpstan/generated/FeatureCheckInterfaceFactory.php
+        - Test/phpstan/generated/OutputCheckInterfaceFactory.php
+        - Test/phpstan/generated/FeatureTallyInterfaceFactory.php
+        - Test/phpstan/generated/MarkedScriptElementFactory.php
+        - Test/phpstan/generated/LibraryTemplateInterfaceFactory.php
+        - Test/phpstan/generated/LibraryQuestionInterfaceFactory.php
+        - Test/phpstan/generated/AnswerOptionInterfaceFactory.php
+        - Test/phpstan/generated/QuestionSuggestionsInterfaceFactory.php
+        - Test/phpstan/generated/LibraryEntryInterfaceFactory.php
+        - Test/phpstan/generated/AddedSnippetInterfaceFactory.php
+        - Test/phpstan/generated/AdditionRunFactory.php
+        - Test/phpstan/generated/SnippetFlagInterfaceFactory.php
+        - Test/phpstan/generated/SnippetRowInterfaceFactory.php
+        - Test/phpstan/generated/SnippetListingInterfaceFactory.php
+        - Test/phpstan/generated/SnippetExportFileInterfaceFactory.php
+        - Test/phpstan/generated/ImportProblemInterfaceFactory.php
+        - Test/phpstan/generated/ImportEntryInterfaceFactory.php
+        - Test/phpstan/generated/ImportPreviewInterfaceFactory.php
+        - Test/phpstan/generated/ImportedSnippetInterfaceFactory.php
+        - Test/phpstan/generated/DraftSnippetInterfaceFactory.php
+        - Test/phpstan/generated/DraftProblemInterfaceFactory.php
+        - Test/phpstan/generated/DraftPreviewInterfaceFactory.php
+        - Test/phpstan/generated/DraftSaveResultInterfaceFactory.php
+        - Test/phpstan/generated/PageMatchInterfaceFactory.php
+        - Test/phpstan/generated/StorefrontPageInterfaceFactory.php
+        - Test/phpstan/generated/JsonLdBlockInterfaceFactory.php
+        - Test/phpstan/generated/MicrodataItemInterfaceFactory.php
+        - Test/phpstan/generated/StructuredDataInterfaceFactory.php
+        - Test/phpstan/generated/ThemeMarkupObservationInterfaceFactory.php
+        - Test/phpstan/generated/TestedBlockInterfaceFactory.php
+        - Test/phpstan/generated/UnwrittenSnippetInterfaceFactory.php
+        - Test/phpstan/generated/PageTestResultInterfaceFactory.php
+        - Test/phpstan/generated/DOMXPathFactory.stub
+        - Test/phpstan/generated/ContextFactory.stub
+        - Test/phpstan/generated/CheckRunInterfaceFactory.php
+        - Test/phpstan/generated/CheckStatusInterfaceFactory.php
+        - Test/phpstan/generated/AttentionItemInterfaceFactory.php
+        - Test/phpstan/generated/AttentionTargetInterfaceFactory.php
+        - Test/phpstan/generated/AttentionScopeInterfaceFactory.php
+        - Test/phpstan/generated/KindOverviewInterfaceFactory.php
+        - Test/phpstan/generated/KindSnippetInterfaceFactory.php
+        - Test/phpstan/generated/FeatureOverviewInterfaceFactory.php
+        - Test/phpstan/generated/OverviewReportInterfaceFactory.php
+        - Test/phpstan/generated/FindingInterfaceFactory.php
+        - Test/phpstan/generated/FindingItemInterfaceFactory.php
+        - Test/phpstan/generated/FindingItemsInterfaceFactory.php
+        - Test/phpstan/generated/FindingsCsvInterfaceFactory.php
+        - Test/phpstan/generated/StoreTallyFactory.php
+        - Test/phpstan/generated/MergedAggregatesFactory.php
+        - Test/phpstan/generated/RawFactory.php
+        - Test/phpstan/generated/ProductCollectionFactory.php
+        - Test/phpstan/generated/CategoryCollectionFactory.php
+    scanDirectories:
+        - ../../../../dev/tests/integration/framework

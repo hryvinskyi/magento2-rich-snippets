@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026. Volodymyr Hryvinskyi. All rights reserved.
+ * Author: Volodymyr Hryvinskyi <volodymyr@hryvinskyi.com>
+ * GitHub: https://github.com/hryvinskyi
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="hryvinskyi_rich_snippets" translate="label" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Rich Snippets</label>
+            <tab>hryvinskyi</tab>
+            <resource>Hryvinskyi_RichSnippets::config</resource>
+            <group id="general" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <comment>Snippets are added, changed and switched on in Marketing › Rich Snippets. This page holds what applies to all of them at once.</comment>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment>Choosing No stops every snippet in this scope, whatever its own switch says. Nothing is deleted.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="output" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Output</label>
+                <field id="position" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Write the Snippets</label>
+                    <comment>Search engines read both places. The end of the body keeps the head short on pages with many snippets.</comment>
+                    <source_model>Hryvinskyi\RichSnippets\Model\Config\Source\Position</source_model>
+                </field>
+                <field id="format" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Format</label>
+                    <comment>Readable adds line breaks and indentation, for reading the page source. Pages get slightly larger.</comment>
+                    <source_model>Hryvinskyi\RichSnippets\Model\Config\Source\Format</source_model>
+                </field>
+                <field id="price_tax" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Prices in Snippets</label>
+                    <comment>The price in a snippet has to be the price the visitor sees. Change this only if the theme shows prices differently from the tax settings.</comment>
+                    <source_model>Hryvinskyi\RichSnippets\Model\Config\Source\PriceTax</source_model>
+                </field>
+            </group>
+            <group id="theme" translate="label comment" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Theme Markup</label>
+                <comment>The default theme and the themes built on it write their own Product markup into the product page. With a Product snippet switched on, every product would be described twice.</comment>
+                <field id="remove_product_markup" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remove the Theme’s Own Product Markup</label>
+                    <comment>Takes the schema.org attributes of the items the page’s snippets also describe, such as the product with its price and rating, out of the product page’s HTML. Other items stay. Nothing visible changes. Only on product pages that output a Product snippet.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="found_on_storefront" translate="label comment" type="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Found on the Storefront</label>
+                    <comment>Read-only. What the last page test saw in the theme’s HTML.</comment>
+                    <frontend_model>Hryvinskyi\RichSnippets\Block\Adminhtml\System\Config\ThemeMarkup</frontend_model>
+                </field>
+            </group>
+            <group id="check" translate="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Catalog Check</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Check the Catalog Every Night</label>
+                    <comment>Builds every snippet for every page and lists what is missing. It does not visit the storefront.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="time" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Start At</label>
+                    <comment>Hours and minutes on the 24-hour clock, in the admin’s time zone.</comment>
+                    <frontend_model>Hryvinskyi\RichSnippets\Block\Adminhtml\System\Config\Field\Placeholder</frontend_model>
+                    <backend_model>Hryvinskyi\RichSnippets\Model\Config\Backend\CheckTime</backend_model>
+                    <validate>validate-rich-snippets-time</validate>
+                    <attribute type="placeholder">03:00</attribute>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="email" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Send the Findings To</label>
+                    <comment>Optional. One e-mail after a check that finds a page Google would report as invalid. Separate several addresses with commas.</comment>
+                    <frontend_model>Hryvinskyi\RichSnippets\Block\Adminhtml\System\Config\Field\Placeholder</frontend_model>
+                    <backend_model>Hryvinskyi\RichSnippets\Model\Config\Backend\FindingsRecipients</backend_model>
+                    <validate>validate-emails</validate>
+                    <attribute type="placeholder">seo@example.com</attribute>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="last_check" translate="label" type="label" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Last Check</label>
+                    <frontend_model>Hryvinskyi\RichSnippets\Block\Adminhtml\System\Config\LastCheck</frontend_model>
+                </field>
+            </group>
+            <group id="developer" translate="label" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Developer</label>
+                <field id="comments" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Mark Each Block in the Page Source</label>
+                    <comment>Writes an HTML comment with the snippet’s code before each script block, for finding them in the source of a test store.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

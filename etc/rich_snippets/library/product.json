@@ -1,0 +1,83 @@
+{
+    "version": 1,
+    "group": "product",
+    "name": "Product",
+    "icon": "inventory_2",
+    "description": "A simple product: name, images, price, availability, brand, GTIN, rating and reviews.",
+    "summary": "Price, stock, brand, rating of a product",
+    "where": "Product pages, except configurable",
+    "google": {
+        "results": ["merchant_listing", "review_stars"],
+        "short": "Google: merchant listing, review stars",
+        "long": "Meets what Google asks for a merchant listing: name, image and an offer with a price and a currency. Rating and reviews add the stars when a product has them."
+    },
+    "properties": ["name", "description", "sku", "gtin13", "image", "brand", "color", "offers", "aggregateRating", "review"],
+    "uses": ["return-policy"],
+    "placement": {
+        "pageKinds": ["product"],
+        "conditions": {
+            "type": "rich_snippets/combine", "attribute": null, "operator": null, "value": "1",
+            "is_value_processed": null, "aggregator": "all",
+            "conditions": [{"type": "product_type", "attribute": null, "operator": "!=", "value": "configurable", "is_value_processed": null}]
+        }
+    },
+    "questions": [
+        {"code": "brand", "label": "Brand", "suggester": "brand"},
+        {"code": "gtin", "label": "GTIN (EAN, UPC)", "suggester": "gtin"},
+        {"code": "description", "label": "Description", "suggester": "description"}
+    ],
+    "template": {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "{{product.name}}",
+        "description": "{{? description }}",
+        "sku": "{{product.sku}}",
+        "gtin13": "{{? gtin }}",
+        "image": {
+            "@each": "product.gallery",
+            "@value": "{{image.url}}"
+        },
+        "brand": {
+            "@type": "Brand",
+            "name": "{{? brand }}"
+        },
+        "color": "{{product.color}}",
+        "offers": {
+            "@type": "Offer",
+            "url": "{{product.url}}",
+            "price": "{{product.final_price}}",
+            "priceCurrency": "{{store.currency}}",
+            "priceValidUntil": "{{product.special_to_date}}",
+            "priceSpecification": {
+                "@if": "product.on_sale",
+                "@type": "UnitPriceSpecification",
+                "priceType": "https://schema.org/StrikethroughPrice",
+                "price": "{{product.regular_price}}",
+                "priceCurrency": "{{store.currency}}"
+            },
+            "availability": "{{product.availability}}",
+            "itemCondition": "https://schema.org/NewCondition",
+            "hasMerchantReturnPolicy": {"@include": "return-policy"}
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{reviews.rating}}",
+            "reviewCount": "{{reviews.count}}"
+        },
+        "review": {
+            "@each": "reviews.latest",
+            "@limit": 3,
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "{{review.nickname}}"
+            },
+            "datePublished": "{{review.date}}",
+            "reviewBody": "{{review.text}}",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "{{review.rating}}"
+            }
+        }
+    }
+}

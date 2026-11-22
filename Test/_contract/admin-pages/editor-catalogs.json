@@ -1,0 +1,554 @@
+{
+    "fields": {
+        "groups": [
+            {
+                "code": "product",
+                "label": "Product",
+                "fields": [
+                    {
+                        "path": "product.name",
+                        "label": "Name",
+                        "attributeCode": null,
+                        "pageKinds": [
+                            "product"
+                        ],
+                        "example": "Field satchel"
+                    },
+                    {
+                        "path": "product.url",
+                        "label": "Page address",
+                        "attributeCode": null,
+                        "pageKinds": [
+                            "product"
+                        ],
+                        "example": "https://linden.example/bags/field-satchel.html"
+                    }
+                ]
+            },
+            {
+                "code": "product_attributes",
+                "label": "Product attributes",
+                "fields": [
+                    {
+                        "path": "product.manufacturer",
+                        "label": "Manufacturer",
+                        "attributeCode": "manufacturer",
+                        "pageKinds": [
+                            "product"
+                        ],
+                        "example": null
+                    },
+                    {
+                        "path": "product.ean",
+                        "label": "EAN",
+                        "attributeCode": "ean",
+                        "pageKinds": [
+                            "product"
+                        ],
+                        "example": "4062001000010"
+                    }
+                ]
+            },
+            {
+                "code": "store",
+                "label": "Store",
+                "fields": [
+                    {
+                        "path": "store.countries",
+                        "label": "Countries it ships to",
+                        "attributeCode": null,
+                        "pageKinds": [],
+                        "example": [
+                            "DE",
+                            "AT",
+                            "NL"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "lists": [
+            {
+                "path": "product.gallery",
+                "label": "Product › Gallery image",
+                "itemName": "image"
+            },
+            {
+                "path": "reviews.latest",
+                "label": "Reviews › Approved review",
+                "itemName": "review"
+            }
+        ],
+        "enums": {
+            "itemCondition": [
+                "NewCondition",
+                "RefurbishedCondition",
+                "UsedCondition"
+            ]
+        },
+        "suggestions": {
+            "Product": {
+                "": [
+                    {
+                        "name": "mpn",
+                        "required": false,
+                        "field": null
+                    },
+                    {
+                        "name": "material",
+                        "required": false,
+                        "field": "product.material"
+                    }
+                ]
+            },
+            "OnlineStore": {
+                "": [
+                    {
+                        "name": "name",
+                        "required": false,
+                        "field": null
+                    }
+                ],
+                "hasMerchantReturnPolicy": [
+                    {
+                        "name": "applicableCountry",
+                        "required": true,
+                        "field": null
+                    }
+                ]
+            }
+        },
+        "namedFields": {
+            "Product": {
+                "material": "product.material",
+                "color": "product.color"
+            }
+        },
+        "sample": {
+            "ref": "product:12",
+            "kind": "product",
+            "id": 12,
+            "label": "Field satchel",
+            "url": "https://linden.example/bags/field-satchel.html",
+            "path": "/bags/field-satchel.html"
+        }
+    },
+    "builderConfig": {
+        "config": {
+            "combineType": "rich_snippets/combine",
+            "fields": [
+                {
+                    "type": "product_attribute_picker",
+                    "childType": "product_attribute",
+                    "label": "Product attribute",
+                    "valueType": "product-attribute",
+                    "operators": [
+                        {
+                            "value": "==",
+                            "label": "is"
+                        },
+                        {
+                            "value": "!=",
+                            "label": "is not"
+                        },
+                        {
+                            "value": "{}",
+                            "label": "contains"
+                        },
+                        {
+                            "value": "!{}",
+                            "label": "does not contain"
+                        },
+                        {
+                            "value": "()",
+                            "label": "is one of",
+                            "list": true
+                        },
+                        {
+                            "value": "!()",
+                            "label": "is not one of",
+                            "list": true
+                        }
+                    ],
+                    "attributes": [
+                        {
+                            "value": "color",
+                            "label": "Color",
+                            "inputType": "select",
+                            "hasOptions": true,
+                            "suggest": false,
+                            "operatorSet": "select",
+                            "unit": ""
+                        },
+                        {
+                            "value": "name",
+                            "label": "Product Name",
+                            "inputType": "text",
+                            "hasOptions": false,
+                            "suggest": true,
+                            "operatorSet": null,
+                            "unit": ""
+                        },
+                        {
+                            "value": "price",
+                            "label": "Price",
+                            "inputType": "price",
+                            "hasOptions": false,
+                            "suggest": false,
+                            "operatorSet": "price",
+                            "unit": "EUR"
+                        }
+                    ]
+                },
+                {
+                    "type": "attribute_set",
+                    "label": "Attribute set",
+                    "attribute": null,
+                    "valueType": "select",
+                    "operators": [
+                        {
+                            "value": "==",
+                            "label": "is"
+                        },
+                        {
+                            "value": "!=",
+                            "label": "is not"
+                        },
+                        {
+                            "value": "()",
+                            "label": "is one of",
+                            "list": true
+                        },
+                        {
+                            "value": "!()",
+                            "label": "is not one of",
+                            "list": true
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "4",
+                            "label": "Default"
+                        },
+                        {
+                            "value": "9",
+                            "label": "Bags"
+                        }
+                    ]
+                },
+                {
+                    "type": "product_category",
+                    "label": "Category",
+                    "attribute": null,
+                    "valueType": "select",
+                    "operators": [
+                        {
+                            "value": "()",
+                            "label": "is one of",
+                            "list": true
+                        },
+                        {
+                            "value": "!()",
+                            "label": "is not one of",
+                            "list": true
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "2",
+                            "label": "Default Category",
+                            "level": 0,
+                            "parent": ""
+                        },
+                        {
+                            "value": "3",
+                            "label": "Bags",
+                            "level": 1,
+                            "parent": "2"
+                        }
+                    ]
+                },
+                {
+                    "type": "product_type",
+                    "label": "Product type",
+                    "attribute": null,
+                    "valueType": "select",
+                    "operators": [
+                        {
+                            "value": "==",
+                            "label": "is"
+                        },
+                        {
+                            "value": "!=",
+                            "label": "is not"
+                        },
+                        {
+                            "value": "()",
+                            "label": "is one of",
+                            "list": true
+                        },
+                        {
+                            "value": "!()",
+                            "label": "is not one of",
+                            "list": true
+                        }
+                    ],
+                    "options": [
+                        {
+                            "value": "configurable",
+                            "label": "Configurable Product"
+                        },
+                        {
+                            "value": "simple",
+                            "label": "Simple Product"
+                        }
+                    ]
+                }
+            ],
+            "operatorSets": {
+                "boolean": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": "!=",
+                        "label": "is not"
+                    }
+                ],
+                "select": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": "!=",
+                        "label": "is not"
+                    },
+                    {
+                        "value": "()",
+                        "label": "is one of",
+                        "list": true
+                    },
+                    {
+                        "value": "!()",
+                        "label": "is not one of",
+                        "list": true
+                    }
+                ],
+                "multiselect": [
+                    {
+                        "value": "()",
+                        "label": "is one of",
+                        "list": true
+                    },
+                    {
+                        "value": "!()",
+                        "label": "is not one of",
+                        "list": true
+                    }
+                ],
+                "price": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": "!=",
+                        "label": "is not"
+                    },
+                    {
+                        "value": ">=",
+                        "label": "equals or greater than"
+                    },
+                    {
+                        "value": ">",
+                        "label": "greater than"
+                    },
+                    {
+                        "value": "<=",
+                        "label": "equals or less than"
+                    },
+                    {
+                        "value": "<",
+                        "label": "less than"
+                    }
+                ],
+                "decimal": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": "!=",
+                        "label": "is not"
+                    },
+                    {
+                        "value": ">=",
+                        "label": "equals or greater than"
+                    },
+                    {
+                        "value": ">",
+                        "label": "greater than"
+                    },
+                    {
+                        "value": "<=",
+                        "label": "equals or less than"
+                    },
+                    {
+                        "value": "<",
+                        "label": "less than"
+                    }
+                ],
+                "weight": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": "!=",
+                        "label": "is not"
+                    },
+                    {
+                        "value": ">=",
+                        "label": "equals or greater than"
+                    },
+                    {
+                        "value": ">",
+                        "label": "greater than"
+                    },
+                    {
+                        "value": "<=",
+                        "label": "equals or less than"
+                    },
+                    {
+                        "value": "<",
+                        "label": "less than"
+                    }
+                ],
+                "date": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": ">=",
+                        "label": "equals or greater than"
+                    },
+                    {
+                        "value": "<=",
+                        "label": "equals or less than"
+                    },
+                    {
+                        "value": ">",
+                        "label": "greater than"
+                    },
+                    {
+                        "value": "<",
+                        "label": "less than"
+                    }
+                ],
+                "datetime": [
+                    {
+                        "value": "==",
+                        "label": "is"
+                    },
+                    {
+                        "value": ">=",
+                        "label": "equals or greater than"
+                    },
+                    {
+                        "value": "<=",
+                        "label": "equals or less than"
+                    },
+                    {
+                        "value": ">",
+                        "label": "greater than"
+                    },
+                    {
+                        "value": "<",
+                        "label": "less than"
+                    }
+                ]
+            },
+            "emptyStateMessage": "No conditions: it is output on every one of them.",
+            "optionsUrl": "https://linden.example/admin/hryvinskyi_richsnippets/snippets/conditionOptions/",
+            "suggestUrl": "https://linden.example/admin/hryvinskyi_richsnippets/snippets/conditionOptions/",
+            "suggestMinQuery": 2
+        }
+    },
+    "conditionOptions": {
+        "options": [
+            {
+                "value": "49",
+                "label": "Black"
+            },
+            {
+                "value": "50",
+                "label": "Brown"
+            }
+        ]
+    },
+    "conditionSuggestions": {
+        "items": [
+            {
+                "value": "Field satchel",
+                "label": "Field satchel"
+            }
+        ]
+    },
+    "placementCount": {
+        "kinds": {
+            "product": {
+                "matching": 146,
+                "total": 184
+            }
+        },
+        "matching": 146,
+        "total": 184,
+        "sentence": "Output on product pages where Product type is not Configurable, in every store view.",
+        "count": "146 of 184 product pages match.",
+        "countLine": "146 of 184 product pages match",
+        "asked": null
+    },
+    "samples": {
+        "samples": [
+            {
+                "ref": "product:12",
+                "kind": "product",
+                "id": 12,
+                "label": "Field satchel",
+                "url": "https://linden.example/bags/field-satchel.html",
+                "path": "/bags/field-satchel.html"
+            },
+            {
+                "ref": "home:2",
+                "kind": "home",
+                "id": 2,
+                "label": "Home page",
+                "url": "https://linden.example/",
+                "path": "/"
+            }
+        ]
+    },
+    "includeCandidates": {
+        "candidates": [
+            {
+                "code": "postal-address",
+                "name": "Postal address",
+                "type": "PostalAddress",
+                "isBlock": true,
+                "description": "The address from Store Information, for the shop and for a local business.",
+                "loops": false
+            },
+            {
+                "code": "product",
+                "name": "Product",
+                "type": "Product",
+                "isBlock": false,
+                "description": "A simple product: name, images, price, availability, brand, GTIN, rating and reviews.",
+                "loops": true
+            }
+        ]
+    }
+}
